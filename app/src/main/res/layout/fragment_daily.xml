@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:background="@color/grey_ef"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+        <RadioGroup
+            android:id="@+id/fragment_daily_radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_27"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <RadioButton
+                android:id="@+id/fragment_daily_radio_btn_calendar"
+                android:layout_width="113dp"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:background="@drawable/radio_btn_left"
+                android:text="Calendar"
+                android:gravity="center"
+                android:layout_marginRight="@dimen/dp_2"
+                android:textColor="#ff676767"
+                android:textSize="16sp"/>
+
+            <RadioButton
+                android:id="@+id/fragment_daily_radio_btn_data"
+                android:layout_width="110dp"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:background="@drawable/radio_btn_center"
+                android:text="@string/data"
+                android:gravity="center"
+                android:textColor="#ff676767"
+                android:textSize="16sp"/>
+            <RadioButton
+                android:id="@+id/fragment_daily_radio_btn_girth"
+                android:layout_width="113dp"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:layout_marginLeft="@dimen/dp_2"
+                android:background="@drawable/radio_btn_right"
+                android:text="@string/girth"
+                android:gravity="center"
+                android:textColor="#ff676767"
+                android:textSize="16sp"/>
+
+        </RadioGroup>
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fragment_daily_frame"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/dp_16"/>
+</LinearLayout>

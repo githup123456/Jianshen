@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome"
+            android:textColor="#ff19b55e"
+            android:textSize="24sp" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_50"
+            android:layout_marginBottom="@dimen/dp_50"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/get_your_dream"
+            android:textColor="#ff19b55e"
+            android:textSize="24sp" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="@dimen/dp_109"
+        android:layout_height="@dimen/dp_46"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/green_radius_27"
+        android:layout_marginBottom="@dimen/dp_50"
+        android:gravity="center"
+        android:textAllCaps="false"
+        android:text="@string/start"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:onClick="startAct"/>
+</RelativeLayout>

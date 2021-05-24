@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/fragment_plan_page_lly_off"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="168dp"
+            android:src="@mipmap/null_img_plan"
+            android:layout_marginTop="@dimen/dp_22"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginRight="@dimen/dp_16"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/day_off"
+            android:textColor="#9f9f9f"
+            android:layout_marginTop="@dimen/dp_30"
+            android:textSize="24sp"/>
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/fragment_plan_page_lly_work"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dp_10"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Workout  today"
+            android:textColor="#323232"
+            android:textStyle="normal"
+            android:textSize="18sp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/fragment_plan_page_rcl_course"
+            android:layout_marginTop="@dimen/dp_7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+</RelativeLayout>

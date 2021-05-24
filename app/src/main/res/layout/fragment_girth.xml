@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:scrollbars="none"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="298dp"
+            android:padding="@dimen/dp_16"
+            android:background="@drawable/white_radius_5"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_chest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/chest"
+                    android:textColor="#ff323232"
+                    android:textSize="17sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(cm)"
+                    android:textSize="@dimen/dp_17"
+                    android:textColor="#747474"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_toRightOf="@+id/tv_chest"/>
+
+                <Button
+                    android:id="@+id/fragment_girth_btn_chest_record"
+                    android:layout_width="@dimen/dp_75"
+                    android:layout_height="@dimen/dp_30"
+                    android:background="@drawable/green_radius_5"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/record"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffffff"
+                    android:textSize="13sp"/>
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/fragment_girth_tv_chest_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2020/04/08-2021/04/01"
+                android:textColor="#ff19b55e"
+                android:textSize="13sp"
+                android:layout_marginTop="21dp"/>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/fragment_girth_lineChart_chest"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight = "1"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="298dp"
+            android:padding="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/white_radius_5"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_arm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/third_user_page_item_4"
+                    android:textColor="#ff323232"
+                    android:textSize="17sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(cm)"
+                    android:textSize="@dimen/dp_17"
+                    android:textColor="#747474"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_toRightOf="@+id/tv_arm"/>
+
+                <Button
+                    android:id="@+id/fragment_girth_btn_arm_record"
+                    android:layout_width="@dimen/dp_75"
+                    android:layout_height="@dimen/dp_30"
+                    android:background="@drawable/green_radius_5"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/record"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffffff"
+                    android:textSize="13sp"/>
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/fragment_girth_tv_arm_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2020/04/08-2021/04/01"
+                android:textColor="#ff19b55e"
+                android:textSize="13sp"
+                android:layout_marginTop="21dp"/>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/fragment_girth_lineChart_arm"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight = "1"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="298dp"
+            android:padding="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/white_radius_5"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_leg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/third_user_page_item_5"
+                    android:textColor="#ff323232"
+                    android:textSize="17sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(cm)"
+                    android:textSize="@dimen/dp_17"
+                    android:textColor="#747474"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_toRightOf="@+id/tv_leg"/>
+
+                <Button
+                    android:id="@+id/fragment_girth_btn_leg_record"
+                    android:layout_width="@dimen/dp_75"
+                    android:layout_height="@dimen/dp_30"
+                    android:background="@drawable/green_radius_5"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/record"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffffff"
+                    android:textSize="13sp"/>
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/fragment_girth_tv_leg_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2020/04/08-2021/04/01"
+                android:textColor="#ff19b55e"
+                android:textSize="13sp"
+                android:layout_marginTop="21dp"/>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/fragment_girth_lineChart_leg"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight = "1"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="298dp"
+            android:padding="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/white_radius_5"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_butt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/butt"
+                    android:textColor="#ff323232"
+                    android:textSize="17sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="(cm)"
+                    android:textSize="@dimen/dp_17"
+                    android:textColor="#747474"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_toRightOf="@+id/tv_butt"/>
+
+                <Button
+                    android:id="@+id/fragment_girth_btn_butt_record"
+                    android:layout_width="@dimen/dp_75"
+                    android:layout_height="@dimen/dp_30"
+                    android:background="@drawable/green_radius_5"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/record"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffffff"
+                    android:textSize="13sp"/>
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/fragment_girth_tv_butt_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2020/04/08-2021/04/01"
+                android:textColor="#ff19b55e"
+                android:textSize="13sp"
+                android:layout_marginTop="21dp"/>
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/fragment_girth_lineChart_butt"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight = "1"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

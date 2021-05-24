@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7F7F7"
+    android:fitsSystemWindows="false"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+
+    <!--app:shadowColor="#66000000" 控制阴影的颜色，注意：颜色必须带有透明度的值-->
+    <!--app:shadowDx="0dp" 控制阴影 x 轴的偏移量-->
+    <!--app:shadowDy="3dp" 控制阴影 y 轴的偏移量-->
+    <!--app:shadowRadius="10dp" 控制阴影的范围-->
+    <!--app:shadowSide="all|left|right|top|bottom" 控制阴影显示的边界，共有五个值-->
+    <LinearLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.shyj.jianshen.view.BottomBarLayout
+            android:id="@+id/main_bottom_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.shyj.jianshen.view.BottomBarItem
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:itemText="@string/plan"
+                app:iconHeight="@dimen/dp_50"
+                app:iconNormal="@mipmap/icon_plan_grey"
+                app:iconSelected="@mipmap/icon_plan_green"
+                app:itemTextSize="11sp"
+                app:openTouchBg="true"
+                app:textColorNormal="@color/grey_9c"
+                app:textColorSelected="@color/green_19b55e"
+                app:touchDrawable="@drawable/bottom_bar_touch"/>
+
+            <com.shyj.jianshen.view.BottomBarItem
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:itemText="@string/workout"
+                app:iconHeight="@dimen/dp_50"
+                app:iconNormal="@mipmap/icon_workout_grey"
+                app:iconSelected="@mipmap/icon_workout_green"
+                app:itemTextSize="11sp"
+                app:openTouchBg="true"
+                app:textColorNormal="@color/grey_9c"
+                app:textColorSelected="@color/green_19b55e"
+                app:touchDrawable="@drawable/bottom_bar_touch"/>
+
+
+            <com.shyj.jianshen.view.BottomBarItem
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:iconHeight="@dimen/dp_50"
+                app:iconNormal="@mipmap/icon_daily_grey"
+                app:iconSelected="@mipmap/icon_daily_green"
+                app:itemText="@string/daily"
+                app:itemTextSize="11sp"
+                app:openTouchBg="true"
+                app:textColorNormal="@color/grey_9c"
+                app:textColorSelected="@color/green_19b55e"
+                app:touchDrawable="@drawable/bottom_bar_touch"/>
+
+            <com.shyj.jianshen.view.BottomBarItem
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:iconHeight="@dimen/dp_50"
+                app:iconNormal="@mipmap/icon_profile_grey"
+                app:iconSelected="@mipmap/icon_profile_green"
+                app:itemTextSize="11sp"
+                app:openTouchBg="true"
+                app:itemText="@string/profile"
+                app:textColorNormal="@color/grey_9c"
+                app:textColorSelected="@color/green_19b55e"
+                app:touchDrawable="@drawable/bottom_bar_touch"/>
+
+        </com.shyj.jianshen.view.BottomBarLayout>
+    </LinearLayout>
+
+</LinearLayout>

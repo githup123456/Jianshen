@@ -1,0 +1,165 @@
+<resources>
+    <string name="app_name">jianshen</string>
+
+    <!-- 欢迎页 -->
+    <string name="welcome">Welcome to App</string>
+    <string name="get_your_dream">Get Your Dream Body Now</string>
+    
+    <!--个人信息录入-->
+    <string name="first_user_page_title">CHOOSE YOUR GENDER</string>
+    <string name="first_user_page_content">Personalize worket program based \n on gender</string>
+    <string name="first_user_page_female">Female</string>
+    <string name="first_user_page_male">Male</string>
+    <string name="second_user_page_title">CHOOSE YOUR GOAL</string>
+    <string name="second_user_page_content">Help us understand what you need</string>
+    <string name="lose_weight">Lose Weight</string>
+    <string name="keep_fit">Keep Fit</string>
+    <string name="or">or</string>
+    <string name="build_muscle">Build Muscle</string>
+    <string name="third_user_page_title">CHOOSE YOUR FOCUS PART</string>
+    <string name="third_user_page_content">Focus on target zone, save 30% of your time</string>
+    <string name="third_user_page_item_1">Whole Body</string>
+    <string name="third_user_page_item_2">Chest/Butt</string>
+    <string name="third_user_page_item_3">Abs</string>
+    <string name="third_user_page_item_4">Arm</string>
+    <string name="third_user_page_item_5">Leg</string>
+    <string name="third_user_page_lose_weight">People bodys fat is an entirety,
+        \n we do not suggest you to
+        \n lose weight for a single part.
+        \n \n Try  </string>
+    <string name="third_user_page_lose_weight_end">for\n a single part.</string>
+    <string name="four_user_page_title">CHOOSE YOUR FITNESS LEVEL</string>
+    <string name="four_user_page_content">Create workout plan that suits you best</string>
+    <string name="beginner">Beginner</string>
+    <string name="four_user_page_item_1_bottom">Just start exercising</string>
+    <string name="intermediate">Intermediate</string>
+    <string name="four_user_page_item_2_bottom">Do exercise 1-2 times a week</string>
+    <string name="advanced">Advanced</string>
+    <string name="four_user_page_item_3_bottom">Do exercise regularly, over 3 times a week</string>
+    <string name="five_user_page_title">ENTER HEIGHT AND WEIGHT</string>
+    <string name="five_user_page_content">Let us know you better to provide \n more targeted support for you.</string>
+    <string name="five_user_page_height">Height</string>
+    <string name="five_user_page_weight">Weight</string>
+    <string name="next">Next</string>
+    <string name="generate_plan">Generate Plan</string>
+
+    <!-- build progress-->
+    <string name="build_progress_title">CREATING YOUR \n WORKOUT PLAN </string>
+    <string name="build_progress_content_one">Personalize your workout plan \n for </string>
+    <string name="build_progress_content_two">Select workouts for your </string>
+    <string name="build_progress_content_three_start">Designing the training duration \n for</string>
+    <string name="build_progress_content_three_end">body builders ...</string>
+    <string name="build_progress_content_four">Adjusting the schedule for </string>
+    <string name="build_progress_end_title">AND GET YOUR \n DREAM BODY</string>
+    <string name="build_progress_end_content">Your personal plan is prepared! \n Let us do it !</string>
+    <string name="start">Start</string>
+
+    <!--bottom_window-->
+    <string name="window_cancel">Cancel</string>
+    <string name="window_save">Save</string>
+
+    <!-- 首页 -->
+    <string name="plan">PLAN</string>
+    <string name="workout">WORKOUT</string>
+    <string name="daily">DAILY</string>
+    <string name="profile">PROFILE</string>
+
+    <!--fragment plan-->
+    <string name="three_week">3-WEEKS FITNESS</string>
+    <string name="four_week">4-WEEKS FITNESS</string>
+    <string name="complete">completed</string>
+    <string name="week">WEEK</string>
+    <string name="day_off">Day off !</string>
+    <string name="day_work">Workout  today</string>
+    <!--fragmentNullPlan-->
+    <string name="unlock_all_plan">Unlock all workout plan</string>
+    <string name="personalize_your_plan">Personalize \n your plan \n right now!</string>
+    <string name="get_dream_body">Get your dream body</string>
+    <string name="popular_program">Popular Program</string>
+    <string name="try_now">Try Now</string>
+    <string name="weeks">WEEKS</string>
+    <!--fragment workout-->
+    <string name="workouts">WORKOUTS</string>
+    <string name="recommend">Recommended</string>
+    <string name="my">My</string>
+    <string name="abs_workout">Abs Workout</string>
+    <string name="fat_burning">Fat Burning</string>
+    <string name="stretch">Stretch</string>
+    <string name="chest_workout">Chest Workout</string>
+    <string name="warm_up">Warm Up</string>
+    
+    <string name="empty_now">Empty now!</string>
+    <string name="get_you_like_work">Tab &#8194;&#8194; when you find the class you are \n interested in  so that you can \n add it to this page</string>
+    <!--fragment profile -->
+    <string name="start_seven_day">Start &#8194;&#8194;&#8194; Day Free Trial</string>
+    <string name="get_access_all_programs">Get access to all workout programs</string>
+
+    <string name="restore_purchase">Restore purchase</string>
+    <string name="information">Information</string>
+    <string name="favorite_workout">Favorite Workout</string>
+    <string name="my_workout_program">My workout program</string>
+    <string name="send_feedback">Send Feedback</string>
+    <string name="rate_us">Rate us</string>
+    <string name="settings">Settings</string>
+    <string name="premium_now">You are \nPremium now !</string>
+    <string name="premium_expired_on">You Premium will expired on </string>
+
+    <!-- fragment daily -->
+    <string name="chest">Chest</string>
+    <string name="butt">Butt</string>
+    <string name="record">Record</string>
+    <string name="calendar">Calendar</string>
+    <string name="data">Data</string>
+    <string name="girth">Girth</string>
+    <string name="history">History</string>
+    <string name="bmi">BMI</string>
+    <string name="calories_burned">Calories burned, estimated (kcal)</string>
+
+    <string-array name="week_string_array">
+        <item>S</item>
+        <item>M</item>
+        <item>T</item>
+        <item>W</item>
+        <item>T</item>
+        <item>F</item>
+        <item>S</item>
+    </string-array>
+    
+    <string name="kcal">Kcal</string>
+    <string name="Duration">Duration</string>
+    <string name="completed">Completed</string>
+
+    <!--课程详情-->
+    <string name="high_knees">High Knees</string>
+    <string name="introduction">Introduction</string>
+    <string name="introduction_detail">To activate your abs through the most fundamental
+ exercises. If you feel any pain or sourness in your b
+ack, neck, and thighs when practicing other... </string>
+    <string name="Equipment">Equipment</string>
+    <string name="no_equipment">No Equipment</string>
+    <string name="Exercises">Exercises</string>
+    
+    <string name="adjusted_your_plan">Your plan is just adjusted</string>
+    <string name="add_favorite">Add to favorite</string>
+
+    <string name="downloading">Downloading</string>
+    <string name="music_list">Music List</string>
+    <string name="close">Close</string>
+    <string name="rest">Rest</string>
+    <string name="current_program">Current Program</string>
+    <string name="training_days">Training Days :</string>
+    <string name="minutes_perday">Minutes per day : </string>
+    
+    <!--adjust plan-->
+    <string name="adjust_plan">Adjust &#8194;&#8194;Plan</string>
+    <string name="goal">Goal</string>
+    <string name="body_focus">Body Focus</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="end_current_program">End Current Program</string>
+    <string name="done">Done</string>
+    <string name="your_plan_adjust">Your plan will be adjusted \n intermediately。</string>
+    <string name="sure_end_program">Are you sure you want to \n end  this program?</string>
+    <string name="confirm">Confirm</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+</resources>

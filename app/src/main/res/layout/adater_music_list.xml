@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/item_music_list_img_bg"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_50"
+        android:layout_marginTop="8.5dp"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginBottom="8.5dp"
+        android:src="@drawable/grey_radius_5"/>
+
+    <TextView
+        android:id="@+id/item_music_list_tv_name"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="Music Name2"
+        android:layout_marginLeft="14dp"
+        android:textColor="#ff747474"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/item_music_list_img_state"
+        android:layout_width="@dimen/dp_27"
+        android:layout_height="@dimen/dp_27"
+        android:src="@mipmap/icon_green_download"
+        android:layout_marginRight="14dp"/>
+    <com.timqi.sectorprogressview.ColorfulRingProgressView
+        android:id="@+id/item_music_list_progress"
+        android:layout_width="@dimen/dp_27"
+        android:layout_height="@dimen/dp_27"
+        app:fgColorStart="@color/green_19b55e"
+        app:fgColorEnd="@color/green_19b55e"
+        app:strokeWidth="@dimen/dp_3"
+        android:layout_marginRight="14dp"
+        android:visibility="gone"/>
+
+</LinearLayout>

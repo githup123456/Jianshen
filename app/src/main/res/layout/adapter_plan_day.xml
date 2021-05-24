@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingLeft="@dimen/dp_10"
+    android:paddingRight="@dimen/dp_10"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/item_plan_day_week_what"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="M"
+        android:textColor="#ffaeaeae"
+        android:textSize="15sp" />
+
+    <com.lzy.widget.HexagonView
+        android:id="@+id/item_plan_day_date"
+        app:hexagonText="23"
+        android:layout_marginTop="6.5dp"
+        android:layout_width="@dimen/dp_30"
+        android:layout_height="33dp"
+        app:hexagonBorderColor="#9FFF"
+        app:hexagonBorderOverlay="false"
+        app:hexagonBorderWidth="2dp"
+        app:hexagonBreakLineCount="6"
+        app:hexagonCorner="3dp"
+        app:hexagonFillColor="@color/green_19b55e"
+        app:hexagonMaxLine="3"
+        app:hexagonOrientation="vertical"
+        app:hexagonTextColor="@color/white"
+        app:hexagonTextSize="16sp"
+        app:hexagonTextSpacing="0dp" />
+
+</LinearLayout>

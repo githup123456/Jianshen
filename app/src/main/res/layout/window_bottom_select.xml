@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/radius_15_top_white"
+        android:orientation="vertical">
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_15"
+            android:layout_marginLeft="@dimen/dp_17"
+            android:layout_marginRight="@dimen/dp_17">
+            <TextView
+                android:id="@+id/window_bottom_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/window_cancel"
+                android:textColor="@color/green_19b55e"
+                android:textSize="17sp" />
+            <TextView
+                android:id="@+id/window_bottom_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/window_save"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/green_19b55e"
+                android:textSize="17sp" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_210"
+            android:orientation="horizontal">
+
+            <com.aigestudio.wheelpicker.WheelPicker
+                android:id="@+id/window_bottom_wheel_left"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                app:wheel_item_space="9.5dp"
+                app:wheel_indicator="true"
+                app:wheel_indicator_color="#616879"
+                app:wheel_item_text_size="22dp"
+                app:wheel_item_text_color="#72767D"
+                app:wheel_selected_item_text_color="@color/black_12"
+                app:wheel_atmospheric="true"
+                app:wheel_curved="true"/>
+            <com.aigestudio.wheelpicker.WheelPicker
+                android:id="@+id/window_bottom_wheel_center"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                app:wheel_item_space="9.5dp"
+                app:wheel_indicator="true"
+                app:wheel_indicator_color="#616879"
+                app:wheel_item_text_size="22dp"
+                app:wheel_item_text_color="#72767D"
+                app:wheel_selected_item_text_color="@color/black_12"
+                app:wheel_atmospheric="true"
+                app:wheel_curved="true"/>
+            <com.aigestudio.wheelpicker.WheelPicker
+                android:id="@+id/window_bottom_wheel_right"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                app:wheel_item_space="9.5dp"
+                app:wheel_indicator="true"
+                app:wheel_indicator_color="#616879"
+                app:wheel_item_text_size="22dp"
+                app:wheel_item_text_color="#72767D"
+                app:wheel_selected_item_text_color="@color/black_12"
+                app:wheel_atmospheric="true"
+                app:wheel_curved="true"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

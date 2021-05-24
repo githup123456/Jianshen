@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_ef"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:background="@color/white">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_33"
+            android:layout_marginTop="47dp"
+            android:text="@string/workouts"
+            android:gravity="center"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:textColor="#ff323232"
+            android:textSize="27sp" />
+
+        <ImageView
+            android:id="@+id/fragment_workout_img_select"
+            android:layout_width="@dimen/dp_27"
+            android:layout_height="@dimen/dp_27"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="21dp"
+            android:src="@mipmap/select_black"/>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_27"
+            android:layout_below="@+id/fragment_workout_img_select"
+            android:layout_marginTop="@dimen/dp_24"
+            android:layout_marginBottom="@dimen/dp_9"
+            android:scrollbars="none">
+
+            <RadioGroup
+                android:id="@+id/fragment_workout_radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:paddingRight="@dimen/dp_30"
+                android:orientation="horizontal">
+                
+                <RadioButton
+                    android:id="@+id/fragment_workout_radio_btn_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_27"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:button="@null"
+                    android:checked="true"
+                    android:background="@drawable/workout_radio_bg"
+                    android:text="Recommended"
+                    android:textColor="#ffffffff"
+                    android:textSize="13sp"/>
+                <RadioButton
+                    android:id="@+id/fragment_workout_radio_btn_two"
+                    android:layout_width="@dimen/dp_70"
+                    android:layout_height="@dimen/dp_27"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:button="@null"
+                    android:checked="false"
+                    android:background="@drawable/workout_radio_bg"
+                    android:text="@string/my"
+                    android:drawableRight="@mipmap/my_like"
+                    android:textColor="#ffffffff"
+                    android:textSize="13sp"/>
+                <RadioButton
+                    android:id="@+id/fragment_workout_radio_btn_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_27"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:button="@null"
+                    android:background="@drawable/workout_radio_bg"
+                    android:text="@string/beginner"
+                    android:textColor="#ffffffff"
+                    android:textSize="13sp"/>
+
+                <RadioButton
+                    android:id="@+id/fragment_workout_radio_btn_four"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_27"
+                    android:layout_marginRight="@dimen/dp_12"
+                    android:background="@drawable/workout_radio_bg"
+                    android:button="@null"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp"
+                    android:text="@string/intermediate"
+                    android:textColor="#ffffffff"
+                    android:textSize="13sp" />
+
+                <RadioButton
+                    android:id="@+id/fragment_workout_radio_btn_five"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_27"
+                    android:paddingLeft="14dp"
+                    android:paddingRight="14dp"
+                    android:button="@null"
+                    android:background="@drawable/workout_radio_bg"
+                    android:text="@string/advanced"
+                    android:textColor="#ffffffff"
+                    android:textSize="13sp"/>
+            </RadioGroup>
+            
+        </HorizontalScrollView>
+
+    </RelativeLayout>
+    
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/fragment_workout_view_page"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/dp_8"/>
+
+</LinearLayout>
