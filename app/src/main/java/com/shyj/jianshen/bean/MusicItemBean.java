@@ -6,7 +6,7 @@ import org.litepal.crud.LitePalSupport;
 public  class MusicItemBean extends LitePalSupport {
 
     @Column(unique = true, index = true)
-    private String id;
+    private long id;
     @Column(nullable = false)
     private String name;
 
@@ -18,11 +18,11 @@ public  class MusicItemBean extends LitePalSupport {
     @Column(defaultValue = "false")
     private boolean isDownload;
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 

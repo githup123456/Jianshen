@@ -22,6 +22,38 @@ public class WindowUtils {
     public static AlertDialog.Builder alertBuilder;
     public static AlertDialog alertDialog;
 
+
+    /**
+     * activity
+     * view  布局view
+     * position popupWindow显示位置 0顶部 1中部 2底部
+     */
+    public static PopupWindow cancelShow(Activity activity, int view, int position) {
+        dismissNODimBack(activity);
+        popupWindow = new PopupWindow();
+        LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout linearLayout = new LinearLayout(activity);
+        viewContent = inflater.inflate(view, linearLayout);
+        popupWindow.setContentView(viewContent);
+        popupWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+        popupWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setFocusable(true);
+        popupWindow.setOutsideTouchable(false);
+        switch (position) {
+            case 0:
+                popupWindow.showAtLocation(activity.getWindow().getDecorView(), Gravity.TOP, 0, 0);
+                break;
+
+            case 2:
+                popupWindow.showAtLocation(activity.getWindow().getDecorView(), Gravity.BOTTOM, 0, 0);
+                break;
+            default:
+                popupWindow.showAtLocation(activity.getWindow().getDecorView(), Gravity.CENTER, 0, 0);
+                break;
+        }
+        return popupWindow;
+    }
+
     /**
      * activity
      * view  布局view
@@ -76,7 +108,7 @@ public class WindowUtils {
     }
 
     public static void dismissDialog(){
-        if (alertDialog!=null){
+        if (alertDialog!=null&&alertDialog.isShowing()){
             alertDialog.dismiss();
             alertDialog = null;
         }
@@ -124,8 +156,8 @@ public class WindowUtils {
      * 关闭虚化PopupWindow
      */
     public static void dismissBrightness(Activity activity) {
+        dimBackground(activity, 0.3f, 1.0f);
         if (popupWindow != null && popupWindow.isShowing()) {
-            dimBackground(activity, 0.3f, 1.0f);
             popupWindow.dismiss();
             popupWindow = null;
         }

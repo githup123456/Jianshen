@@ -7,6 +7,8 @@ import android.os.Environment;
 import androidx.core.app.ActivityCompat;
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+import com.shyj.jianshen.BuildConfig;
+import com.shyj.jianshen.activity.BaseActivity;
 import com.shyj.jianshen.network.AndroidSchedulers;
 
 import java.io.File;
@@ -31,7 +33,7 @@ public class DownloadFileHelper {
 
     private Activity activity;
     private static final int DEFAULT_TIMEOUT = 10;
-    private static final String filePath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/bear.apk";
+    public static final String basePath = Environment.getExternalStorageDirectory().getAbsolutePath();
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -40,14 +42,14 @@ public class DownloadFileHelper {
 
 
     public DownloadFileHelper() {
-        int permission = ActivityCompat.checkSelfPermission(activity, "android.permission.WRITE_EXTERNAL_STORAGE");
+     /*   int permission = ActivityCompat.checkSelfPermission(activity, "android.permission.WRITE_EXTERNAL_STORAGE");
         if (permission != PackageManager.PERMISSION_GRANTED) {
             // 没有写的权限，去申请写的权限，会弹出对话框
             ActivityCompat.requestPermissions(activity, PERMISSIONS_STORAGE, REQUEST_EXTERNAL_STORAGE);
-        }
+        }*/
     }
 
-    public void downloadFile(String fileUrl, DownloadListener downloadListener) {
+    public void downloadFile(String fileUrl,String filePath, DownloadListener downloadListener) {
         FileDownloadInterceptor fileDownloadInterceptor = new FileDownloadInterceptor(downloadListener);
         OkHttpClient httpClient = new OkHttpClient()
                 .newBuilder()
@@ -56,7 +58,7 @@ public class DownloadFileHelper {
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://dl.google.com/")
+                .baseUrl("https://s3-us-west-2.amazonaws.com/s3.fitness/")
                 .client(httpClient)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();

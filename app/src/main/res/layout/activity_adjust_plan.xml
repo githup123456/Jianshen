@@ -1,376 +1,384 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <include layout="@layout/app_green_top_bar" />
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/grey_ef"
         android:orientation="vertical">
 
-        <include layout="@layout/app_green_top_bar" />
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:layout_height="match_parent"
+            android:background="@color/grey_ef"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_16"
-                android:layout_marginTop="@dimen/dp_16"
-                android:text="@string/current_program"
-                android:textColor="#ff323232"
-                android:textSize="18sp" />
-
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="130dp"
-                android:layout_marginLeft="@dimen/dp_16"
-                android:layout_marginTop="@dimen/dp_12"
-                android:layout_marginRight="@dimen/dp_16">
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/adjust_plan_img_top_bg"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_16"
+                    android:text="@string/current_program"
+                    android:textColor="#ff323232"
+                    android:textSize="18sp" />
+
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/grey_radius_2" />
-
-                <TextView
-                    android:id="@+id/adjust_plan_tv_week_grand"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentBottom="true"
+                    android:layout_height="130dp"
                     android:layout_marginLeft="@dimen/dp_16"
-                    android:layout_marginBottom="11dp"
-                    android:text="4 weeks · Beginner"
-                    android:textColor="#ffffffff"
-                    android:textSize="15sp" />
+                    android:layout_marginTop="@dimen/dp_12"
+                    android:layout_marginRight="@dimen/dp_16">
 
-                <TextView
-                    android:id="@+id/adjust_plan_tv_name"
-                    android:layout_width="wrap_content"
+                    <ImageView
+                        android:id="@+id/adjust_plan_img_top_bg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/grey_radius_2" />
+
+                    <TextView
+                        android:id="@+id/adjust_plan_tv_week_grand"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginLeft="@dimen/dp_16"
+                        android:layout_marginBottom="11dp"
+                        android:text="4 weeks · Beginner"
+                        android:textColor="#ffffffff"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/adjust_plan_tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_above="@+id/adjust_plan_tv_week_grand"
+                        android:layout_marginLeft="@dimen/dp_16"
+                        android:layout_marginBottom="@dimen/dp_5"
+                        android:text="High Knees"
+                        android:textColor="#ffffffff"
+                        android:textSize="24sp" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_above="@+id/adjust_plan_tv_week_grand"
                     android:layout_marginLeft="@dimen/dp_16"
-                    android:layout_marginBottom="@dimen/dp_5"
-                    android:text="High Knees"
-                    android:textColor="#ffffffff"
-                    android:textSize="24sp" />
-            </RelativeLayout>
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:layout_marginRight="@dimen/dp_16"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/dp_18"
+                        android:layout_height="@dimen/dp_18"
+                        android:src="@mipmap/small_days_grey" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="11dp"
+                        android:layout_marginRight="@dimen/dp_10"
+                        android:text="@string/training_days"
+                        android:textColor="#ff747474"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/adjust_plan_tv_days"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="21"
+                        android:textColor="#ff747474"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_16"
+                    android:layout_marginTop="@dimen/dp_15"
+                    android:layout_marginRight="@dimen/dp_16"
+                    android:layout_marginBottom="19dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/dp_18"
+                        android:layout_height="@dimen/dp_18"
+                        android:src="@mipmap/small_days_grey" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="11dp"
+                        android:layout_marginRight="@dimen/dp_10"
+                        android:text="@string/minutes_perday"
+                        android:textColor="#ff747474"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/adjust_plan_tv_min"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="18 min"
+                        android:textColor="#ff747474"
+                        android:textSize="15sp" />
+                </LinearLayout>
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_16"
+                android:background="@color/white"
                 android:layout_marginTop="@dimen/dp_15"
-                android:layout_marginRight="@dimen/dp_16"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/dp_18"
-                    android:layout_height="@dimen/dp_18"
-                    android:src="@mipmap/small_days_grey" />
-
+                android:orientation="vertical">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="11dp"
-                    android:layout_marginRight="@dimen/dp_10"
-                    android:text="@string/training_days"
-                    android:textColor="#ff747474"
-                    android:textSize="15sp" />
+                    android:padding="@dimen/dp_16"
+                    android:text="@string/adjust_plan"
+                    android:textColor="#ff323232"
+                    android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/adjust_plan_tv_days"
-                    android:layout_width="wrap_content"
+                <RadioGroup
+                    android:id="@+id/adjust_plan_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:layout_marginLeft="@dimen/dp_25"
+                    android:layout_marginRight="@dimen/dp_25"
+                    android:background="@drawable/frame_green_radius_white_5"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/adjust_plan_r_btn_goal"
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:checked="true"
+                        android:text="@string/goal"
+                        android:background="@drawable/left_radius_green_5"/>
+                    <View
+                        android:layout_width="@dimen/dp_1"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/dp_7"
+                        android:layout_marginBottom="@dimen/dp_7"
+                        android:background="#747474"/>
+                    <RadioButton
+                        android:id="@+id/adjust_plan_r_btn_body"
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:textColor="#747474"
+                        android:textSize="15sp"
+                        android:text="@string/body_focus"
+                        android:background="@drawable/center_green"/>
+                    <View
+                        android:layout_width="@dimen/dp_1"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/dp_7"
+                        android:layout_marginBottom="@dimen/dp_7"
+                        android:background="#747474"/>
+                    <RadioButton
+                        android:id="@+id/adjust_plan_r_btn_difficulty"
+                        android:layout_width="@dimen/dp_0"
+                        android:layout_weight="1"
+                        android:layout_height="match_parent"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:textColor="#747474"
+                        android:textSize="15sp"
+                        android:text="@string/difficulty"
+                        android:background="@drawable/right_green_5"/>
+                </RadioGroup>
+
+                <RadioGroup
+                    android:id="@+id/adjust_plan_group_goal"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="21"
-                    android:textColor="#ff747474"
-                    android:textSize="15sp" />
+                    android:layout_marginTop="29dp"
+                    android:layout_marginBottom="@dimen/dp_33"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <RadioButton
+                        android:id="@+id/adjust_plan_r_btn_goal_one"
+                        android:layout_width="268dp"
+                        android:layout_height="49dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:textColor="#ff676767"
+                        android:textSize="17sp"
+                        android:text="@string/lose_weight"
+                        android:background="@drawable/select_checked_15"/>
+                    <RadioButton
+                        android:id="@+id/adjust_plan_r_btn_goal_two"
+                        android:layout_width="268dp"
+                        android:layout_height="49dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/dp_24"
+                        android:textColor="#ff676767"
+                        android:textSize="17sp"
+                        android:text="@string/keep_fit"
+                        android:background="@drawable/select_checked_15"/>
+                    <RadioButton
+                        android:id="@+id/adjust_plan_r_btn_goal_three"
+                        android:layout_width="268dp"
+                        android:layout_height="49dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/dp_24"
+                        android:textColor="#ff676767"
+                        android:textSize="17sp"
+                        android:text="@string/build_muscle"
+                        android:background="@drawable/select_checked_15"/>
+                </RadioGroup>
+                <TextView
+                    android:id="@+id/adjust_plan_tv_lose_weight"
+                    android:layout_width="236dp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:visibility="gone"
+                    android:textColor="#ff676767"
+                    android:textSize="17sp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/dp_50"
+                    android:layout_marginBottom="@dimen/dp_40" />
+                <RadioGroup
+                    android:id="@+id/adjust_plan_group_body"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="29dp"
+                    android:gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/dp_33"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+                    <RadioButton
+                        android:id="@+id/adjust_plan_r_btn_body_one"
+                        android:layout_width="268dp"
+                        android:layout_height="49dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:textColor="#ff676767"
+                        android:textSize="17sp"
+                        android:text="@string/third_user_page_item_1"
+                        android:background="@drawable/select_checked_15"/>
+                    <RadioButton
+                        android:id="@+id/adjust_plan_r_btn_body_two"
+                        android:layout_width="268dp"
+                        android:layout_height="49dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/dp_24"
+                        android:textColor="#ff676767"
+                        android:textSize="17sp"
+                        android:text="@string/third_user_page_item_2"
+                        android:background="@drawable/select_checked_15"/>
+                    <RadioButton
+                        android:id="@+id/adjust_plan_r_btn_body_three"
+                        android:layout_width="268dp"
+                        android:layout_height="49dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/dp_24"
+                        android:textColor="#ff676767"
+                        android:textSize="17sp"
+                        android:text="@string/third_user_page_item_3"
+                        android:background="@drawable/select_checked_15"/>
+                    <RadioButton
+                        android:id="@+id/adjust_plan_r_btn_body_four"
+                        android:layout_width="268dp"
+                        android:layout_height="49dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/dp_24"
+                        android:textColor="#ff676767"
+                        android:textSize="17sp"
+                        android:text="@string/third_user_page_item_4"
+                        android:background="@drawable/select_checked_15"/>
+                    <RadioButton
+                        android:id="@+id/adjust_plan_r_btn_body_five"
+                        android:layout_width="268dp"
+                        android:layout_height="49dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/dp_24"
+                        android:textColor="#ff676767"
+                        android:textSize="17sp"
+                        android:text="@string/third_user_page_item_5"
+                        android:background="@drawable/select_checked_15"/>
+                </RadioGroup>
+                <RadioGroup
+                    android:id="@+id/adjust_plan_group_difficulty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="29dp"
+                    android:layout_marginBottom="@dimen/dp_33"
+                    android:gravity="center_horizontal"
+                    android:visibility="gone"
+                    android:orientation="vertical">
+                    <RadioButton
+                        android:id="@+id/adjust_plan_r_btn_difficulty_one"
+                        android:layout_width="268dp"
+                        android:layout_height="49dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:textColor="#ff676767"
+                        android:textSize="17sp"
+                        android:text="@string/beginner"
+                        android:background="@drawable/select_checked_15"/>
+                    <RadioButton
+                        android:id="@+id/adjust_plan_r_btn_difficulty_two"
+                        android:layout_width="268dp"
+                        android:layout_height="49dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/dp_24"
+                        android:textColor="#ff676767"
+                        android:textSize="17sp"
+                        android:text="@string/intermediate"
+                        android:background="@drawable/select_checked_15"/>
+                    <RadioButton
+                        android:id="@+id/adjust_plan_r_btn_difficulty_three"
+                        android:layout_width="268dp"
+                        android:layout_height="49dp"
+                        android:button="@null"
+                        android:gravity="center"
+                        android:layout_marginTop="@dimen/dp_24"
+                        android:textColor="#ff676767"
+                        android:textSize="17sp"
+                        android:text="@string/advanced"
+                        android:background="@drawable/select_checked_15"/>
+                </RadioGroup>
             </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/dp_16"
-                android:layout_marginTop="@dimen/dp_15"
-                android:layout_marginRight="@dimen/dp_16"
-                android:layout_marginBottom="19dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:layout_width="@dimen/dp_18"
-                    android:layout_height="@dimen/dp_18"
-                    android:src="@mipmap/small_days_grey" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="11dp"
-                    android:layout_marginRight="@dimen/dp_10"
-                    android:text="@string/minutes_perday"
-                    android:textColor="#ff747474"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/adjust_plan_tv_min"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="18 min"
-                    android:textColor="#ff747474"
-                    android:textSize="15sp" />
-            </LinearLayout>
+            <Button
+                android:id="@+id/adjust_plan_btn_adjust_end"
+                android:layout_width="233dp"
+                android:layout_height="49dp"
+                android:layout_marginTop="21dp"
+                android:layout_marginBottom="@dimen/dp_26"
+                android:layout_gravity="center_horizontal"
+                android:background="@drawable/orange_radius_25"
+                android:text="@string/end_current_program"
+                android:textAllCaps="false"
+                android:textColor="#ffffffff"
+                android:textSize="17sp"/>
         </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:layout_marginTop="@dimen/dp_15"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="@dimen/dp_16"
-                android:text="@string/adjust_plan"
-                android:textColor="#ff323232"
-                android:textSize="18sp" />
-
-            <RadioGroup
-                android:id="@+id/adjust_plan_group"
-                android:layout_width="match_parent"
-                android:layout_height="38dp"
-                android:layout_marginLeft="@dimen/dp_25"
-                android:layout_marginRight="@dimen/dp_25"
-                android:background="@drawable/frame_green_radius_white_5"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/adjust_plan_r_btn_goal"
-                    android:layout_width="@dimen/dp_0"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:checked="true"
-                    android:text="@string/goal"
-                    android:background="@drawable/left_radius_green_5"/>
-                <View
-                    android:layout_width="@dimen/dp_1"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/dp_7"
-                    android:layout_marginBottom="@dimen/dp_7"
-                    android:background="#747474"/>
-                <RadioButton
-                    android:id="@+id/adjust_plan_r_btn_body"
-                    android:layout_width="@dimen/dp_0"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:textColor="#747474"
-                    android:textSize="15sp"
-                    android:text="@string/body_focus"
-                    android:background="@drawable/center_green"/>
-                <View
-                    android:layout_width="@dimen/dp_1"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/dp_7"
-                    android:layout_marginBottom="@dimen/dp_7"
-                    android:background="#747474"/>
-                <RadioButton
-                    android:id="@+id/adjust_plan_r_btn_difficulty"
-                    android:layout_width="@dimen/dp_0"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:textColor="#747474"
-                    android:textSize="15sp"
-                    android:text="@string/difficulty"
-                    android:background="@drawable/right_green_5"/>
-            </RadioGroup>
-
-            <RadioGroup
-                android:id="@+id/adjust_plan_group_goal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="29dp"
-                android:layout_marginBottom="@dimen/dp_33"
-                android:gravity="center_horizontal"
-                android:orientation="vertical">
-
-                <RadioButton
-                    android:id="@+id/adjust_plan_r_btn_goal_one"
-                    android:layout_width="268dp"
-                    android:layout_height="49dp"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:textColor="#ff676767"
-                    android:textSize="17sp"
-                    android:text="@string/lose_weight"
-                    android:background="@drawable/select_checked_15"/>
-                <RadioButton
-                    android:id="@+id/adjust_plan_r_btn_goal_two"
-                    android:layout_width="268dp"
-                    android:layout_height="49dp"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:layout_marginTop="@dimen/dp_24"
-                    android:textColor="#ff676767"
-                    android:textSize="17sp"
-                    android:text="@string/keep_fit"
-                    android:background="@drawable/select_checked_15"/>
-                <RadioButton
-                    android:id="@+id/adjust_plan_r_btn_goal_three"
-                    android:layout_width="268dp"
-                    android:layout_height="49dp"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:layout_marginTop="@dimen/dp_24"
-                    android:textColor="#ff676767"
-                    android:textSize="17sp"
-                    android:text="@string/build_muscle"
-                    android:background="@drawable/select_checked_15"/>
-            </RadioGroup>
-            <TextView
-                android:id="@+id/adjust_plan_tv_lose_weight"
-                android:layout_width="236dp"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textColor="#ff676767"
-                android:textSize="17sp"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/dp_50"
-                android:layout_marginBottom="@dimen/dp_40" />
-            <RadioGroup
-                android:id="@+id/adjust_plan_group_body"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="29dp"
-                android:gravity="center_horizontal"
-                android:layout_marginBottom="@dimen/dp_33"
-                android:visibility="gone"
-                android:orientation="vertical">
-                <RadioButton
-                    android:id="@+id/adjust_plan_r_btn_body_one"
-                    android:layout_width="268dp"
-                    android:layout_height="49dp"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:textColor="#ff676767"
-                    android:textSize="17sp"
-                    android:text="@string/third_user_page_item_1"
-                    android:background="@drawable/select_checked_15"/>
-                <RadioButton
-                    android:id="@+id/adjust_plan_r_btn_body_two"
-                    android:layout_width="268dp"
-                    android:layout_height="49dp"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:layout_marginTop="@dimen/dp_24"
-                    android:textColor="#ff676767"
-                    android:textSize="17sp"
-                    android:text="@string/third_user_page_item_2"
-                    android:background="@drawable/select_checked_15"/>
-                <RadioButton
-                    android:id="@+id/adjust_plan_r_btn_body_three"
-                    android:layout_width="268dp"
-                    android:layout_height="49dp"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:layout_marginTop="@dimen/dp_24"
-                    android:textColor="#ff676767"
-                    android:textSize="17sp"
-                    android:text="@string/third_user_page_item_3"
-                    android:background="@drawable/select_checked_15"/>
-                <RadioButton
-                    android:id="@+id/adjust_plan_r_btn_body_four"
-                    android:layout_width="268dp"
-                    android:layout_height="49dp"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:layout_marginTop="@dimen/dp_24"
-                    android:textColor="#ff676767"
-                    android:textSize="17sp"
-                    android:text="@string/third_user_page_item_4"
-                    android:background="@drawable/select_checked_15"/>
-                <RadioButton
-                    android:id="@+id/adjust_plan_r_btn_body_five"
-                    android:layout_width="268dp"
-                    android:layout_height="49dp"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:layout_marginTop="@dimen/dp_24"
-                    android:textColor="#ff676767"
-                    android:textSize="17sp"
-                    android:text="@string/third_user_page_item_5"
-                    android:background="@drawable/select_checked_15"/>
-            </RadioGroup>
-            <RadioGroup
-                android:id="@+id/adjust_plan_group_difficulty"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="29dp"
-                android:layout_marginBottom="@dimen/dp_33"
-                android:gravity="center_horizontal"
-                android:visibility="gone"
-                android:orientation="vertical">
-                <RadioButton
-                    android:id="@+id/adjust_plan_r_btn_difficulty_one"
-                    android:layout_width="268dp"
-                    android:layout_height="49dp"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:textColor="#ff676767"
-                    android:textSize="17sp"
-                    android:text="@string/beginner"
-                    android:background="@drawable/select_checked_15"/>
-                <RadioButton
-                    android:id="@+id/adjust_plan_r_btn_difficulty_two"
-                    android:layout_width="268dp"
-                    android:layout_height="49dp"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:layout_marginTop="@dimen/dp_24"
-                    android:textColor="#ff676767"
-                    android:textSize="17sp"
-                    android:text="@string/intermediate"
-                    android:background="@drawable/select_checked_15"/>
-                <RadioButton
-                    android:id="@+id/adjust_plan_r_btn_difficulty_three"
-                    android:layout_width="268dp"
-                    android:layout_height="49dp"
-                    android:button="@null"
-                    android:gravity="center"
-                    android:layout_marginTop="@dimen/dp_24"
-                    android:textColor="#ff676767"
-                    android:textSize="17sp"
-                    android:text="@string/advanced"
-                    android:background="@drawable/select_checked_15"/>
-            </RadioGroup>
-        </LinearLayout>
-        <Button
-            android:id="@+id/adjust_plan_btn_adjust_end"
-            android:layout_width="233dp"
-            android:layout_height="49dp"
-            android:layout_marginTop="21dp"
-            android:layout_marginBottom="@dimen/dp_26"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/orange_radius_25"
-            android:text="@string/end_current_program"
-            android:textAllCaps="false"
-            android:textColor="#ffffffff"
-            android:textSize="17sp"/>
-    </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+</LinearLayout>

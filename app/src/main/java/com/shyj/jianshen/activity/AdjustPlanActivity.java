@@ -84,7 +84,7 @@ public class AdjustPlanActivity extends BaseActivity {
     @Override
     public void init() {
         StatuBarUtils.setTranslucentStatus(AdjustPlanActivity.this);
-        String str=getString(R.string.third_user_page_lose_weight)+" "+"<font color='#19B55E'>"+R.string.keep_fit+"</font>"+" "+R.string.or+" "+"<font color='#19B55E'>"+R.string.build_muscle+"</font>"+" "+getString(R.string.third_user_page_lose_weight_end);
+        String str=getString(R.string.third_user_page_lose_weight)+" "+"<font color='#19B55E'>"+getString(R.string.keep_fit)+"</font>"+" "+getString(R.string.or)+" "+"<font color='#19B55E'>"+getString(R.string.build_muscle)+"</font>"+" "+getString(R.string.third_user_page_lose_weight_end);
         tvLoseWeight.setText(Html.fromHtml(str.replaceAll("\n", "<br>")));
         tvTopRight.setText(getResources().getString(R.string.done));
         initUser();
@@ -376,6 +376,13 @@ public class AdjustPlanActivity extends BaseActivity {
             }
         });
         TextView tvConfirm = endView.findViewById(R.id.dialog_center_tv_confirm);
+        tvConfirm.setOnClickListener(new NoDoubleClickListener() {
+            @Override
+            public void onNoDoubleClick(View v) {
+                WindowUtils.dismissDialog();
+                finish();
+            }
+        });
     }
 
     private void showDonePlan(){

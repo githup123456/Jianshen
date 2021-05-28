@@ -7,14 +7,21 @@ import android.content.pm.PackageManager;
 
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.gson.reflect.TypeToken;
 import com.shyj.jianshen.R;
+import com.shyj.jianshen.bean.PlanBean;
+
+import org.litepal.annotation.Column;
+import org.litepal.crud.LitePalSupport;
 
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Type;
 import java.util.Calendar;
+import java.util.List;
 
 public class HelpUtils {
 
@@ -87,6 +94,32 @@ public class HelpUtils {
         }
         return result;
     }
+
+
+    /**
+     * @param domain 域名
+     * @param url    url路径
+     * @return
+     */
+    public static String replaceDomain(String domain, String url) {
+        String url_bak = "";
+        if (url.indexOf("//") != -1) {
+            String[] splitTemp = url.split("//");
+            url_bak = splitTemp[0] + "//";
+            url_bak = url_bak + domain;
+
+            if (splitTemp.length >= 1 && splitTemp[1].indexOf("/") != -1) {
+                String[] urlTemp2 = splitTemp[1].split("/");
+                if (urlTemp2.length > 1) {
+                    for (int i = 1; i < urlTemp2.length; i++) {
+                        url_bak = url_bak + "/" + urlTemp2[i];
+                    }
+                }
+            }
+        }
+        return url_bak;
+    }
+
 
     public static boolean copyFile(InputStream is, String toFile) {
         boolean result = false;
@@ -202,6 +235,21 @@ public class HelpUtils {
                 .placeholder(R.drawable.grey_radius_5);
     }
 
+    /**黑色error背景*/
+    public static RequestOptions getBlackError(){
+        RequestOptions requestOptions = new RequestOptions()
+                .placeholder(R.color.black)
+                .error(R.color.black);
+        return requestOptions;
+    }
+
+    /**黑色error背景*/
+    public static RequestOptions getGreyError(){
+        RequestOptions requestOptions = new RequestOptions()
+                .placeholder(R.color.grey_ae)
+                .error(R.color.grey_ae);
+        return requestOptions;
+    }
     /** 毫秒转 分秒*/
     public static String getMSTime(long millSeconds){
         int seconds = (int) (millSeconds/1000);
@@ -209,12 +257,22 @@ public class HelpUtils {
         int s = seconds%60;
         if (m>9&&s>9){
             return m+":"+s;
-        }else if (m>9&&s>9){
+        }else if (m<10&&s>9){
             return "0"+m+":"+s;
-        }else if (m>9&&s<9){
+        }else if (m>9&&s<10){
             return m+":"+"0"+s;
         }else{
             return "0"+m+":"+"0"+s;
         }
     }
+
+    /**  创建文件夹 */
+
+    public static void createFile(String fileUrl){
+        File destDir = new File(fileUrl);
+        if (!destDir.exists()) {
+            destDir.mkdirs();
+        }
+    }
+
 }

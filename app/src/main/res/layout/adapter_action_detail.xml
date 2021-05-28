@@ -40,7 +40,7 @@
             android:text="Name1"
             android:textColor="#ff323232"
             android:textSize="15sp"
-            />
+            android:singleLine="true"/>
         <TextView
             android:id="@+id/item_action_detail_tv_time"
             android:layout_width="wrap_content"

@@ -18,11 +18,13 @@ isVip	整型	是否需要VIP，1需要，默认1
 courses	Array	每天的课程列表，见附录2
    */
 
-    @Column(nullable = false, unique = true)
+    @Column(ignore = true)
     private String id;
     @Column(nullable = false)
+    private String plan;
+    @Column(nullable = false)
     private String name;
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String mark;
     @Column(nullable = false)
     private int grade;
@@ -31,7 +33,8 @@ courses	Array	每天的课程列表，见附录2
     @Column(nullable = false)
     private int isVip;
 
-    private List<DaysCourseBean> courseBeanList = new ArrayList<>();
+
+    private List<DaysCourseBean> courses = new ArrayList<>();
 
     public String getId() {
         return id;
@@ -39,6 +42,14 @@ courses	Array	每天的课程列表，见附录2
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public void setPlanId(String planId) {
+        this.plan = planId;
+    }
+
+    public String getPlanId() {
+        return plan;
     }
 
     public void setName(String name) {
@@ -81,11 +92,13 @@ courses	Array	每天的课程列表，见附录2
         return isVip;
     }
 
-    public void setCourseBeanList(List<DaysCourseBean> courseBeanList) {
-        this.courseBeanList = courseBeanList;
+
+
+    public List<DaysCourseBean> getCourses() {
+        return courses;
     }
 
-    public List<DaysCourseBean> getCourseBeanList() {
-        return courseBeanList;
+    public void setCourses(List<DaysCourseBean> courses) {
+        this.courses = courses;
     }
 }

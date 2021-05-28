@@ -158,14 +158,18 @@ public class RetrofitApi {
                                @Override
                                public void onNext(String data) {
                                    try {
+                                       Log.e(IntentId.NET_RETURN_DATA, "onNext: "+data );
                                        JSONObject jsonObject = new JSONObject(data);
                                        if (jsonObject.optInt("statusCode") == 200 ) {
                                            if (listener != null) {
                                                String bean = jsonObject.optString("data");
-                                               Log.e(IntentId.NET_RETURN_DATA, "onNext: "+bean );
                                                listener.onSuccess(AESUtil.decrypt(bean,AESUtil.INNER_KEY));
                                            }
-                                       }  else {
+                                       } else if (jsonObject.optInt("statusCode") == 205){
+                                           if (listener!=null){
+                                               listener.hasMore();
+                                           }
+                                       }else {
                                            if (listener != null) {
                                                listener.onFail(new Exception(data));
                                            }

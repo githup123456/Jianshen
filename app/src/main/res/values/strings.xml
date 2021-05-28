@@ -162,4 +162,32 @@ ack, neck, and thighs when practicing other... </string>
     <string name="confirm">Confirm</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+
+    <!-- 课程描述 -->
+    <string name="introduction_one">This is a </string>
+    <string name="introduction_two"> &#8194;class which intended for  everyone. By completing this workout,it will take &#8194;</string>
+    <string name="introduction_three">&#8194;and help you burn &#8194;</string>
+
+    <string name="Notice_before_workout">Notice Before Workout</string>
+    <string name="notice_before_content">We suggest you to not eat much before workout, especially do not have indigestible food,  meat, and alcoho within 60 minutes before workout. You can eat appropriate carbohydrates \n\n
+We suggest you to wear sportswear and sports shoes while fitting, which can not only improve sports performance, but also reduce sports risk.</string>
+    <string name="Notice_While_workout">Notice While Workout</string>
+    <string name="Notice_While_content">The load of exercise is depended on your body situation, try to not overload your capacity.\n\n
+People will sweat a lot during fitness, so it is necessary to replenish water in time, drink a little of water each time, and drink multiple times. Please do not try to wait for thirst to drink.</string>
+    <string name="Notice_after_workout">Notice After Workout</string>
+    <string name="notice_after_content">You should rest for half an hour after training before take a shower. When taking a shower, the water temperature should not be too high in case it may decrease body immunity\n\n
+-Aerobic training should start slowly and end slowly</string>
+    <string name="introduction_bottom">This workout is not intended for you if \nyou are: </string>
+    <string name="introduction_bottom_content">Are elderly (over 65 years old), pregenant, or\n disabled\n
+Have diabets, cardio - and cerebrovascular\n diseases, lung diseases, or other metabolic\n diseases</string>
+    <string name="minute">Minutes</string>
+
+    <string name="search_course">Search workout you like</string>
+    <string name="no_result_found">No Result Found</string>
+    
+    <string name="no_more_data">No More Data</string>
+    <string name="refresh_data">Refresh Data...</string>
+    <string name="loading">Loading...</string>
+    <string name="keyword_null">Keyword is null!</string>
+
 </resources>

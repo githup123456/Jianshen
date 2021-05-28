@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.shyj.jianshen.bean.DaysCourseBean;
 import com.shyj.jianshen.fragment.PlanPageFragment;
 
 import java.util.ArrayList;
@@ -14,11 +15,11 @@ import java.util.List;
 
 public class PlanCoursePageAdapter extends FragmentStatePagerAdapter {
 
-    private List<String> strings ;
+    private List<DaysCourseBean> strings ;
     private Context mContext;
     private int nowDay;
 
-    public PlanCoursePageAdapter(@NonNull FragmentManager fm, Context context,List<String> stringList,int nowDay) {
+    public PlanCoursePageAdapter(@NonNull FragmentManager fm, Context context, List<DaysCourseBean> stringList, int nowDay) {
         super(fm);
         this.mContext = context;
         this.strings = stringList;

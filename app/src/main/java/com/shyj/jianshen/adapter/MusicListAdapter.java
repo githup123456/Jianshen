@@ -18,6 +18,7 @@ import com.shyj.jianshen.R;
 import com.shyj.jianshen.bean.DaysCourseBean;
 import com.shyj.jianshen.bean.MusicItemBean;
 import com.shyj.jianshen.click.NoDoubleClickListener;
+import com.shyj.jianshen.utils.HelpUtils;
 import com.shyj.jianshen.utils.SaveUtils;
 import com.timqi.sectorprogressview.ColorfulRingProgressView;
 
@@ -59,15 +60,17 @@ public class MusicListAdapter extends RecyclerView.Adapter<MusicListAdapter.Musi
     public void onBindViewHolder(@NonNull MusicListViewHolder holder, int position) {
         try {
             if (musicItemBeanList!=null&& musicItemBeanList.size()>position){
+                holder.colorfulRingProgressView.setVisibility(View.GONE);
+                holder.imgState.setVisibility(View.VISIBLE);
                 MusicItemBean musicItemBean = musicItemBeanList.get(position);
                 holder.tvName.setText(musicItemBean.getName());
-                Glide.with(mContext).load(musicItemBean.getMusicBg()).into(holder.imgBg);
+                Glide.with(mContext).load(musicItemBean.getMusicBg()).apply(HelpUtils.getGreyError()).into(holder.imgBg);
                 if (musicItemBean.isDownload()){
                     holder.imgState.setImageResource(R.mipmap.icon_green_select);
-                    holder.imgState.setEnabled(false);
+                    holder.imgState.setClickable(false);
                 }else {
                     holder.imgState.setImageResource(R.mipmap.icon_green_download);
-                    holder.imgState.setEnabled(true);
+                    holder.imgState.setClickable(true);
                     holder.imgState.setOnClickListener(new NoDoubleClickListener() {
                         @Override
                         public void onNoDoubleClick(View v) {

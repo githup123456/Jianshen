@@ -2,6 +2,7 @@ package com.shyj.jianshen.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -11,8 +12,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.shyj.jianshen.R;
 import com.shyj.jianshen.adapter.PlanCourseAdapter;
 import com.shyj.jianshen.bean.CourseBean;
+import com.shyj.jianshen.bean.DaysCourseBean;
+import com.shyj.jianshen.bean.MusicItemBean;
+import com.shyj.jianshen.bean.UsersBean;
 import com.shyj.jianshen.key.IntentId;
+import com.shyj.jianshen.update.DownloadFileDelegate;
+import com.shyj.jianshen.update.DownloadFileTaskSync;
+import com.shyj.jianshen.utils.SaveUtils;
+import com.shyj.jianshen.utils.StringUtil;
 
+import org.litepal.LitePal;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +53,8 @@ public class PlanPageFragment extends BaseFragment{
     private boolean isLock  = false;
 
     private List<CourseBean> courseBeanList = new ArrayList<>();
+    private String day;
+    private int nowDay;
 
     @Override
     public int layoutId() {
@@ -50,16 +63,20 @@ public class PlanPageFragment extends BaseFragment{
 
     @Override
     public void init() {
-       String day = getArguments().getString(IntentId.PLAN_PAGE_NUM);
-       int nowDay = getArguments().getInt(IntentId.PLAN_PAGE_NOW_DAY) +1;
+        day = getArguments().getString(IntentId.PLAN_PAGE_NUM);
+        nowDay = getArguments().getInt(IntentId.PLAN_PAGE_NOW_DAY)+1;
+        Log.e(TAG, "init:getIntent "+day+"\n"+nowDay);
        if (day!=null){
+           initList();
            int da = Integer.valueOf(day);
            if (da>nowDay){
                isLock =true;
            }else {
                isLock = false;
            }
-           if (da%5==0){
+
+           initRecyclerView();
+           if (courseBeanList.size()==0){
                isNull = true;
                lly_off.setVisibility(View.VISIBLE);
                lly_work.setVisibility(View.GONE);
@@ -67,7 +84,6 @@ public class PlanPageFragment extends BaseFragment{
                isNull = false;
                lly_off.setVisibility(View.GONE);
                lly_work.setVisibility(View.VISIBLE);
-               initRecyclerView();
            }
        }else {
            isNull = true;
@@ -82,4 +98,18 @@ public class PlanPageFragment extends BaseFragment{
         rclCourse.setLayoutManager(new LinearLayoutManager(getActivity()));
         rclCourse.setAdapter(planCourseAdapter);
     }
+
+    private void initList(){
+        try {
+            DaysCourseBean daysCourseBean = LitePal.find(DaysCourseBean.class,Integer.valueOf(day),true);
+            List<CourseBean> courseBeans = daysCourseBean.getCourseList(); //LitePal.where("dayscoursebean = ?", nowDay+"").find(CourseBean.class);
+            Log.e(TAG, "initList: "+courseBeans.size() );
+            courseBeanList = courseBeans;
+        }catch (Exception e){
+            Log.e(TAG, "initList: "+e.getMessage());
+        }
+    }
+
+
+
 }

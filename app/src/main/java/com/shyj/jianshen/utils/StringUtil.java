@@ -27,13 +27,13 @@ public class StringUtil {
     /**动作文件地址：
     男：动作文件路由 + ‘/m/’+ id + “_” + md5(aes(id)).jpg*/
     public static String getActionMenUrl(String id){
-        String url = NetUrl.ACTION_FILE +"m/"+ id + "_"+Md5Util.md5String(Md5Util.encrypt(AESUtil.INNER_KEY,id))+".jpg";
+        String url = NetUrl.ACTION_FILE +"m/"+ id + "_"+Md5Util.md5String(Md5Util.encrypt(AESUtil.INNER_KEY,id))+".webp";
         return url;
     }
 
     //  todo  女：动作文件路由 + ‘/f/’+ id + “_” + md5(aes(id)).jpg
     public static String getActionWomenUrl(String id){
-        String url = NetUrl.ACTION_FILE +"f/"+ id + "_"+Md5Util.md5String(Md5Util.encrypt(AESUtil.INNER_KEY,id))+".jpg";
+        String url = NetUrl.ACTION_FILE +"f/"+ id + "_"+Md5Util.md5String(Md5Util.encrypt(AESUtil.INNER_KEY,id))+".webp";
         return url;
     }
    /** 音乐封面图地址：
@@ -54,5 +54,10 @@ public class StringUtil {
     public static String getPlanBgUrl(String mark){
         String url = NetUrl.PLAN_IMG  +mark+"_"+Md5Util.md5String(Md5Util.encrypt(AESUtil.INNER_KEY,mark))+".jpg";
         return url;
+    }
+
+
+    public static String getStringName(String id){
+        return Md5Util.md5String(Md5Util.encrypt(AESUtil.INNER_KEY,id));
     }
 }

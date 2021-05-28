@@ -1,6 +1,7 @@
 package com.shyj.jianshen.fragment;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -14,9 +15,16 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.shyj.jianshen.R;
 import com.shyj.jianshen.activity.AdjustPlanActivity;
+import com.shyj.jianshen.activity.CourseDetailActivity;
 import com.shyj.jianshen.adapter.PlanCoursePageAdapter;
 import com.shyj.jianshen.adapter.PlanDayAdapter;
+import com.shyj.jianshen.bean.CourseBean;
+import com.shyj.jianshen.bean.DaysCourseBean;
+import com.shyj.jianshen.bean.PlanBean;
 import com.shyj.jianshen.key.IntentId;
+import com.shyj.jianshen.utils.DateUtil;
+
+import org.litepal.LitePal;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +53,10 @@ public class PlanFragment extends BaseFragment {
 
     private PlanDayAdapter planDayAdapter;
     private PlanCoursePageAdapter planCoursePageAdapter;
+    private List<DaysCourseBean> daysCourseBeanList;
+    private int nowDay = 0;
+
+
     @Override
     public int layoutId() {
         return R.layout.fragment_plan;
@@ -52,10 +64,13 @@ public class PlanFragment extends BaseFragment {
 
     @Override
     public void init() {
-        planDayAdapter = new PlanDayAdapter(getActivity(),getList());
+        daysCourseBeanList = new ArrayList<>();
+        initPlan();
+        planDayAdapter = new PlanDayAdapter(getActivity(),daysCourseBeanList,nowDay);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(planDayAdapter);
+        recyclerView.scrollToPosition(nowDay);
         planDayAdapter.setPlanAdapterClick(new PlanDayAdapter.PlanAdapterClick() {
             @Override
             public void dayOnClick(int position) {
@@ -66,8 +81,48 @@ public class PlanFragment extends BaseFragment {
         showViewPager();
     }
 
+    private PlanBean planBean;
+    private int num;
+    private void initPlan(){
+        try {
+            planBean = LitePal.findFirst(PlanBean.class,true);
+            if (planBean!=null&&planBean.getPlanId()!=null){
+                int days = planBean.getDayNum();
+                if (days/7==3){
+                    tvWeekNum.setText(getResources().getString(R.string.three_week));
+                }else {
+                    tvWeekNum.setText(getResources().getString(R.string.four_week));
+                }
+                daysCourseBeanList = LitePal.findAll(DaysCourseBean.class,true);
+                for (int i=0;i<daysCourseBeanList.size();i++){
+                    num = num+daysCourseBeanList.get(i).getCourseList().size();
+                    String date = daysCourseBeanList.get(i).getDate();
+                    if (DateUtil.getNowStringDate().equals(date)){
+                        int day = daysCourseBeanList.get(i).getDay();
+                        this.nowDay = day-1;
+                        int week = day/7;
+                        int weekDay = day%7;
+                        if (weekDay==0){
+                            tvWeek.setText(getString(R.string.week)+" "+week);
+                            tvSevenNum.setText(7+"");
+                        }else {
+                            tvWeek.setText(getString(R.string.week)+" "+(week+1));
+                            tvSevenNum.setText(weekDay+"");
+                        }
+                    }
+                }
+                List<CourseBean>  courseBeans = LitePal.where("isCompleted").find(CourseBean.class);
+                int progress = courseBeans.size()*100/num;
+                seekBar.setProgress(progress);
+                tvProgress.setText(progress+"%  "+getString(R.string.completed));
+            }
+        }catch (Exception e){
+            Log.e(TAG, "initPlan: "+e.getMessage() );
+        }
+    }
+
     public void showViewPager(){
-        planCoursePageAdapter = new PlanCoursePageAdapter(getFragmentManager(), getActivity(),getList(),0);
+        planCoursePageAdapter = new PlanCoursePageAdapter(getFragmentManager(), getActivity(),daysCourseBeanList, nowDay);
         viewPager.removeAllViews();
         viewPager.setAdapter(planCoursePageAdapter);
         viewPager.setCurrentItem(0);

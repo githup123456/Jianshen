@@ -1,16 +1,28 @@
 package com.shyj.jianshen.fragment;
 
+import android.util.Log;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.shyj.jianshen.R;
 import com.shyj.jianshen.adapter.RecommendWorkAdapter;
 import com.shyj.jianshen.bean.CourseBean;
+import com.shyj.jianshen.network.Api;
+import com.shyj.jianshen.network.IResponseListener;
+import com.shyj.jianshen.network.RetrofitApi;
+
+import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
+import retrofit2.Retrofit;
 
 public class ReCommendWorkFragment extends BaseFragment{
 
@@ -54,6 +66,13 @@ public class ReCommendWorkFragment extends BaseFragment{
 
             }
         });
+        rclAbs.post(new Runnable() {
+            @Override
+            public void run() {
+                initRequest("1",adapterAbs);
+            }
+        });
+
     }
     private void initFat(){
         listFat = new ArrayList<>();
@@ -67,6 +86,13 @@ public class ReCommendWorkFragment extends BaseFragment{
 
             }
         });
+        rclFat.post(new Runnable() {
+            @Override
+            public void run() {
+                initRequest("2",adapterFat);
+            }
+        });
+
     }
     private void initStretch(){
         listStretch = new ArrayList<>();
@@ -80,6 +106,13 @@ public class ReCommendWorkFragment extends BaseFragment{
 
             }
         });
+        rclStretch.post(new Runnable() {
+            @Override
+            public void run() {
+                initRequest("3",adapterStretch);
+            }
+        });
+
     }
     private void initChest(){
         listChest = new ArrayList<>();
@@ -93,6 +126,13 @@ public class ReCommendWorkFragment extends BaseFragment{
 
             }
         });
+        rclChest.post(new Runnable() {
+            @Override
+            public void run() {
+                initRequest("4",adapterChest);
+            }
+        });
+
     }
     private void initWarm(){
         listWarm = new ArrayList<>();
@@ -103,6 +143,47 @@ public class ReCommendWorkFragment extends BaseFragment{
         adapterWarm.setOnRecommendClick(new RecommendWorkAdapter.OnRecommendClick() {
             @Override
             public void onClick(int position) {
+
+            }
+        });
+        rclWarm.post(new Runnable() {
+            @Override
+            public void run() {
+                initRequest("5",adapterWarm);
+            }
+        });
+
+    }
+
+    private void initRequest(String type,RecommendWorkAdapter recommendWorkAdapter){
+        Map<String,Object> stringObjectMap = new HashMap<>();
+        stringObjectMap.put("type",type);
+        RetrofitApi.request(getActivity(), RetrofitApi.createApi(Api.class).getRecommendCourseList(stringObjectMap), new IResponseListener() {
+            @Override
+            public void onSuccess(String data) throws JSONException {
+                try {
+                    List<CourseBean> courseList = new Gson().fromJson(data,new TypeToken<List<CourseBean>>(){}.getType());
+                    if (courseList!=null&&courseList.size()>0){
+                        recommendWorkAdapter.addCourseBeanList(courseList);
+                    }
+
+                }catch (Exception e){
+                    Log.e(TAG, "onSuccess:catch " +e.getMessage());
+                }
+            }
+
+            @Override
+            public void onNotNetWork() {
+
+            }
+
+            @Override
+            public void hasMore() {
+
+            }
+
+            @Override
+            public void onFail(Throwable e) {
 
             }
         });

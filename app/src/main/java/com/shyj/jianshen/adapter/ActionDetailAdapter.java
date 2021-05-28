@@ -22,14 +22,18 @@ import com.shyj.jianshen.utils.StringUtil;
 
 import java.util.List;
 
+import static com.shyj.jianshen.key.IntentId.TAG;
+
 public class ActionDetailAdapter extends RecyclerView.Adapter<ActionDetailAdapter.MyActionViewHolder> {
 
     private Context context;
     private List<CourseActionBean> courseActionBeanList;
+    private boolean isSave;
 
-    public ActionDetailAdapter(Context context, List<CourseActionBean> courseActionBeanList) {
+    public ActionDetailAdapter(Context context, List<CourseActionBean> courseActionBeanList,boolean isLocal) {
         this.context = context;
         this.courseActionBeanList = courseActionBeanList;
+        this.isSave = isLocal;
     }
 
     public interface ActionDetailListener {
@@ -54,11 +58,30 @@ public class ActionDetailAdapter extends RecyclerView.Adapter<ActionDetailAdapte
         try {
             if (courseActionBeanList != null && courseActionBeanList.size() > 0) {
                 CourseActionBean courseActionBean = courseActionBeanList.get(position);
-                Glide.with(context).load(StringUtil.getActionWomenUrl(courseActionBean.getId()))
+                String bgUrl = courseActionBean.getActionFile();
+                if (bgUrl!=null && bgUrl.length()>0){
+                    if(SaveUtils.fileIsExists(bgUrl)){
+
+                    }else {
+                        if (isSave){
+                            bgUrl = StringUtil.getActionMenUrl(courseActionBean.getActionID());
+                        }else {
+                            bgUrl = StringUtil.getActionMenUrl(courseActionBean.getId());
+                        }
+                    }
+                }else {
+                    if (isSave){
+                        bgUrl = StringUtil.getActionMenUrl(courseActionBean.getActionID());
+                    }else {
+                        bgUrl = StringUtil.getActionMenUrl(courseActionBean.getId());
+                    }
+                }
+                Glide.with(context).load(bgUrl)
                         .apply(HelpUtils.setImgRadius(context, 5.0f)).into(holder.imgBg);
+                Log.e(TAG, "action_file: "+StringUtil.getActionMenUrl(courseActionBean.getActionID()) );
                 holder.tvName.setText(courseActionBean.getName());
                 holder.tvTime.setText(HelpUtils.getMSTime(courseActionBean.getDuration()));
-                holder.tvRest.setText(courseActionBean.getGap() + "\"");
+                holder.tvRest.setText((courseActionBean.getGap()/1000) + "\"");
                 holder.itemView.setOnClickListener(new NoDoubleClickListener() {
                     @Override
                     public void onNoDoubleClick(View v) {
@@ -68,7 +91,6 @@ public class ActionDetailAdapter extends RecyclerView.Adapter<ActionDetailAdapte
                     }
                 });
             }
-
         } catch (Exception e) {
             Log.e("ActionDetailAdapter", "onBindViewHolder:catch " + e.getMessage());
         }

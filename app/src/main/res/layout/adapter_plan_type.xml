@@ -17,6 +17,7 @@
                 android:id="@+id/item_plan_type_img_bg"
                 android:layout_width="match_parent"
                 android:layout_height="126dp"
+                android:scaleType="fitXY"
                 android:src="@color/grey_9c"/>
             <ImageView
                 android:id="@+id/item_plan_type_img_lock"

@@ -1,6 +1,6 @@
 package com.shyj.jianshen.bean;
 
-import org.litepal.LitePal;
+
 import org.litepal.annotation.Column;
 import org.litepal.crud.LitePalSupport;
 

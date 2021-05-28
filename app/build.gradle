@@ -12,7 +12,7 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
+        multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -22,8 +22,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        debug{
+        debug {
             buildConfigField 'String', 'BASE_URL', '"http://192.168.1.199:1992"' //国内服务
+            buildConfigField 'String', 'IMG_URL', '"https://s3-us-west-2.amazonaws.com/s3.fitness"'
+            //国内服务
         }
     }
     compileOptions {
@@ -76,4 +78,14 @@ dependencies {
     implementation 'com.haibin:calendarview:3.6.9'
     //倒计时组件
     implementation 'com.github.iwgang:countdownview:2.1.6'
+
+/*    //加载web
+    //用于webp的支持
+    implementation "com.facebook.fresco:animated-webp:1.9.0"
+
+    implementation "com.github.bumptech.glide:glide:4.7.1"
+    implementation "com.github.bumptech.glide:okhttp3-integration:4.6.1"*/
+/*
+    implementation 'com.facebook.soloader:soloader:0.10.1+'*/
+    implementation 'com.github.humorousz:AnimationSequenceDrawable:1.0.1-SNAPSHOT'
 }

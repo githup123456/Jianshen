@@ -128,7 +128,7 @@ public class UserInformationActivity extends BaseActivity {
     public void init() {
         LitePal.deleteAll(UsersBean.class);
         usersBean = new UsersBean();
-        String str=getString(R.string.third_user_page_lose_weight)+" "+"<font color='#19B55E'>"+R.string.keep_fit+"</font>"+" "+R.string.or+" "+"<font color='#19B55E'>"+R.string.build_muscle+"</font>"+" "+getString(R.string.third_user_page_lose_weight_end);
+        String str=getString(R.string.third_user_page_lose_weight)+" "+"<font color='#19B55E'>"+getString(R.string.keep_fit)+"</font>"+" "+getString(R.string.or)+" "+"<font color='#19B55E'>"+getString(R.string.build_muscle)+"</font>"+" "+getString(R.string.third_user_page_lose_weight_end);
         tvPositionLostWeight.setText(Html.fromHtml(str.replaceAll("\n", "<br>")));
         setRadioGroupSex();
         setRadioGroupGoal();

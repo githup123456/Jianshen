@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <litepal>
     <dbname value="jianshen"/>
-    <version value="1"/>
+    <version value="2"/>
     <list>
         <mapping class="com.shyj.jianshen.bean.UsersBean"/>
         <mapping class="com.shyj.jianshen.bean.PlanBean"/>
@@ -11,5 +11,7 @@
         <mapping class="com.shyj.jianshen.bean.LengthBodyBean"/>
         <mapping class="com.shyj.jianshen.bean.CalorieMouthBean"/>
         <mapping class="com.shyj.jianshen.bean.MusicItemBean"/>
+        <mapping class="com.shyj.jianshen.bean.DailyWorkBean"/>
+
     </list>
 </litepal>

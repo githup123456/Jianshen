@@ -8,15 +8,30 @@ import java.util.List;
 
 public class DaysCourseBean extends LitePalSupport {
 
-    @Column(index = true,nullable = false)
+    @Column(unique = true)
+    private int id;
+
+    @Column(index = true, nullable = false)
     private int day;
 
-    @Column(unique = true)
+    @Column(nullable = false)
     private String Date;
 
+    @Column(nullable = true)
     private PlanBean planBean;
-
+    @Column(nullable = false)
+    private int weekDay;
+    @Column(nullable = false)
+    private int mouthDay;
     private List<CourseBean> courseList = new ArrayList<>();
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
 
     public void setDay(int day) {
         this.day = day;
@@ -48,5 +63,21 @@ public class DaysCourseBean extends LitePalSupport {
 
     public String getDate() {
         return Date;
+    }
+
+    public int getMouthDay() {
+        return mouthDay;
+    }
+
+    public void setMouthDay(int mouthDay) {
+        this.mouthDay = mouthDay;
+    }
+
+    public int getWeekDay() {
+        return weekDay;
+    }
+
+    public void setWeekDay(int weekDay) {
+        this.weekDay = weekDay;
     }
 }

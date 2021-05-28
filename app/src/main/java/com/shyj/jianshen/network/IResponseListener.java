@@ -7,5 +7,7 @@ public interface IResponseListener {
 
     void onNotNetWork();
 
+    void hasMore();
+
     void onFail(Throwable e);
 }

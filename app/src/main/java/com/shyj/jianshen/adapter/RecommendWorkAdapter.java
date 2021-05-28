@@ -1,6 +1,9 @@
 package com.shyj.jianshen.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,17 +14,22 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.shyj.jianshen.R;
+import com.shyj.jianshen.activity.CourseDetailActivity;
 import com.shyj.jianshen.bean.CourseBean;
 import com.shyj.jianshen.click.NoDoubleClickListener;
+import com.shyj.jianshen.key.IntentId;
+import com.shyj.jianshen.utils.StringUtil;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class RecommendWorkAdapter extends RecyclerView.Adapter<RecommendWorkAdapter.RecommendWorkViewHolder> {
     private String TAG = "TAG_RecommendWorkAdapter";
     private Context context;
     private List<CourseBean> courseBeanList;
-    private boolean isLock;
 
     public RecommendWorkAdapter(Context context,List<CourseBean> courseBeans){
         this.context = context;
@@ -53,19 +61,62 @@ public class RecommendWorkAdapter extends RecyclerView.Adapter<RecommendWorkAdap
     @Override
     public void onBindViewHolder(@NonNull RecommendWorkViewHolder holder, int position) {
         try {
-            holder.itemView.setOnClickListener(new NoDoubleClickListener() {
-                @Override
-                public void onNoDoubleClick(View v) {
-                    if (onRecommendClick!=null){
-                        onRecommendClick.onClick(position);
+            if (courseBeanList != null && courseBeanList.size() > position) {
+                CourseBean courseBean = courseBeanList.get(position);
+                if (courseBean != null) {
+                    int grand = courseBean.getGrade();
+                    if (grand == 1){
+                        holder.imgGrandOne.setImageResource(R.mipmap.grand_sign_green);
+                        holder.imgGrandTwo.setImageResource(R.mipmap.grand_sign_grey);
+                        holder.imgGrandThree.setImageResource(R.mipmap.grand_sign_grey);
+                        holder.imgGrandFour.setImageResource(R.mipmap.grand_sign_grey);
+                    }else if (grand == 2){
+                        holder.imgGrandOne.setImageResource(R.mipmap.grand_sign_green);
+                        holder.imgGrandTwo.setImageResource(R.mipmap.grand_sign_green);
+                        holder.imgGrandThree.setImageResource(R.mipmap.grand_sign_grey);
+                        holder.imgGrandFour.setImageResource(R.mipmap.grand_sign_grey);
+                    }else if (grand == 3){
+                        holder.imgGrandOne.setImageResource(R.mipmap.grand_sign_green);
+                        holder.imgGrandTwo.setImageResource(R.mipmap.grand_sign_green);
+                        holder.imgGrandThree.setImageResource(R.mipmap.grand_sign_green);
+                        holder.imgGrandFour.setImageResource(R.mipmap.grand_sign_grey);
+                    }else {
+                        holder.imgGrandOne.setImageResource(R.mipmap.grand_sign_green);
+                        holder.imgGrandTwo.setImageResource(R.mipmap.grand_sign_green);
+                        holder.imgGrandThree.setImageResource(R.mipmap.grand_sign_green);
+                        holder.imgGrandFour.setImageResource(R.mipmap.grand_sign_green);
                     }
+                    int min = (int) courseBean.getDuration() / 1000 / 60;
+                    holder.tvBody.setText(courseBean.getName());
+                    holder.tvTime.setText(min + " min");
+                    String bgUrl = StringUtil.getCourseBgUrl(courseBean.getIndexs());
+                    Resources resources = context.getResources();
+                    resources.getDrawable(R.drawable.grey_radius_2);
+                    RequestOptions requestOptions = new RequestOptions()
+                            .placeholder(R.color.black)
+                            .error(R.color.black);
+                    Glide.with(context).load(bgUrl).apply(requestOptions).into(holder.imgBg);
+                    holder.itemView.setOnClickListener(new NoDoubleClickListener() {
+                        @Override
+                        public void onNoDoubleClick(View v) {
+                            initIntent(courseBean);
+                            if (onRecommendClick != null) {
+                                onRecommendClick.onClick(position);
+                            }
+                        }
+                    });
                 }
-            });
-        }catch (Exception e){
-            Log.e(TAG, "catch: "+e.getMessage() );
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "catch: " + e.getMessage());
         }
     }
-    
+    private void initIntent(CourseBean courseBean) {
+        Intent intent = new Intent((Activity) context, CourseDetailActivity.class);
+        intent.putExtra(IntentId.COURSE_BEAN, (Serializable) courseBean);
+        context.startActivity(intent);
+    }
+
 
     @Override
     public int getItemCount() {

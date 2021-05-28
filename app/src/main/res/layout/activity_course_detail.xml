@@ -20,6 +20,7 @@
             android:layout_marginRight="@dimen/dp_16">
 
             <ImageView
+                android:id="@+id/course_detail_img_top_bg"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
@@ -164,6 +165,7 @@
         </RelativeLayout>
 
         <TextView
+            android:id="@+id/course_detail_tv_introduction"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_16"
@@ -192,7 +194,7 @@
 
         <TextView
             android:id="@+id/course_detail_tv_equipment"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/dp_16"
             android:text="@string/no_equipment"
@@ -341,8 +343,36 @@
             android:background="@color/green_19b55e"
             android:gravity="center"
             android:text="@string/start"
+            android:visibility="gone"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="18sp" />
+        <LinearLayout
+            android:id="@+id/course_detail_lly_download"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:gravity="center_horizontal"
+            android:background="@color/green_19b55e"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/downloading"
+                android:textColor="#ffffffff"
+                android:textSize="18sp"
+                android:layout_marginTop="@dimen/dp_12" />
+            <SeekBar
+                android:id="@+id/course_detail_seek_bar"
+                android:layout_width="245dp"
+                android:layout_height="@dimen/dp_4"
+                android:progress="0"
+                android:max="100"
+                android:clickable="false"
+                android:focusable="false"
+                android:layout_marginTop="@dimen/dp_3"
+                android:progressDrawable="@drawable/seekbar_bg_white"
+                android:thumb="@null"/>
+        </LinearLayout>
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

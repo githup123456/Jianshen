@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="77dp"
+        android:orientation="horizontal"
+        android:paddingTop="23dp"
+        android:background="@color/white"
+        android:paddingBottom="@dimen/dp_10"
+        android:gravity="center_vertical">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="@dimen/dp_44"
+            android:background="@drawable/grey_radius_22_ef"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/result_search_img_search"
+                android:layout_width="@dimen/dp_27"
+                android:layout_height="@dimen/dp_27"
+                android:src="@mipmap/select_black"
+                android:layout_marginLeft="@dimen/dp_17"/>
+
+            <com.shyj.jianshen.view.DelEditText
+                android:id="@+id/result_search_et_search"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dp_10"
+                android:background="@null"
+                android:imeOptions="actionSearch"
+                android:hint="@string/search_course"
+                android:textColorHint="#ff9f9f9f"
+                android:singleLine="true"
+                android:textColor="@color/black_32"
+                android:layout_marginLeft="@dimen/dp_15"
+                android:textSize="15sp"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/result_search_tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/window_cancel"
+            android:textColor="#ff19b55e"
+            android:textSize="18sp"
+            android:layout_marginLeft="@dimen/dp_15"
+            android:layout_marginRight="16dp"/>
+    </LinearLayout>
+
+    <com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout
+        android:id="@+id/result_search_trl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/result_search_rcl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"/>
+    </com.lcodecore.tkrefreshlayout.TwinklingRefreshLayout>
+
+
+    <LinearLayout
+        android:id="@+id/result_search_lly_null"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:gravity="center_horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_result_found"
+            android:textColor="#ff9f9f9f"
+            android:textSize="19sp"
+            android:layout_marginTop="133dp"/>
+    </LinearLayout>
+
+
+
+</LinearLayout>

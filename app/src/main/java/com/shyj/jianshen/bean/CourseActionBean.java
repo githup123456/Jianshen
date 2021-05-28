@@ -3,7 +3,9 @@ package com.shyj.jianshen.bean;
 import org.litepal.annotation.Column;
 import org.litepal.crud.LitePalSupport;
 
-public class CourseActionBean extends LitePalSupport {
+import java.io.Serializable;
+
+public class CourseActionBean extends LitePalSupport implements Serializable {
     /**id	字符串	动作唯一标识
      name	字符串	动作名称
      description	字符串	动作描述
@@ -13,8 +15,10 @@ public class CourseActionBean extends LitePalSupport {
      gap	长整型	休息时长，单位（ms）
      mp4Time	长整型	文件播放时长，单位（ms）    * */
 
-    @Column(unique = true)
+    @Column(ignore = true)
     private String id;
+    @Column(nullable = false)
+    private String actionID;
     @Column(nullable = false)
     private String name;
     @Column(nullable = false)
@@ -27,11 +31,21 @@ public class CourseActionBean extends LitePalSupport {
     private long gap;
     @Column(nullable = false)
     private long duration;
-    @Column(nullable = true)
+    @Column(nullable = false)
     private long mp4Time;
+    @Column(nullable = false)
+    private String actionFile;
 
     @Column(nullable = true)
     private CourseBean courseBean;
+
+    public String getActionID() {
+        return actionID;
+    }
+
+    public void setActionID(String actionID) {
+        this.actionID = actionID;
+    }
 
     public void setId(String id) {
         this.id = id;
@@ -103,5 +117,29 @@ public class CourseActionBean extends LitePalSupport {
 
     public CourseBean getCourseBean() {
         return courseBean;
+    }
+
+    public String getActionFile() {
+        return actionFile;
+    }
+
+    public void setActionFile(String actionFile) {
+        this.actionFile = actionFile;
+    }
+
+    @Override
+    public String toString() {
+        return "CourseActionBean{" +
+                "id='" + id + '\'' +
+                ", actionID='" + actionID + '\'' +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", type='" + type + '\'' +
+                ", pergroup=" + pergroup +
+                ", gap=" + gap +
+                ", duration=" + duration +
+                ", mp4Time=" + mp4Time +
+                ", courseBean=" + courseBean +
+                '}';
     }
 }

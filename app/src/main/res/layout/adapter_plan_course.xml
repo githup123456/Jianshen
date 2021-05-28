@@ -12,6 +12,7 @@
             android:id="@+id/item_plan_course_img_bg"
             android:layout_width="match_parent"
             android:layout_height="130dp"
+            android:scaleType="fitXY"
             android:src="@color/black_32" />
 
         <TextView
