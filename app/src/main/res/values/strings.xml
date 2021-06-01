@@ -1,10 +1,18 @@
 <resources>
     <string name="app_name">jianshen</string>
 
+    
+    <string name="hip">Hip</string>
+    <string name="waist">Waist</string>
+    <string name="thigh">Thigh</string>
+    <string name="calf">Calf</string>
+
     <!-- 欢迎页 -->
     <string name="welcome">Welcome to App</string>
     <string name="get_your_dream">Get Your Dream Body Now</string>
-    
+
+    <string name="No_net">No Net!</string>
+
     <!--个人信息录入-->
     <string name="first_user_page_title">CHOOSE YOUR GENDER</string>
     <string name="first_user_page_content">Personalize worket program based \n on gender</string>
@@ -18,11 +26,11 @@
     <string name="build_muscle">Build Muscle</string>
     <string name="third_user_page_title">CHOOSE YOUR FOCUS PART</string>
     <string name="third_user_page_content">Focus on target zone, save 30% of your time</string>
-    <string name="third_user_page_item_1">Whole Body</string>
-    <string name="third_user_page_item_2">Chest/Butt</string>
-    <string name="third_user_page_item_3">Abs</string>
-    <string name="third_user_page_item_4">Arm</string>
-    <string name="third_user_page_item_5">Leg</string>
+    <string name="whole_body">Whole Body</string>
+    <string name="chest_butt">Chest/Butt</string>
+    <string name="abs">Abs</string>
+    <string name="arm">Arm</string>
+    <string name="leg">Leg</string>
     <string name="third_user_page_lose_weight">People bodys fat is an entirety,
         \n we do not suggest you to
         \n lose weight for a single part.
@@ -38,8 +46,8 @@
     <string name="four_user_page_item_3_bottom">Do exercise regularly, over 3 times a week</string>
     <string name="five_user_page_title">ENTER HEIGHT AND WEIGHT</string>
     <string name="five_user_page_content">Let us know you better to provide \n more targeted support for you.</string>
-    <string name="five_user_page_height">Height</string>
-    <string name="five_user_page_weight">Weight</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
     <string name="next">Next</string>
     <string name="generate_plan">Generate Plan</string>
 
@@ -166,7 +174,7 @@ ack, neck, and thighs when practicing other... </string>
     <!-- 课程描述 -->
     <string name="introduction_one">This is a </string>
     <string name="introduction_two"> &#8194;class which intended for  everyone. By completing this workout,it will take &#8194;</string>
-    <string name="introduction_three">&#8194;and help you burn &#8194;</string>
+    <string name="introduction_three">&#8194;and help you burn</string>
 
     <string name="Notice_before_workout">Notice Before Workout</string>
     <string name="notice_before_content">We suggest you to not eat much before workout, especially do not have indigestible food,  meat, and alcoho within 60 minutes before workout. You can eat appropriate carbohydrates \n\n
@@ -182,12 +190,30 @@ People will sweat a lot during fitness, so it is necessary to replenish water in
 Have diabets, cardio - and cerebrovascular\n diseases, lung diseases, or other metabolic\n diseases</string>
     <string name="minute">Minutes</string>
 
+    <!-- search -->
     <string name="search_course">Search workout you like</string>
     <string name="no_result_found">No Result Found</string>
-    
     <string name="no_more_data">No More Data</string>
     <string name="refresh_data">Refresh Data...</string>
     <string name="loading">Loading...</string>
     <string name="keyword_null">Keyword is null!</string>
+    
+    <!-- action play -->
+    <string name="course_null_data_try_again">No data for current course, please try again!</string>
+    <string name="instruction">Instruction</string>
+    <string name="end">End</string>
+    <string name="continue_s">Continue</string>
+    <string name="skip">Skip</string>
+    <string name="take_quick">Take a Quick Break</string>
+    <string name="please_to_next">You have completed this workout.\nLet us go next!</string>
+    <string name="well_done">Well Done!</string>
+    <string name="finish">Finish</string>
+    <string name="start_next">Start The Next Action!</string>
 
+    <string name="no_support_voice">No Support Voice</string>
+    <string name="clear_download">Clear Download</string>
+    <string name="select_kg_cm">Metric &amp; Imperial Units</string>
+    <string name="voice_guide">Voice Guide</string>
+    <string name="bg_music">Background Music</string>
+    <string name="gender">Gender</string>
 </resources>

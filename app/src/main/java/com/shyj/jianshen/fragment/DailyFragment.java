@@ -1,23 +1,13 @@
 package com.shyj.jianshen.fragment;
 
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import androidx.viewpager.widget.ViewPager;
 
-import com.github.mikephil.charting.charts.LineChart;
 import com.shyj.jianshen.R;
-import com.shyj.jianshen.adapter.DailyDataAdapter;
-import com.shyj.jianshen.bean.LengthBodyBean;
-import com.shyj.jianshen.chartmark.LineChartManager;
-import com.shyj.jianshen.view.NoScrollViewPager;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 
 import butterknife.BindView;
 
@@ -33,7 +23,6 @@ public class DailyFragment extends BaseFragment {
     @BindView(R.id.fragment_daily_frame)
     FrameLayout frameLayout;
 
-    private DailyDataAdapter dailyDataAdapter;
     private SelectDailyFragment selectDailyFragment;
 
     @Override

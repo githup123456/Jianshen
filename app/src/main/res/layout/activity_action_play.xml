@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/grey_ef">
+
+        <com.shyj.jianshen.view.NoScrollViewPager
+            android:id="@+id/action_play_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white" />
+
+        <SeekBar
+            android:id="@+id/action_play_seek_bar"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_8"
+            android:layout_marginTop="@dimen/dp_3"
+            android:progressDrawable="@drawable/seekbar_bg_green"
+            android:thumb="@null" />
+
+
+
+        <Chronometer
+            android:id="@+id/action_play_ch_time"
+            android:layout_width="72dp"
+            android:layout_height="@dimen/dp_27"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_24"
+            android:textColor="@color/grey_74"
+            android:textSize="22sp" />
+
+        <RelativeLayout
+            android:id="@+id/action_play_rel_instruction"
+            android:layout_width="92dp"
+            android:layout_height="@dimen/dp_33"
+            android:layout_alignTop="@+id/action_play_ch_time"
+            android:layout_alignParentRight="true">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:alpha="0.3"
+                android:background="@drawable/grey_left_radius_17" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:alpha="0.8"
+                android:gravity="center"
+                android:text="@string/instruction"
+                android:textColor="@color/white"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:background="#f4f4f4">
+
+        <ImageView
+            android:id="@+id/action_play_img_previous"
+            android:layout_width="@dimen/dp_32"
+            android:layout_height="@dimen/dp_32"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:scaleType="fitXY"
+            android:src="@mipmap/back_page_grey" />
+
+        <TextView
+            android:id="@+id/action_play_tv_page_num"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_marginRight="@dimen/dp_30"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="1/4"
+            android:textColor="@color/black_32"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:id="@+id/action_play_img_next"
+            android:layout_width="@dimen/dp_32"
+            android:layout_height="@dimen/dp_32"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_16"
+            android:scaleType="fitXY"
+            android:src="@mipmap/icon_go_right" />
+
+    </RelativeLayout>
+</LinearLayout>

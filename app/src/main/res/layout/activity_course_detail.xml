@@ -343,7 +343,7 @@
             android:background="@color/green_19b55e"
             android:gravity="center"
             android:text="@string/start"
-            android:visibility="gone"
+            android:visibility="visible"
             android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="18sp" />
@@ -351,6 +351,7 @@
             android:id="@+id/course_detail_lly_download"
             android:layout_width="match_parent"
             android:layout_height="49dp"
+            android:visibility="gone"
             android:gravity="center_horizontal"
             android:background="@color/green_19b55e"
             android:orientation="vertical">

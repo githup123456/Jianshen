@@ -85,6 +85,49 @@ public class DateUtil {
         return mouthString;
     }
 
+    public static String  MouthEnglish(int mouth){
+        String mouthString = "January";
+        switch (mouth){
+            case 1:
+                mouthString = "January";
+                break;
+            case 2:
+                mouthString = "February";
+                break;
+            case 3:
+                mouthString = "March";
+                break;
+            case 4:
+                mouthString = "April";
+                break;
+            case 5:
+                mouthString = "May";
+                break;
+            case 6:
+                mouthString = "June";
+                break;
+            case 7:
+                mouthString = "July";
+                break;
+            case 8:
+                mouthString = "August";
+                break;
+            case 9:
+                mouthString = "September";
+                break;
+            case 10:
+                mouthString = "October";
+                break;
+            case 11:
+                mouthString = "November";
+                break;
+            case 12:
+                mouthString = "December";
+                break;
+        }
+        return mouthString;
+    }
+
     /** 获取计划天数列表*/
     public static List<Integer>  getPlanDayList(List<DaysCourseBean> daysCourseBeanList){
         List<Integer> dayList = new ArrayList<>();
@@ -114,29 +157,9 @@ public class DateUtil {
         int nowDay = date[2]+day-1;
         if (nowDay>getNowMouthDays()){
             nowDay = nowDay % getNowMouthDays();
-            String planDate = "";
-            if (month+1<10&&nowDay<10){
-                planDate = year+"0"+(month+1)+"0"+ nowDay + "";
-            }else if (month+1>=10&&nowDay<10){
-                planDate = year+""+(month+1)+"0"+ nowDay + "";
-            }else if (month+1<10&&nowDay>=10){
-                planDate = year+"0"+(month+1)+""+ nowDay + "";
-            }else {
-                planDate = year+""+(month+1)+""+ nowDay + "";
-            }
-            return planDate;
+            return getStringDate(year,month,nowDay);
         }else {
-            String planDate= "";
-            if (month<10&&nowDay<10){
-                planDate = year+"0"+month+"0"+ nowDay + "";
-            }else if (month>=10&&nowDay<10){
-                planDate = year+""+month+"0"+ nowDay + "";
-            }else if (month<10&&nowDay>=10){
-                planDate = year+"0"+month+""+ nowDay + "";
-            }else {
-                planDate = year+""+month+""+ nowDay + "";
-            }
-            return planDate;
+            return getStringDate(year,month,nowDay);
         }
     }
 
@@ -190,6 +213,10 @@ public class DateUtil {
         int month = calendar.get(Calendar.MONTH)+1;
         //日
         int day = calendar.get(Calendar.DAY_OF_MONTH);
+        return getStringDate(year,month,day);
+    }
+
+    public static String getStringDate(int year,int month,int day){
         String date = "";
         if (month<10&&day<10){
             date = year+"0"+month+"0"+ day + "";

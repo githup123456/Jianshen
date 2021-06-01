@@ -260,7 +260,7 @@ public class AdjustPlanActivity extends BaseActivity {
                 switch (checkedId) {
                     case R.id.adjust_plan_r_btn_body_one:
                         usersBean.setBodyParts(1);
-                        usersBean.setFocusParts(getString(R.string.third_user_page_item_1));
+                        usersBean.setFocusParts(getString(R.string.whole_body));
                         btnBodyOne.setTextColor(getResources().getColor(R.color.white));
                         btnBodyTwo.setTextColor(getResources().getColor(R.color.grey_67));
                         btnBodyThree.setTextColor(getResources().getColor(R.color.grey_67));
@@ -269,7 +269,7 @@ public class AdjustPlanActivity extends BaseActivity {
                         break;
                     case R.id.adjust_plan_r_btn_body_two:
                         usersBean.setBodyParts(4);
-                        usersBean.setFocusParts(getString(R.string.third_user_page_item_2));
+                        usersBean.setFocusParts(getString(R.string.chest_butt));
                         btnBodyOne.setTextColor(getResources().getColor(R.color.grey_67));
                         btnBodyTwo.setTextColor(getResources().getColor(R.color.white));
                         btnBodyThree.setTextColor(getResources().getColor(R.color.grey_67));
@@ -278,7 +278,7 @@ public class AdjustPlanActivity extends BaseActivity {
                         break;
                     case R.id.adjust_plan_r_btn_body_three:
                         usersBean.setBodyParts(2);
-                        usersBean.setFocusParts(getString(R.string.third_user_page_item_3));
+                        usersBean.setFocusParts(getString(R.string.abs));
                         btnBodyOne.setTextColor(getResources().getColor(R.color.grey_67));
                         btnBodyTwo.setTextColor(getResources().getColor(R.color.grey_67));
                         btnBodyThree.setTextColor(getResources().getColor(R.color.white));
@@ -287,7 +287,7 @@ public class AdjustPlanActivity extends BaseActivity {
                         break;
                     case R.id.adjust_plan_r_btn_body_four:
                         usersBean.setBodyParts(5);
-                        usersBean.setFocusParts(getString(R.string.third_user_page_item_4));
+                        usersBean.setFocusParts(getString(R.string.arm));
                         btnBodyOne.setTextColor(getResources().getColor(R.color.grey_67));
                         btnBodyTwo.setTextColor(getResources().getColor(R.color.grey_67));
                         btnBodyThree.setTextColor(getResources().getColor(R.color.grey_67));
@@ -296,7 +296,7 @@ public class AdjustPlanActivity extends BaseActivity {
                         break;
                     case R.id.adjust_plan_r_btn_body_five:
                         usersBean.setBodyParts(3);
-                        usersBean.setFocusParts(getString(R.string.third_user_page_item_5));
+                        usersBean.setFocusParts(getString(R.string.leg));
                         btnBodyOne.setTextColor(getResources().getColor(R.color.grey_67));
                         btnBodyTwo.setTextColor(getResources().getColor(R.color.grey_67));
                         btnBodyThree.setTextColor(getResources().getColor(R.color.grey_67));

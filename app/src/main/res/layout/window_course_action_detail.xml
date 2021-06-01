@@ -12,7 +12,7 @@
         android:layout_marginTop="@dimen/dp_7"
         android:background="#CFCFCF" />
 
-    <androidx.viewpager.widget.ViewPager
+    <com.shyj.jianshen.view.NoScrollViewPager
         android:id="@+id/action_detail_viewpager"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_0"

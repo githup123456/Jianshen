@@ -3,6 +3,7 @@ package com.shyj.jianshen.activity;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -34,6 +35,7 @@ import com.shyj.jianshen.update.DownloadFileDelegate;
 import com.shyj.jianshen.update.DownloadFileTaskSync;
 import com.shyj.jianshen.utils.DateUtil;
 import com.shyj.jianshen.utils.SaveUtils;
+import com.shyj.jianshen.utils.StatuBarUtils;
 import com.shyj.jianshen.utils.StringUtil;
 
 import org.json.JSONException;
@@ -61,6 +63,7 @@ public class WelComeActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
+        StatuBarUtils.setWhiteTop(WelComeActivity.this, Color.WHITE,true);
         if (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP) {
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, PERMISSIONS_STORAGE, REQUEST_PERMISSION_CODE);
@@ -94,13 +97,14 @@ public class WelComeActivity extends AppCompatActivity {
     }
 
     public void startAct(View view) {
+        Intent intent = new Intent();
         if (usersBean != null && usersBean.getFocusParts() != null) {
-            Intent intent = new Intent(WelComeActivity.this, MainActivity.class);
+            intent.setClass(WelComeActivity.this, MainActivity.class);
             startActivity(intent);
         } else {
-            Intent intent = new Intent(WelComeActivity.this, UserInformationActivity.class);
-            startActivity(intent);
+            intent.setClass(WelComeActivity.this, UserInformationActivity.class);
         }
+        startActivity(intent);
         finish();
     }
 
@@ -217,28 +221,5 @@ public class WelComeActivity extends AppCompatActivity {
             }
         });
     }
-
-    private static final ThreadFactory sThreadFactory = new ThreadFactory() {
-        private final AtomicInteger mCount = new AtomicInteger(1);
-
-        public Thread newThread(final Runnable runnable) {
-            Runnable wrapperRunnable = new Runnable() {
-                @Override
-                public void run() {
-                    try {
-//                        设置线程优先级
-                        android.os.Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
-                        Thread.currentThread().setPriority(Thread.NORM_PRIORITY - 1);
-                        runnable.run();
-                    } catch (Throwable t) {
-                        t.printStackTrace();
-                    }
-                }
-            };
-            return new Thread(wrapperRunnable, "AsyncTask #" + mCount.getAndIncrement());
-        }
-    };
-    private static final ExecutorService THREAD_POOL_CLICK_EXECUTOR = Executors.newCachedThreadPool(sThreadFactory);
-
 
 }

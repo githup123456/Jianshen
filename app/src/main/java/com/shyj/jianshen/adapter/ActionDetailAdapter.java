@@ -1,18 +1,26 @@
 package com.shyj.jianshen.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.integration.webp.decoder.WebpDrawable;
+import com.bumptech.glide.integration.webp.decoder.WebpDrawableTransformation;
+import com.bumptech.glide.load.Transformation;
+import com.bumptech.glide.load.resource.bitmap.CenterInside;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.humrousz.sequence.AnimationImageView;
 import com.shyj.jianshen.R;
 import com.shyj.jianshen.bean.CourseActionBean;
 import com.shyj.jianshen.click.NoDoubleClickListener;
@@ -30,10 +38,15 @@ public class ActionDetailAdapter extends RecyclerView.Adapter<ActionDetailAdapte
     private List<CourseActionBean> courseActionBeanList;
     private boolean isSave;
 
-    public ActionDetailAdapter(Context context, List<CourseActionBean> courseActionBeanList,boolean isLocal) {
+    public ActionDetailAdapter(Context context, List<CourseActionBean> courseActionBeanList, boolean isLocal) {
         this.context = context;
         this.courseActionBeanList = courseActionBeanList;
         this.isSave = isLocal;
+    }
+
+    public void addCourseActionBeanList(List<CourseActionBean> courseActionBeanList) {
+        this.courseActionBeanList = courseActionBeanList;
+        notifyDataSetChanged();
     }
 
     public interface ActionDetailListener {
@@ -58,30 +71,30 @@ public class ActionDetailAdapter extends RecyclerView.Adapter<ActionDetailAdapte
         try {
             if (courseActionBeanList != null && courseActionBeanList.size() > 0) {
                 CourseActionBean courseActionBean = courseActionBeanList.get(position);
-                String bgUrl = courseActionBean.getActionFile();
-                if (bgUrl!=null && bgUrl.length()>0){
-                    if(SaveUtils.fileIsExists(bgUrl)){
+                String bgUrl = SaveUtils.getActionMenFile(courseActionBean.getActionID());
 
-                    }else {
-                        if (isSave){
-                            bgUrl = StringUtil.getActionMenUrl(courseActionBean.getActionID());
-                        }else {
-                            bgUrl = StringUtil.getActionMenUrl(courseActionBean.getId());
-                        }
-                    }
-                }else {
-                    if (isSave){
+                if (SaveUtils.fileIsExists(bgUrl)) {
+                    holder.imgBg.setLoopDefault();
+                    holder.imgBg.setImageURI(Uri.parse(bgUrl));
+                    Log.e(TAG, "onBindViewHolder: bgurl" + bgUrl);
+                } else {
+                    if (isSave) {
                         bgUrl = StringUtil.getActionMenUrl(courseActionBean.getActionID());
-                    }else {
+                    } else {
                         bgUrl = StringUtil.getActionMenUrl(courseActionBean.getId());
                     }
                 }
+                ViewGroup.LayoutParams layoutParams = (ViewGroup.LayoutParams) holder.imgBg.getLayoutParams();
+                Transformation<Bitmap> circleCrop = new CenterInside();
+                WebpDrawableTransformation webpDrawableTransformation = new WebpDrawableTransformation(circleCrop);
                 Glide.with(context).load(bgUrl)
-                        .apply(HelpUtils.setImgRadius(context, 5.0f)).into(holder.imgBg);
-                Log.e(TAG, "action_file: "+StringUtil.getActionMenUrl(courseActionBean.getActionID()) );
+                        .apply(HelpUtils.requestOptions(layoutParams.width, layoutParams.height).optionalTransform(circleCrop).optionalTransform(WebpDrawable.class,webpDrawableTransformation).skipMemoryCache(true))
+                        .into(holder.imgBg);
+
+                Log.e(TAG, "action_file: " + bgUrl);
                 holder.tvName.setText(courseActionBean.getName());
                 holder.tvTime.setText(HelpUtils.getMSTime(courseActionBean.getDuration()));
-                holder.tvRest.setText((courseActionBean.getGap()/1000) + "\"");
+                holder.tvRest.setText((courseActionBean.getGap() / 1000) + "\"");
                 holder.itemView.setOnClickListener(new NoDoubleClickListener() {
                     @Override
                     public void onNoDoubleClick(View v) {
@@ -105,7 +118,7 @@ public class ActionDetailAdapter extends RecyclerView.Adapter<ActionDetailAdapte
     }
 
     public class MyActionViewHolder extends RecyclerView.ViewHolder {
-        public ImageView imgBg;
+        public AnimationImageView imgBg;
         public TextView tvRest, tvName, tvTime;
 
         public MyActionViewHolder(@NonNull View itemView) {

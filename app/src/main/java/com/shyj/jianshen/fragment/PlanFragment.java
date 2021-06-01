@@ -125,7 +125,8 @@ public class PlanFragment extends BaseFragment {
         planCoursePageAdapter = new PlanCoursePageAdapter(getFragmentManager(), getActivity(),daysCourseBeanList, nowDay);
         viewPager.removeAllViews();
         viewPager.setAdapter(planCoursePageAdapter);
-        viewPager.setCurrentItem(0);
+        viewPager.setCurrentItem(nowDay);
+        planDayAdapter.setSelectPosition(nowDay);
         viewPager.setOffscreenPageLimit(1);
         viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -136,6 +137,7 @@ public class PlanFragment extends BaseFragment {
             @Override
             public void onPageSelected(int position) {
                 planDayAdapter.setSelectPosition(position);
+                recyclerView.scrollToPosition(position);
             }
 
             @Override
@@ -153,7 +155,7 @@ public class PlanFragment extends BaseFragment {
      return stringList;
     }
 
-    @OnClick(R.id.fragment_plan_im_setting)
+    @OnClick({R.id.fragment_plan_im_setting})
     public void onViewClick(View view){
         switch (view.getId()){
             case R.id.fragment_plan_im_setting:

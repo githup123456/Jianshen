@@ -84,7 +84,7 @@
                     android:id="@+id/tv_arm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/third_user_page_item_4"
+                    android:text="@string/arm"
                     android:textColor="#ff323232"
                     android:textSize="17sp"/>
                 <TextView
@@ -141,7 +141,7 @@
                     android:id="@+id/tv_leg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/third_user_page_item_5"
+                    android:text="@string/leg"
                     android:textColor="#ff323232"
                     android:textSize="17sp"/>
                 <TextView

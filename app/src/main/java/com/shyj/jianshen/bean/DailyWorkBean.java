@@ -10,7 +10,7 @@ public class DailyWorkBean extends LitePalSupport {
     @Column(defaultValue = "0",nullable = false)
     private int kcal;
     @Column(defaultValue = "0",nullable = false)
-    private int duration;
+    private long duration;
     @Column(defaultValue = "0",nullable = false)
     private int completed;
 
@@ -31,11 +31,11 @@ public class DailyWorkBean extends LitePalSupport {
         return kcal;
     }
 
-    public void setDuration(int duration) {
+    public void setDuration(long duration) {
         this.duration = duration;
     }
 
-    public int getDuration() {
+    public long getDuration() {
         return duration;
     }
 

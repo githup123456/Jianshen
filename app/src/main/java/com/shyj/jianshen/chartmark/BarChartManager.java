@@ -86,9 +86,23 @@ public class BarChartManager {
 
         xAxis.setAxisMinimum(0f);
         //保证Y轴从0开始，不然会上移一点
-        leftAxis.setAxisMinimum(0f);
-        rightAxis.setAxisMinimum(0f);
+  /*      leftAxis.setAxisMinimum(0f);
+        rightAxis.setAxisMinimum(0f);*/
+        leftAxis.setStartAtZero(true);
+        rightAxis.setStartAtZero(true);
+        rightAxis.setAxisMinValue(0);
+        leftAxis.setAxisMinValue(0);
+        leftAxis.setValueFormatter(new IAxisValueFormatter() {
+            @Override
+            public String getFormattedValue(float value, AxisBase axis) {
+                if (value<0){
+                    return " ";
+                }else {
+                    return (int)value+"";
+                }
 
+            }
+        });
         //不绘制X Y轴线条
         xAxis.setDrawAxisLine(true);
         leftAxis.setDrawAxisLine(false);

@@ -56,12 +56,11 @@ public class DailyCalendarFragment extends BaseFragment{
         });
     }
 
-
+    private DailyWorkBean dailyWorkBean;
     public void initData(Calendar calendar){
         tvDate.setText(DateUtil.MouthToEnglish(calendar.getMonth())+"."+calendar.getDay()+"."+calendar.getYear());
-        DailyWorkBean dailyWorkBean = null;
         try {
-            String date = calendar.getYear()+calendar.getMonth()+calendar.getDay()+"";
+            String date = DateUtil.getStringDate(calendar.getYear(),calendar.getMonth(),calendar.getDay());
             Log.e(TAG, "onCalendarSelect: "+date );
             dailyWorkBean = LitePal.where("date=?",date).find(DailyWorkBean.class).get(0);
             if (dailyWorkBean == null){
@@ -75,7 +74,8 @@ public class DailyCalendarFragment extends BaseFragment{
         }
         if (isCompleted){
             tvCal.setText(dailyWorkBean.getKcal()+"");
-            tvTime.setText(dailyWorkBean.getDuration()+"min");
+            float min = (float)dailyWorkBean.getDuration()/60;
+            tvTime.setText((float) (Math.round(min * 100)) / 100+" min");
             tvCompleted.setText(dailyWorkBean.getCompleted()+"");
         }else {
             tvCal.setText("0");

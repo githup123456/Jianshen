@@ -123,7 +123,7 @@ public class RecommendWorkAdapter extends RecyclerView.Adapter<RecommendWorkAdap
         if (courseBeanList!=null&&courseBeanList.size()>0){
             return courseBeanList.size();
         }
-        return 4;
+        return 0;
     }
 
     class  RecommendWorkViewHolder extends RecyclerView.ViewHolder {

@@ -5,8 +5,10 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.Target;
 import com.google.gson.reflect.TypeToken;
 import com.shyj.jianshen.R;
 import com.shyj.jianshen.bean.PlanBean;
@@ -177,11 +179,11 @@ public class HelpUtils {
         }
         return false;
     }
+
     /**
      * 将px值转换为dip或dp值，保证尺寸大小不变  【代码里最终设置的单位基本都是px】
      *
-     * @param pxValue
-     *            （DisplayMetrics类中属性density）
+     * @param pxValue （DisplayMetrics类中属性density）
      * @return
      */
     public static int px2dip(Context context, float pxValue) {
@@ -192,8 +194,7 @@ public class HelpUtils {
     /**
      * 将dip或dp值转换为px值，保证尺寸大小不变  【代码里最终设置的单位基本都是px，所以最常用使用这个】
      *
-     * @param dipValue
-     *            （DisplayMetrics类中属性density）
+     * @param dipValue （DisplayMetrics类中属性density）
      * @return
      */
     public static int dip2px(Context context, float dipValue) {
@@ -204,8 +205,7 @@ public class HelpUtils {
     /**
      * 将px值转换为sp值，保证文字大小不变
      *
-     * @param pxValue
-     *            （DisplayMetrics类中属性scaledDensity）
+     * @param pxValue （DisplayMetrics类中属性scaledDensity）
      * @return
      */
     public static int px2sp(Context context, float pxValue) {
@@ -216,63 +216,83 @@ public class HelpUtils {
     /**
      * 将sp值转换为px值，保证文字大小不变
      *
-     * @param spValue
-     *            （DisplayMetrics类中属性scaledDensity）
+     * @param spValue （DisplayMetrics类中属性scaledDensity）
      * @return
      */
     public static int sp2px(Context context, float spValue) {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
     }
-    public static float getDensity(Context context){
+
+    public static float getDensity(Context context) {
         return context.getResources().getDisplayMetrics().density;
     }
 
 
-    /** 设置 图片 圆角 */
-    public static RequestOptions setImgRadius(Context context,float radius){
+    /**
+     * 设置 图片 圆角
+     */
+    public static RequestOptions setImgRadius(Context context, float radius) {
         return RequestOptions.bitmapTransform(new RoundedCorners(HelpUtils.dip2px(context.getApplicationContext(), radius)))
                 .placeholder(R.drawable.grey_radius_5);
     }
 
-    /**黑色error背景*/
-    public static RequestOptions getBlackError(){
+    /**
+     * 黑色error背景
+     */
+    public static RequestOptions getBlackError() {
         RequestOptions requestOptions = new RequestOptions()
                 .placeholder(R.color.black)
                 .error(R.color.black);
         return requestOptions;
     }
 
-    /**黑色error背景*/
-    public static RequestOptions getGreyError(){
+    /**
+     * 黑色error背景
+     */
+    public static RequestOptions getGreyError() {
         RequestOptions requestOptions = new RequestOptions()
                 .placeholder(R.color.grey_ae)
                 .error(R.color.grey_ae);
         return requestOptions;
     }
-    /** 毫秒转 分秒*/
-    public static String getMSTime(long millSeconds){
-        int seconds = (int) (millSeconds/1000);
-        int m = seconds/60;
-        int s = seconds%60;
-        if (m>9&&s>9){
-            return m+":"+s;
-        }else if (m<10&&s>9){
-            return "0"+m+":"+s;
-        }else if (m>9&&s<10){
-            return m+":"+"0"+s;
-        }else{
-            return "0"+m+":"+"0"+s;
+
+    /**
+     * 毫秒转 分秒
+     */
+    public static String getMSTime(long millSeconds) {
+        int seconds = (int) (millSeconds / 1000);
+        int m = seconds / 60;
+        int s = seconds % 60;
+        if (m > 9 && s > 9) {
+            return m + ":" + s;
+        } else if (m < 10 && s > 9) {
+            return "0" + m + ":" + s;
+        } else if (m > 9 && s < 10) {
+            return m + ":" + "0" + s;
+        } else {
+            return "0" + m + ":" + "0" + s;
         }
     }
 
-    /**  创建文件夹 */
+    /**
+     * 创建文件夹
+     */
 
-    public static void createFile(String fileUrl){
+    public static void createFile(String fileUrl) {
         File destDir = new File(fileUrl);
         if (!destDir.exists()) {
             destDir.mkdirs();
         }
     }
+
+
+    public static RequestOptions requestOptions(int witch,int height){
+        RequestOptions options =
+                new RequestOptions()
+                        .override(witch, height).diskCacheStrategy(DiskCacheStrategy.AUTOMATIC);
+        return options;
+    }
+
 
 }

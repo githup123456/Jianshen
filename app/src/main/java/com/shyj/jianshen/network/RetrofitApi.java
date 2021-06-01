@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import com.shyj.jianshen.BuildConfig;
+import com.shyj.jianshen.R;
 import com.shyj.jianshen.key.IntentId;
 import com.shyj.jianshen.utils.AESUtil;
 import com.shyj.jianshen.utils.Md5Util;
@@ -130,7 +131,7 @@ public class RetrofitApi {
             if (listener != null) {
                 listener.onNotNetWork();
             }
-            Toast.makeText(mContext, "请检查网络!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, mContext.getString(R.string.No_net), Toast.LENGTH_SHORT).show();
             return;
         }
         observable.subscribeOn(Schedulers.io())

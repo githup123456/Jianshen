@@ -3,10 +3,11 @@ package com.shyj.jianshen.bean;
 import org.litepal.annotation.Column;
 import org.litepal.crud.LitePalSupport;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DaysCourseBean extends LitePalSupport {
+public class DaysCourseBean extends LitePalSupport implements Serializable {
 
     @Column(unique = true)
     private int id;

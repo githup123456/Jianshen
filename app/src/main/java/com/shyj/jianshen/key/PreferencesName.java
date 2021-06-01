@@ -8,4 +8,8 @@ public class PreferencesName{
 
     public static String MUSIC_CHECKED_NAME = "music_check_name";
 
+
+    public static String KG_LB = "KG_LB";
+    public static String KG_LB_IS_KG = "isKg";
+
 }

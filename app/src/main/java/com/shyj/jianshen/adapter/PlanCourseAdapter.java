@@ -118,7 +118,7 @@ public class PlanCourseAdapter extends RecyclerView.Adapter<PlanCourseAdapter.Co
                     int min = (int) courseBean.getDuration() / 1000 / 60;
                     holder.tvBody.setText(courseBean.getName());
                     holder.tvTime.setText(min + " min");
-                    String bgUrl = SaveUtils.BASE_FILE_URL + "/course/" + StringUtil.getStringName(courseBean.getIndexs() + "") + ".jpg";
+                    String bgUrl = SaveUtils.getCourseBgFile(courseBean.getIndexs());
                     if (!SaveUtils.fileIsExists(bgUrl)) {
                         bgUrl = StringUtil.getCourseBgUrl(courseBean.getIndexs());
                     }

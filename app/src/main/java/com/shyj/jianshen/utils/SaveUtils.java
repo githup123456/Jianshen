@@ -116,4 +116,17 @@ public class SaveUtils {
         }
         return true;
     }
+
+
+    public static String getCourseBgFile(int index){
+        String path = BASE_FILE_URL + "/course/" + StringUtil.getStringName(index+"") + ".jpg";
+        return path;
+    }
+
+    public static String getActionMenFile(String actionId){
+        return BASE_FILE_URL + "/course/action/men/" + StringUtil.getStringName(actionId) + ".webp";
+    }
+    public static String getActionWomenFile(String actionId){
+        return BASE_FILE_URL + "/course/action/women/" + StringUtil.getStringName(actionId) + ".webp";
+    }
 }

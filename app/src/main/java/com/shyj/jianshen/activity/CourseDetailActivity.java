@@ -2,8 +2,10 @@ package com.shyj.jianshen.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Handler;
+import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +24,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.Transformation;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.load.resource.bitmap.DrawableTransformation;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.bumptech.glide.request.RequestOptions;
+import com.github.mikephil.charting.utils.Transformer;
 import com.humrousz.sequence.AnimationImageView;
 import com.shyj.jianshen.R;
 import com.shyj.jianshen.adapter.ActionDetailAdapter;
@@ -41,15 +49,20 @@ import com.shyj.jianshen.utils.HelpUtils;
 import com.shyj.jianshen.utils.SaveUtils;
 import com.shyj.jianshen.utils.StatuBarUtils;
 import com.shyj.jianshen.utils.StringUtil;
+import com.shyj.jianshen.view.NoScrollViewPager;
+import com.shyj.jianshen.webp.WebpDrawable;
+
 
 import org.litepal.LitePal;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+
 
 public class CourseDetailActivity extends BaseActivity {
 
@@ -91,7 +104,6 @@ public class CourseDetailActivity extends BaseActivity {
     private String courseId = "";
     private List<CourseActionBean> courseActionBeanList;
     private CourseBean courseBean;
-    private UsersBean usersBean;
     private int days;
     private boolean isLocalSave = false;
     private boolean isCollect = false;
@@ -102,13 +114,32 @@ public class CourseDetailActivity extends BaseActivity {
     }
 
     @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        courseId = intent.getStringExtra(IntentId.COURSE_ID);
+        days = intent.getIntExtra(IntentId.DAYS_ID, 0);
+        try {
+            isLocalSave = true;
+            List<CourseBean> courseBeanList = LitePal.where("courseID = ? and days = ? ", courseId, days + "").find(CourseBean.class, true);
+            Log.e(TAG, "init: " + courseBeanList.size());
+            courseBean = courseBeanList.get(0);
+            initCourse(courseBean);
+            initAction(courseBean);
+        } catch (Exception e) {
+            Log.e(TAG, "onNewIntent:" + e.getMessage());
+            Intent mainIntent = new Intent(CourseDetailActivity.this, MainActivity.class);
+            startActivity(mainIntent);
+        }
+    }
+
+    @Override
     public void init() {
         StatuBarUtils.setTranslucentStatus(CourseDetailActivity.this);
         courseId = getIntent().getStringExtra(IntentId.COURSE_ID);
         days = getIntent().getIntExtra(IntentId.DAYS_ID, 0);
         CourseBean course = (CourseBean) getIntent().getSerializableExtra(IntentId.COURSE_BEAN);
-        imgCollect.setImageResource(R.mipmap.icon_collect_white);
         courseActionBeanList = new ArrayList<>();
+
         try {
             if (course != null && course.getId() != null) {
                 isLocalSave = false;
@@ -118,35 +149,119 @@ public class CourseDetailActivity extends BaseActivity {
                 List<CourseBean> courseBeanList = LitePal.where("courseID = ? and days = ? ", courseId, days + "").find(CourseBean.class, true);
                 Log.e(TAG, "init: " + courseBeanList.size());
                 courseBean = courseBeanList.get(0);
+            }
+            actionDetailAdapter = new ActionDetailAdapter(CourseDetailActivity.this, courseActionBeanList, isLocalSave);
+            actionDetailAdapter.setActionDetailListener(new ActionDetailAdapter.ActionDetailListener() {
+                @Override
+                public void onActionDetailClick(int pos) {
+                    initActionDetailDialog(pos);
+                }
+            });
+            rclExercise.setLayoutManager(new LinearLayoutManager(CourseDetailActivity.this));
+            rclExercise.setAdapter(actionDetailAdapter);
+            initCourse(courseBean);
 
-            }
-            if (courseBean != null) {
-                tvTitle.setText(courseBean.getName());
-                tvKcal.setText(courseBean.getCalorie() + " " + getString(R.string.kcal));
-                float min = ((float) courseBean.getDuration()) / 1000 / 60;
-                tvTime.setText((float) (Math.round(min * 100)) / 100 + " min");
-                tvGrand.setText("L" + courseBean.getGrade());
-                Glide.with(CourseDetailActivity.this).load(StringUtil.getCourseBgUrl(courseBean.getIndexs())).apply(HelpUtils.getBlackError()).into(imgTopBg);
-                if (courseBean.getActionTypes() != null && courseBean.getActionTypes().size() > 0) {
-                    courseActionBeanList = courseBean.getActionTypes();
-                    tvExercises.setText("(" + courseActionBeanList.size() + ")");
-                }
-                if (courseBean.isCollect()) {
-                    imgCollect.setImageResource(R.mipmap.icon_collect_yellow);
-                } else {
-                    imgCollect.setImageResource(R.mipmap.icon_collect_white);
-                }
-                if (courseBean.getEquipments() != null && courseBean.getEquipments().length > 0) {
-                    String[] equipments = courseBean.getEquipments();
-                    for (int i = 0; i < courseBean.getEquipments().length; i++) {
-                        tvEquipment.setText(equipments[i] + "    ");
-                    }
-                }
-            }
         } catch (Exception e) {
             Log.e(TAG, "init:catch= " + e.getMessage());
+            showToast(getString(R.string.course_null_data_try_again));
+            finish();
         }
         initAction(courseBean);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        downActionFile();
+    }
+
+    private void initCourse(CourseBean courseBean) {
+        if (courseBean != null) {
+            tvTitle.setText(courseBean.getName());
+            tvKcal.setText(courseBean.getCalorie() + " " + getString(R.string.kcal));
+            float min = ((float) courseBean.getDuration()) / 1000 / 60;
+            tvTime.setText((float) (Math.round(min * 100)) / 100 + " min");
+            tvGrand.setText("L" + courseBean.getGrade());
+            if (SaveUtils.fileIsExists(SaveUtils.getCourseBgFile(courseBean.getIndexs()))) {
+                Glide.with(CourseDetailActivity.this).load(SaveUtils.getCourseBgFile(courseBean.getIndexs())).apply(HelpUtils.getBlackError()).into(imgTopBg);
+            } else {
+                Glide.with(CourseDetailActivity.this).load(StringUtil.getCourseBgUrl(courseBean.getIndexs())).apply(HelpUtils.getBlackError()).into(imgTopBg);
+            }
+
+            if (courseBean.getActionTypes() != null && courseBean.getActionTypes().size() > 0) {
+                courseActionBeanList = courseBean.getActionTypes();
+                tvExercises.setText("(" + courseActionBeanList.size() + ")");
+            }
+            if (courseBean.isCollect()) {
+                imgCollect.setImageResource(R.mipmap.icon_collect_yellow);
+            } else {
+                imgCollect.setImageResource(R.mipmap.icon_collect_white);
+            }
+            if (courseBean.getEquipments() != null && courseBean.getEquipments().length > 0) {
+                String[] equipments = courseBean.getEquipments();
+                for (int i = 0; i < courseBean.getEquipments().length; i++) {
+                    tvEquipment.setText(equipments[i] + "    ");
+                }
+            }
+        }
+    }
+
+    private void downActionFile() {
+        try {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    String actionFile = null;
+                    for (int q = 0; q < courseActionBeanList.size(); q++) {
+                        CourseActionBean actionBeanBean = courseActionBeanList.get(q);
+                        String bgUrl = null;
+                        if (isLocalSave){
+                            actionFile = StringUtil.getActionMenUrl(actionBeanBean.getActionID());
+                            bgUrl = SaveUtils.getActionMenFile(actionBeanBean.getActionID());
+                        }else {
+                            actionFile = StringUtil.getActionMenUrl(actionBeanBean.getId());
+                            bgUrl = SaveUtils.getActionMenFile(actionBeanBean.getId());
+                        }
+                        if (!SaveUtils.fileIsExists(bgUrl)) {
+                            try {
+                                DownloadFileTaskSync.downloadSync(actionFile, new File(bgUrl), new DownloadFileDelegate() {
+                                    @Override
+                                    public void onStart(String url) {
+
+                                    }
+
+                                    @Override
+                                    public void onDownloading(long currentSizeInByte, long totalSizeInByte, int percentage, String speed, String remainTime) {
+                                        Log.e(TAG, "onDownloading:actionBg: " + percentage);
+                                    }
+
+                                    @Override
+                                    public void onComplete() {
+                                        Log.e(TAG, "onComplete:actionBg ");
+                                    }
+
+                                    @Override
+                                    public void onFail() {
+                                        Log.e(TAG, "onComplete:actionBg ");
+                                    }
+
+                                    @Override
+                                    public void onCancel() {
+
+                                    }
+                                });
+                            } catch (Exception e) {
+                                Log.e(TAG, "run: 课程bg 下载出错");
+                            }
+                        }
+                    }
+                }
+            }).start();
+
+        } catch (Exception e) {
+            Log.e(TAG, "downCourseBg:下载图片异常 " + e.getMessage());
+        }
+
     }
 
     @Override
@@ -165,22 +280,15 @@ public class CourseDetailActivity extends BaseActivity {
             courseActionBeanList = courseBean.getActionTypes();
             if (courseActionBeanList != null && courseActionBeanList.size() > 0) {
                 tvExercises.setText("(" + courseActionBeanList.size() + ")");
+                actionDetailAdapter.addCourseActionBeanList(courseActionBeanList);
             }
         }
-        actionDetailAdapter = new ActionDetailAdapter(CourseDetailActivity.this, courseActionBeanList,isLocalSave);
-        actionDetailAdapter.setActionDetailListener(new ActionDetailAdapter.ActionDetailListener() {
-            @Override
-            public void onActionDetailClick(int pos) {
-                initActionDetailDialog(pos);
-            }
-        });
-        rclExercise.setLayoutManager(new LinearLayoutManager(CourseDetailActivity.this));
-        rclExercise.setAdapter(actionDetailAdapter);
+
     }
 
     private Handler handler = new Handler();
 
-    @OnClick({R.id.top_bar_green_img_right, R.id.top_bar_green_img_left, R.id.course_detail_lly_music, R.id.course_detail_rel_introduction})
+    @OnClick({R.id.top_bar_green_img_right, R.id.course_detail_btn_start, R.id.top_bar_green_img_left, R.id.course_detail_lly_music, R.id.course_detail_rel_introduction})
     public void onViewClick(View v) {
         switch (v.getId()) {
             case R.id.top_bar_green_img_left:
@@ -218,31 +326,36 @@ public class CourseDetailActivity extends BaseActivity {
                 introIntent.putExtra(IntentId.COURSE_GCAL, tvKcal.getText().toString());
                 startActivity(introIntent);
                 break;
+            case R.id.course_detail_btn_start:
+                Intent playIntent = new Intent(CourseDetailActivity.this, ActionPlayActivity.class);
+                playIntent.putExtra(IntentId.COURSE_BEAN, (Serializable) courseBean);
+                playIntent.putExtra(IntentId.MUSIC_NAME, tvMusicName.getText() + "");
+                startActivity(playIntent);
+                break;
         }
     }
 
 
-    private void initSeekBar(){
-        int  num = 0;
-        if (courseActionBeanList!=null && courseActionBeanList.size()>0){
-            for (int w=0;w<courseActionBeanList.size();w++){
+    private void initSeekBar() {
+        int num = 0;
+        if (courseActionBeanList != null && courseActionBeanList.size() > 0) {
+            for (int w = 0; w < courseActionBeanList.size(); w++) {
                 CourseActionBean actionBean = courseActionBeanList.get(w);
-                if (isLocalSave){
-                    String actionFile = SaveUtils.BASE_FILE_URL+"/course/action/"+StringUtil.getStringName(actionBean.getActionID())+".webp";
-                    if (SaveUtils.fileIsExists(actionFile)){
+                if (isLocalSave) {
+                    String actionFile = SaveUtils.BASE_FILE_URL + "/course/action/" + StringUtil.getStringName(actionBean.getActionID()) + ".webp";
+                    if (SaveUtils.fileIsExists(actionFile)) {
 
-                    }else {
-                        
+                    } else {
+
                     }
                 }
 
             }
         }
-        mSeekBar.setSplitTrack(false);
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                if (progress==100){
+                if (progress == 100) {
                     llyDownload.setVisibility(View.GONE);
                     btnStart.setVisibility(View.VISIBLE);
                 }
@@ -264,11 +377,11 @@ public class CourseDetailActivity extends BaseActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        Log.e(TAG, "onPause: "+ false);
-        if (isLocalSave){
+        Log.e(TAG, "onPause: " + false);
+        if (isLocalSave) {
             courseBean.save();
-        }else {
-            if (isCollect){
+        } else {
+            if (isCollect) {
                 courseBean.setCourseID(courseBean.getId());
                 courseBean.setCompleted(false);
                 courseBean.setDays(-1);
@@ -316,8 +429,8 @@ public class CourseDetailActivity extends BaseActivity {
                     }).start();
                     courseBean.save();
                     List<CourseActionBean> courseActionBeanList = courseBean.getActionTypes();
-                    if (courseActionBeanList!=null&& courseActionBeanList.size()>0){
-                        for (int i= 0; i<courseActionBeanList.size();i++){
+                    if (courseActionBeanList != null && courseActionBeanList.size() > 0) {
+                        for (int i = 0; i < courseActionBeanList.size(); i++) {
                             CourseActionBean actionBean = courseActionBeanList.get(i);
                             CourseActionBean courseActionBean = new CourseActionBean();
                             courseActionBean.setActionID(actionBean.getId());
@@ -329,10 +442,10 @@ public class CourseDetailActivity extends BaseActivity {
                             courseActionBean.setPergroup(actionBean.getPergroup());
                             courseActionBean.setType(actionBean.getType());
                             courseActionBean.setCourseBean(courseBean);
-                            String courseActionBgPath = SaveUtils.BASE_FILE_URL+"/course/action/men/"+ StringUtil.getStringName(actionBean.getId()+"")+".jpg";
-                            if (SaveUtils.fileIsExists(courseActionBgPath)){
+                            String courseActionBgPath = SaveUtils.BASE_FILE_URL + "/course/action/men/" + StringUtil.getStringName(actionBean.getId() + "") + ".jpg";
+                            if (SaveUtils.fileIsExists(courseActionBgPath)) {
                                 courseActionBean.setActionFile(courseActionBgPath);
-                            }else {
+                            } else {
                                 courseActionBean.setActionFile(StringUtil.getActionMenUrl(actionBean.getId()));
                             }
                             courseActionBean.save();
@@ -346,7 +459,7 @@ public class CourseDetailActivity extends BaseActivity {
     private void initActionDetailDialog(int pos) {
         WindowUtils.dismissBrightness(CourseDetailActivity.this);
         View view = WindowUtils.Show(CourseDetailActivity.this, R.layout.window_course_action_detail, 2);
-        ViewPager viewPager = view.findViewById(R.id.action_detail_viewpager);
+        NoScrollViewPager viewPager = view.findViewById(R.id.action_detail_viewpager);
         ImageView imPrevious = view.findViewById(R.id.action_detail_img_previous);
         ImageView imNext = view.findViewById(R.id.action_detail_img_next);
         TextView tvPageNum = view.findViewById(R.id.action_detail_tv_page_num);
@@ -363,31 +476,25 @@ public class CourseDetailActivity extends BaseActivity {
             LayoutInflater inflater = getLayoutInflater().from(this);
             View childView = inflater.inflate(R.layout.fragment_action_detail, null);
             AnimationImageView imgBg = childView.findViewById(R.id.action_detail_img_bg);
-            String bgUrl = courseActionBeanList.get(q).getActionFile();
-            if (bgUrl!=null && bgUrl.length()>0){
-                if(SaveUtils.fileIsExists(bgUrl)){
-                    imgBg.setLoopInf();
-                    Uri uri = Uri.parse("file:"+bgUrl);
-                    imgBg.setImageURI(uri);
-                }else {
-                    if (isLocalSave){
-                        bgUrl = StringUtil.getActionMenUrl(courseActionBeanList.get(q).getActionID());
-                    }else {
-                        bgUrl = StringUtil.getActionMenUrl(courseActionBeanList.get(q).getId());
-                    }
-                    Glide.with(CourseDetailActivity.this).load(bgUrl)
-                            .apply(HelpUtils.setImgRadius(CourseDetailActivity.this, 5.0f)).into(imgBg);
-                }
-            }else {
-                if (isLocalSave){
+            String bgUrl = SaveUtils.getActionMenFile(courseActionBeanList.get(q).getActionID());
+            if (SaveUtils.fileIsExists(bgUrl)) {
+                imgBg.setLoopInf();
+                //重复行为为指定  跟setLoopCount有关
+                imgBg.setLoopFinite();
+                Uri uri = Uri.parse("file:" + bgUrl);
+                imgBg.setImageURI(uri);
+                Log.e(TAG, "onBindViewHolder: bgurl  " + bgUrl);
+            } else {
+                if (isLocalSave) {
                     bgUrl = StringUtil.getActionMenUrl(courseActionBeanList.get(q).getActionID());
-                }else {
+                } else {
                     bgUrl = StringUtil.getActionMenUrl(courseActionBeanList.get(q).getId());
                 }
+                RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) imgBg.getLayoutParams();
                 Glide.with(CourseDetailActivity.this).load(bgUrl)
-                        .apply(HelpUtils.setImgRadius(CourseDetailActivity.this, 5.0f)).into(imgBg);
+                        .apply(HelpUtils.requestOptions(layoutParams.width, layoutParams.height))//
+                        .into(imgBg);//
             }
-
 
             TextView tvName = childView.findViewById(R.id.action_detail_tv_name);
             TextView tvDescription = childView.findViewById(R.id.action_detail_tv_description);
@@ -398,6 +505,7 @@ public class CourseDetailActivity extends BaseActivity {
         ActionDetailPageAdapter detailPageAdapter = new ActionDetailPageAdapter(CourseDetailActivity.this, viewList);
         viewPager.setAdapter(detailPageAdapter);
         viewPager.setCurrentItem(pos);
+        viewPager.setOffscreenPageLimit(0);
         imPrevious.setOnClickListener(new NoDoubleClickListener() {
             @Override
             public void onNoDoubleClick(View v) {
@@ -419,7 +527,7 @@ public class CourseDetailActivity extends BaseActivity {
                 }
             }
         });
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        viewPager.setOnPageChangeListener(new NoScrollViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 

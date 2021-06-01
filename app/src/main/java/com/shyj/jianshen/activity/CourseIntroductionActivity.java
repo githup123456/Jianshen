@@ -25,6 +25,7 @@ public class CourseIntroductionActivity extends BaseActivity{
 
     @Override
     public void init() {
+
         activity = CourseIntroductionActivity.this;
         StatuBarUtils.setTranslucentStatus(activity);
         tvTitle.setText(getString(R.string.introduction));
@@ -37,7 +38,7 @@ public class CourseIntroductionActivity extends BaseActivity{
                         time+" "+getString(R.string.minute)+" "+getString(R.string.introduction_three)+" "+kcal);
             }else if ("2".equals(grade)){
                 tvIntro.setText(getString(R.string.introduction_one)+" L"+grade+" - "+getString(R.string.intermediate)+" "+getString(R.string.introduction_two)+
-                        time+" "+getString(R.string.minute)+" "+getString(R.string.introduction_three)+" "+kcal);
+                        time+" "+getString(R.string.minute)+getString(R.string.introduction_three)+" "+kcal);
             }else {
                 tvIntro.setText(getString(R.string.introduction_one)+" L"+grade+" - "+getString(R.string.advanced)+" "+getString(R.string.introduction_two)+
                         time+" "+getString(R.string.minute)+" "+getString(R.string.introduction_three)+" "+kcal);

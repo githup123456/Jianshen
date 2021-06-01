@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_ef"
+    android:orientation="vertical">
+
+    <include layout="@layout/app_green_top_bar"/>
+
+    <LinearLayout
+        android:id="@+id/setting_clear_download"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/clear_download"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:textColor="#ff323232"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/dp_12"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/select_kg_cm"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:textColor="#ff323232"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/setting_radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/setting_radio_btn_kg"
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="34dp"
+                android:button="@null"
+                android:layout_marginRight="@dimen/dp_18"
+                android:background="@drawable/select_radius_5"
+                android:text="kg,cm"
+                android:textColor="#ff676767"
+                android:textSize="15sp"
+                android:gravity="center"/>
+            <RadioButton
+                android:id="@+id/setting_radio_btn_lb"
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="34dp"
+                android:button="@null"
+                android:checked="true"
+                android:layout_marginRight="@dimen/dp_16"
+                android:background="@drawable/select_radius_5"
+                android:text="lb,ft"
+                android:textColor="#fefffe"
+                android:gravity="center"
+                android:textSize="15sp"/>
+        </RadioGroup>
+
+    </LinearLayout>
+
+</LinearLayout>

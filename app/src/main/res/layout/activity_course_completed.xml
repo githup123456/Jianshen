@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="@dimen/dp_94"
+        android:layout_height="@dimen/dp_94"
+        android:src="@mipmap/icon_good"
+        android:layout_marginTop="57dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_16"
+        android:text="@string/well_done"
+        android:textColor="#ff19b55e"
+        android:textSize="24sp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/please_to_next"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/dp_15"
+        android:lineSpacingExtra="@dimen/dp_4"
+        android:textColor="#ff71747b"
+        android:textSize="17sp" />
+
+    <RelativeLayout
+        android:id="@+id/course_complete_rel_course"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_210"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:background="@drawable/shadow_radius_3_00"
+        android:layout_marginTop="@dimen/dp_50">
+
+        <ImageView
+            android:id="@+id/course_complete_img_bg"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:scaleType="fitXY"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:background="@color/black"
+            android:alpha="0.5"/>
+        <TextView
+            android:id="@+id/course_complete_tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="High Knees"
+            android:textColor="#ffffffff"
+            android:textSize="24sp"
+            android:layout_marginTop="80dp"
+            android:layout_marginLeft="@dimen/dp_16"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_18"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_44"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/dp_18"
+                        android:layout_height="@dimen/dp_18"
+                        android:layout_marginRight="@dimen/dp_9"
+                        android:src="@mipmap/icon_cal_grey" />
+
+                    <TextView
+                        android:id="@+id/course_complete_tv_kcal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="260 Kcal"
+                        android:textColor="#ff747474"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_44"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/dp_18"
+                        android:layout_height="@dimen/dp_18"
+                        android:layout_marginRight="@dimen/dp_9"
+                        android:src="@mipmap/icon_time_grey" />
+
+                    <TextView
+                        android:id="@+id/course_complete_tv_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="18 min"
+                        android:textColor="#ff747474"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="@dimen/dp_0"
+                android:layout_height="@dimen/dp_44"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/dp_18"
+                        android:layout_height="@dimen/dp_18"
+                        android:layout_marginRight="@dimen/dp_9"
+                        android:src="@mipmap/icon_grey_completed" />
+
+                    <TextView
+                        android:id="@+id/course_complete_tv_action_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="11"
+                        android:textColor="#ff747474"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/course_complete_btn_finish"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_54"
+        android:layout_marginLeft="@dimen/dp_22"
+        android:layout_marginRight="@dimen/dp_22"
+        android:layout_marginTop="@dimen/dp_91"
+        android:gravity="center"
+        android:textColor="#ffffffff"
+        android:textSize="24sp"
+        android:text="@string/finish"
+        android:textAllCaps="false"
+        android:background="@drawable/green_radius_27"/>
+
+</LinearLayout>

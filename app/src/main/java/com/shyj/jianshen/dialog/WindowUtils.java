@@ -19,9 +19,47 @@ public class WindowUtils {
     public static PopupWindow popupWindow;
     public static View viewContent;
 
+    public static PopupWindow allPopWindow;
+
     public static AlertDialog.Builder alertBuilder;
     public static AlertDialog alertDialog;
 
+    /**
+     * activity
+     * view  布局view
+     * position popupWindow显示位置 0顶部 1中部 2底部
+     */
+    public static PopupWindow allShow(Activity activity, int view, int position) {
+        dismissNODimBack(activity);
+        allPopWindow = new PopupWindow();
+        LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout linearLayout = new LinearLayout(activity);
+        View content = inflater.inflate(view, linearLayout);
+        allPopWindow.setContentView(content);
+        allPopWindow.setWidth(ViewGroup.LayoutParams.MATCH_PARENT);
+        allPopWindow.setHeight(ViewGroup.LayoutParams.MATCH_PARENT);
+        allPopWindow.setFocusable(true);
+        allPopWindow.setOutsideTouchable(false);
+        switch (position) {
+            case 0:
+                allPopWindow.showAtLocation(activity.getWindow().getDecorView(), Gravity.TOP, 0, 0);
+                break;
+            case 2:
+                allPopWindow.showAtLocation(activity.getWindow().getDecorView(), Gravity.BOTTOM, 0, 0);
+                break;
+            default:
+                allPopWindow.showAtLocation(activity.getWindow().getDecorView(), Gravity.CENTER, 0, 0);
+                break;
+        }
+        return allPopWindow;
+    }
+
+    public static void disMissAllPop() {
+       if (allPopWindow!=null&&allPopWindow.isShowing()){
+           allPopWindow.dismiss();
+           allPopWindow=null;
+       }
+    }
 
     /**
      * activity
@@ -52,6 +90,14 @@ public class WindowUtils {
                 break;
         }
         return popupWindow;
+    }
+
+    public static boolean isShowing(){
+        if (popupWindow!=null&&popupWindow.isShowing()){
+            return true;
+        }else {
+            return false;
+        }
     }
 
     /**

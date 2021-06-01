@@ -8,6 +8,8 @@
         android:id="@+id/my_work_rcl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/dp_12"
+        android:layout_marginRight="@dimen/dp_12"
         android:visibility="gone"/>
 
     <LinearLayout

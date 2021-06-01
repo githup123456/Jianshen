@@ -94,7 +94,7 @@
                 android:background="@drawable/select_checked_15"
                 android:button="@null"
                 android:gravity="center"
-                android:text="@string/third_user_page_item_1"
+                android:text="@string/whole_body"
                 android:textColor="#ff676767"
                 android:textSize="17sp" />
 
@@ -106,7 +106,7 @@
                 android:background="@drawable/select_checked_15"
                 android:button="@null"
                 android:gravity="center"
-                android:text="@string/third_user_page_item_2"
+                android:text="@string/chest_butt"
                 android:textColor="#ff676767"
                 android:textSize="17sp" />
 
@@ -118,7 +118,7 @@
                 android:background="@drawable/select_checked_15"
                 android:button="@null"
                 android:gravity="center"
-                android:text="@string/third_user_page_item_3"
+                android:text="@string/abs"
                 android:textColor="#ff676767"
                 android:textSize="17sp" />
 
@@ -130,7 +130,7 @@
                 android:background="@drawable/select_checked_15"
                 android:button="@null"
                 android:gravity="center"
-                android:text="@string/third_user_page_item_4"
+                android:text="@string/arm"
                 android:textColor="#ff676767"
                 android:textSize="17sp" />
 
@@ -142,7 +142,7 @@
                 android:background="@drawable/select_checked_15"
                 android:button="@null"
                 android:gravity="center"
-                android:text="@string/third_user_page_item_5"
+                android:text="@string/leg"
                 android:textColor="#ff676767"
                 android:textSize="17sp" />
         </RadioGroup>

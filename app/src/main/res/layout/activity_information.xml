@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_ef"
+    android:orientation="vertical">
+
+    <include layout="@layout/app_green_top_bar"/>
+
+    <LinearLayout
+        android:id="@+id/information_lly_height"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="14dp"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/height"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:textColor="#ff323232"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/information_tv_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 cm"
+            android:textColor="#ff19b55e"
+            android:textSize="18sp" />
+        <ImageView
+            android:id="@+id/information_img_height"
+            android:layout_width="@dimen/dp_22"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:src="@mipmap/profile_right_in"/>
+    </LinearLayout>
+    <View
+        android:layout_width="@dimen/dp_16"
+        android:layout_height="0.5dp"
+        android:background="@color/white"/>
+    <LinearLayout
+        android:id="@+id/information_lly_weight"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/weight"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:textColor="#ff323232"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/information_tv_weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 cm"
+            android:textColor="#ff19b55e"
+            android:textSize="18sp" />
+        <ImageView
+            android:id="@+id/information_img_weight"
+            android:layout_width="@dimen/dp_22"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:src="@mipmap/profile_right_in"/>
+    </LinearLayout>
+    <View
+        android:layout_width="@dimen/dp_16"
+        android:layout_height="0.5dp"
+        android:background="@color/white"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/gender"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:textColor="#ff323232"
+            android:textSize="18sp" />
+
+        <RadioGroup
+            android:id="@+id/information_radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/information_radio_btn_female"
+                android:layout_width="81dp"
+                android:layout_height="34dp"
+                android:button="@null"
+                android:layout_marginRight="@dimen/dp_18"
+                android:background="@drawable/select_radius_5"
+                android:text="@string/first_user_page_female"
+                android:textColor="#ff676767"
+                android:textSize="15sp"
+                android:gravity="center"/>
+            <RadioButton
+                android:id="@+id/information_radio_btn_male"
+                android:layout_width="81dp"
+                android:layout_height="34dp"
+                android:button="@null"
+                android:checked="true"
+                android:layout_marginRight="@dimen/dp_16"
+                android:background="@drawable/select_radius_5"
+                android:text="@string/first_user_page_male"
+                android:textColor="#fefffe"
+                android:gravity="center"
+                android:textSize="15sp"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/information_lly_chest"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="19dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/chest"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:textColor="#ff323232"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/information_tv_chest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 cm"
+            android:textColor="#ff19b55e"
+            android:textSize="18sp" />
+        <ImageView
+            android:id="@+id/information_img_chest"
+            android:layout_width="@dimen/dp_22"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:src="@mipmap/profile_right_in"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="@dimen/dp_16"
+        android:layout_height="0.5dp"
+        android:background="@color/white"/>
+    <LinearLayout
+        android:id="@+id/information_lly_arm"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/arm"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:textColor="#ff323232"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/information_tv_arm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 cm"
+            android:textColor="#ff19b55e"
+            android:textSize="18sp" />
+        <ImageView
+            android:id="@+id/information_img_arm"
+            android:layout_width="@dimen/dp_22"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:src="@mipmap/profile_right_in"/>
+    </LinearLayout>
+    <View
+        android:layout_width="@dimen/dp_16"
+        android:layout_height="0.5dp"
+        android:background="@color/white"/>
+    <LinearLayout
+        android:id="@+id/information_lly_hip"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/hip"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:textColor="#ff323232"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/information_tv_hip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 cm"
+            android:textColor="#ff19b55e"
+            android:textSize="18sp" />
+        <ImageView
+            android:id="@+id/information_img_hip"
+            android:layout_width="@dimen/dp_22"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:src="@mipmap/profile_right_in"/>
+    </LinearLayout>
+    <View
+        android:layout_width="@dimen/dp_16"
+        android:layout_height="0.5dp"
+        android:background="@color/white"/>
+    <LinearLayout
+        android:id="@+id/information_lly_waist"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/waist"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:textColor="#ff323232"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/information_tv_waist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 cm"
+            android:textColor="#ff19b55e"
+            android:textSize="18sp" />
+        <ImageView
+            android:id="@+id/information_img_waist"
+            android:layout_width="@dimen/dp_22"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:src="@mipmap/profile_right_in"/>
+    </LinearLayout>
+    <View
+        android:layout_width="@dimen/dp_16"
+        android:layout_height="0.5dp"
+        android:background="@color/white"/>
+    <LinearLayout
+        android:id="@+id/information_lly_thigh"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/thigh"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:textColor="#ff323232"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/information_tv_thigh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 cm"
+            android:textColor="#ff19b55e"
+            android:textSize="18sp" />
+        <ImageView
+            android:id="@+id/information_img_thigh"
+            android:layout_width="@dimen/dp_22"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:src="@mipmap/profile_right_in"/>
+    </LinearLayout>
+    <View
+        android:layout_width="@dimen/dp_16"
+        android:layout_height="0.5dp"
+        android:background="@color/white"/>
+    <LinearLayout
+        android:id="@+id/information_lly_calf"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/calf"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:textColor="#ff323232"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/information_tv_calf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0 cm"
+            android:textColor="#ff19b55e"
+            android:textSize="18sp" />
+        <ImageView
+            android:id="@+id/information_img_calf"
+            android:layout_width="@dimen/dp_22"
+            android:layout_height="@dimen/dp_20"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:src="@mipmap/profile_right_in"/>
+    </LinearLayout>
+
+</LinearLayout>

@@ -22,7 +22,7 @@ import com.shyj.jianshen.click.NoDoubleClickListener;
 import com.shyj.jianshen.dialog.WindowUtils;
 import com.shyj.jianshen.key.IntentId;
 import com.shyj.jianshen.view.DelEditText;
-import com.shyj.jianshen.view.NoScrollViewPager;
+
 
 import butterknife.BindView;
 import butterknife.OnClick;

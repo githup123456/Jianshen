@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import androidx.annotation.IntDef;
 
 import com.readystatesoftware.systembartint.SystemBarTintManager;
+import com.shyj.jianshen.activity.UserInformationActivity;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -92,6 +93,15 @@ public class StatuBarUtils {
 
     }
 
+
+    /**
+     * 设置 状态栏 透明 黑字白底
+     * */
+    public static void setWhiteTop(Activity context,int bgColor, boolean textIsDark){
+        StatuBarUtils.setTranslucentStatus(context);
+        StatuBarUtils.setStatusBarDarkTheme(context,textIsDark);
+        StatuBarUtils.setStatusBarColor(context, bgColor);
+    }
 
     /**
      * 设置状态栏深色浅色切换

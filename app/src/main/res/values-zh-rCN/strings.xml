@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">健身视频</string>
+
+    <string name="No_net">没有网络！</string>
+    <string name="second_user_page_title">选择你的目标</string>
+    <string name="or">或</string>
+    <string name="build_muscle">锻炼肌肉</string>
+    <string name="whole_body">全身</string>
+</resources>

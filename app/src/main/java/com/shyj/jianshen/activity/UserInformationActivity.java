@@ -1,6 +1,7 @@
 package com.shyj.jianshen.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.text.Html;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +18,8 @@ import com.aigestudio.wheelpicker.WheelPicker;
 import com.shyj.jianshen.R;
 import com.shyj.jianshen.bean.UsersBean;
 import com.shyj.jianshen.dialog.WindowUtils;
+import com.shyj.jianshen.key.PreferencesName;
+import com.shyj.jianshen.utils.StatuBarUtils;
 
 import org.litepal.LitePal;
 
@@ -126,6 +129,7 @@ public class UserInformationActivity extends BaseActivity {
 
     @Override
     public void init() {
+       StatuBarUtils.setWhiteTop(UserInformationActivity.this,Color.WHITE,true);
         LitePal.deleteAll(UsersBean.class);
         usersBean = new UsersBean();
         String str=getString(R.string.third_user_page_lose_weight)+" "+"<font color='#19B55E'>"+getString(R.string.keep_fit)+"</font>"+" "+getString(R.string.or)+" "+"<font color='#19B55E'>"+getString(R.string.build_muscle)+"</font>"+" "+getString(R.string.third_user_page_lose_weight_end);
@@ -167,7 +171,7 @@ public class UserInformationActivity extends BaseActivity {
                         tvPositionLostWeight.setVisibility(View.VISIBLE);
                         llyPosition.setVisibility(View.GONE);
                         usersBean.setBodyParts(1);
-                        usersBean.setFocusParts(getString(R.string.third_user_page_item_1));
+                        usersBean.setFocusParts(getString(R.string.whole_body));
                     } else {
                         tvPositionLostWeight.setVisibility(View.GONE);
                         llyPosition.setVisibility(View.VISIBLE);
@@ -274,8 +278,13 @@ public class UserInformationActivity extends BaseActivity {
                 }
             });
             List<String> stringListRight = new ArrayList<>();
-            stringListRight.add("kg");
-            stringListRight.add("ibs");
+            if (getSharedPreferences(PreferencesName.KG_LB,MODE_PRIVATE).getBoolean(PreferencesName.KG_LB_IS_KG,true)){
+                stringListRight.add("kg");
+                stringListRight.add("ibs");
+            }else {
+                stringListRight.add("ibs");
+                stringListRight.add("kg");
+            }
             WheelPicker wheelRight = heightView.findViewById(R.id.window_bottom_wheel_right);
             wheelRight.setData(stringListRight);
             wheelRight.setSelectedItemPosition(weightThree);
@@ -512,7 +521,7 @@ public class UserInformationActivity extends BaseActivity {
     private void setRadioGroupPosition() {
         positionButtonOne.setChecked(true);
          usersBean.setBodyParts(1);
-        usersBean.setFocusParts(getString(R.string.third_user_page_item_1));
+        usersBean.setFocusParts(getString(R.string.whole_body));
         positionButtonOne.setTextColor(getResources().getColor(R.color.white));
         positionBtnTwo.setTextColor(getResources().getColor(R.color.grey_67));
         positionBtnThree.setTextColor(getResources().getColor(R.color.grey_67));
@@ -524,7 +533,7 @@ public class UserInformationActivity extends BaseActivity {
                 switch (checkedId) {
                     case R.id.select_position_radio_btn_1:
                         usersBean.setBodyParts(1);
-                        usersBean.setFocusParts(getString(R.string.third_user_page_item_1));
+                        usersBean.setFocusParts(getString(R.string.whole_body));
                         positionButtonOne.setTextColor(getResources().getColor(R.color.white));
                         positionBtnTwo.setTextColor(getResources().getColor(R.color.grey_67));
                         positionBtnThree.setTextColor(getResources().getColor(R.color.grey_67));
@@ -533,7 +542,7 @@ public class UserInformationActivity extends BaseActivity {
                         break;
                     case R.id.select_position_radio_btn_2:
                         usersBean.setBodyParts(4);
-                        usersBean.setFocusParts(getString(R.string.third_user_page_item_2));
+                        usersBean.setFocusParts(getString(R.string.chest_butt));
                         positionButtonOne.setTextColor(getResources().getColor(R.color.grey_67));
                         positionBtnTwo.setTextColor(getResources().getColor(R.color.white));
                         positionBtnThree.setTextColor(getResources().getColor(R.color.grey_67));
@@ -542,7 +551,7 @@ public class UserInformationActivity extends BaseActivity {
                         break;
                     case R.id.select_position_radio_btn_3:
                         usersBean.setBodyParts(2);
-                        usersBean.setFocusParts(getString(R.string.third_user_page_item_3));
+                        usersBean.setFocusParts(getString(R.string.abs));
                         positionButtonOne.setTextColor(getResources().getColor(R.color.grey_67));
                         positionBtnTwo.setTextColor(getResources().getColor(R.color.grey_67));
                         positionBtnThree.setTextColor(getResources().getColor(R.color.white));
@@ -551,7 +560,7 @@ public class UserInformationActivity extends BaseActivity {
                         break;
                     case R.id.select_position_radio_btn_4:
                         usersBean.setBodyParts(5);
-                        usersBean.setFocusParts(getString(R.string.third_user_page_item_4));
+                        usersBean.setFocusParts(getString(R.string.arm));
                         positionButtonOne.setTextColor(getResources().getColor(R.color.grey_67));
                         positionBtnTwo.setTextColor(getResources().getColor(R.color.grey_67));
                         positionBtnThree.setTextColor(getResources().getColor(R.color.grey_67));
@@ -560,7 +569,7 @@ public class UserInformationActivity extends BaseActivity {
                         break;
                     case R.id.select_position_radio_btn_5:
                         usersBean.setBodyParts(3);
-                        usersBean.setFocusParts(getString(R.string.third_user_page_item_5));
+                        usersBean.setFocusParts(getString(R.string.leg));
                         positionButtonOne.setTextColor(getResources().getColor(R.color.grey_67));
                         positionBtnTwo.setTextColor(getResources().getColor(R.color.grey_67));
                         positionBtnThree.setTextColor(getResources().getColor(R.color.grey_67));

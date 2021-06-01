@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F4F4F4"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/action_quick_tv_next_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Next  High Knees"
+        android:textColor="#ff323232"
+        android:textSize="18sp"
+        android:layout_marginRight="100dp"
+        android:singleLine="true"
+        android:layout_marginLeft="@dimen/dp_17"
+        android:layout_marginTop="42dp"/>
+
+    <com.humrousz.sequence.AnimationImageView
+        android:id="@+id/action_quick_img_action"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_210"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginRight="@dimen/dp_15"
+        android:layout_marginTop="13dp"
+        android:scaleType="fitXY"
+        android:background="@drawable/grey_radius_10"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/take_quick"
+        android:textColor="#ff323232"
+        android:textSize="22sp"
+        android:layout_marginTop="35dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <RelativeLayout
+        android:layout_width="162dp"
+        android:layout_height="162dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/dp_15">
+
+        <com.timqi.sectorprogressview.ColorfulRingProgressView
+            android:id="@+id/action_quick_progress"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:fgColorStart="@color/green_19b55e"
+            app:fgColorEnd="@color/green_19b55e"
+            app:percent="100"
+            app:startAngle="90"
+            app:bgColor="#F4F4F4"
+            app:strokeWidth="@dimen/dp_6"/>
+
+        <TextView
+            android:id="@+id/action_quick_tv_remain_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15"
+            android:textColor="#ff323232"
+            android:textSize="54sp"
+            android:layout_centerInParent="true"/>
+
+        <TextView
+            android:id="@+id/action_quick_tv_add_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+20S"
+            android:textColor="#ff19b55e"
+            android:textSize="18sp"
+            android:layout_below="@+id/action_quick_tv_remain_time"
+            android:layout_centerHorizontal="true"/>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/action_quick_btn_skip"
+        android:layout_width="229dp"
+        android:layout_height="49dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="49dp"
+        android:background="@drawable/green_radius_24"
+        android:text="@string/skip"
+        android:textAllCaps="false"
+        android:textColor="#ffffffff"
+        android:textSize="18sp"/>
+
+</LinearLayout>

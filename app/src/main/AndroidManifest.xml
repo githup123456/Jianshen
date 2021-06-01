@@ -2,38 +2,41 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shyj.jianshen">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!--读写权限-->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/net_work_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:networkSecurityConfig="@xml/net_work_config">
-        <activity android:name=".activity.MainActivity"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".activity.MainActivity"
+            android:configChanges="locale|layoutDirection"
             android:launchMode="singleTask"
-            android:configChanges="locale|layoutDirection"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|adjustPan">
-        </activity>
+            android:windowSoftInputMode="adjustUnspecified|adjustPan"></activity>
         <activity android:name=".activity.BaseActivity" />
-        <activity android:name=".activity.UserInformationActivity"
+        <activity
+            android:name=".activity.UserInformationActivity"
             android:configChanges="locale|layoutDirection"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|adjustPan"/>
-        <activity android:name=".activity.BuildProgressActivity"
+            android:windowSoftInputMode="adjustUnspecified|adjustPan" />
+        <activity
+            android:name=".activity.BuildProgressActivity"
             android:configChanges="locale|layoutDirection"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|adjustPan"/>
-        <activity android:name=".activity.WelComeActivity"
+            android:windowSoftInputMode="adjustUnspecified|adjustPan" />
+        <activity
+            android:name=".activity.WelComeActivity"
             android:configChanges="locale|layoutDirection"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|adjustPan">
@@ -43,23 +46,43 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.CourseDetailActivity"
+        <activity
+            android:name=".activity.CourseDetailActivity"
+            android:launchMode="singleTask"
             android:configChanges="locale|layoutDirection"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|adjustPan"/>
-        <activity android:name=".activity.MusicListActivity"
+            android:windowSoftInputMode="adjustUnspecified|adjustPan" />
+        <activity
+            android:name=".activity.MusicListActivity"
             android:configChanges="locale|layoutDirection"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|adjustPan"/>
-        <activity android:name=".activity.AdjustPlanActivity"
+            android:windowSoftInputMode="adjustUnspecified|adjustPan" />
+        <activity
+            android:name=".activity.AdjustPlanActivity"
             android:configChanges="locale|layoutDirection"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|adjustPan"/>
-        <activity android:name=".activity.CourseIntroductionActivity"
+            android:windowSoftInputMode="adjustUnspecified|adjustPan" />
+        <activity
+            android:name=".activity.CourseIntroductionActivity"
             android:configChanges="locale|layoutDirection"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|adjustPan"/>
-        <activity android:name=".activity.CourseSearchResultActivity"
+            android:windowSoftInputMode="adjustUnspecified|adjustPan" />
+        <activity
+            android:name=".activity.CourseSearchResultActivity"
+            android:configChanges="locale|layoutDirection"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|adjustPan" />
+        <activity
+            android:name=".activity.ActionPlayActivity"
+            android:configChanges="locale|layoutDirection"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|adjustPan" />
+        <activity
+            android:name=".activity.CourseCompletedActivity"
+            android:configChanges="locale|layoutDirection"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|adjustPan" />
+        <activity android:name=".activity.SettingActivity"
             android:configChanges="locale|layoutDirection"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|adjustPan"/>

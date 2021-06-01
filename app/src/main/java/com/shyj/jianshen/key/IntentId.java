@@ -20,6 +20,8 @@ public class IntentId {
     public static String COURSE_GRADE = "course_grade";
     public static String COURSE_TIME = "course_time";
     public static String COURSE_GCAL = "course_gcal";
+    public static String COURSE_INDEX = "course_index";
+    public static String COURSE_IS_SAVE = "course_is_save";
 
     public static String DAYS_ID = "days_id";
 
@@ -29,6 +31,8 @@ public class IntentId {
 
     public static String SEARCH_KEYWORD = "search_keyword";
 
+    public static String COURSE_ACTION_BEAN = "course_action_bean";
 
+    public static String MUSIC_NAME = "music_name";
 
 }
