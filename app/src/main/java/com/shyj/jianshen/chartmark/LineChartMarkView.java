@@ -27,12 +27,15 @@ public class LineChartMarkView extends MarkerView {
 
     private TextView tvValue;
     private IAxisValueFormatter xAxisValueFormatter;
-    DecimalFormat df = new DecimalFormat("0.00");
+    DecimalFormat df = new DecimalFormat("0.0");
 
-    public LineChartMarkView(Context context, IAxisValueFormatter xAxisValueFormatter) {
+    private boolean isWeight = false;
+
+    public LineChartMarkView(Context context, IAxisValueFormatter xAxisValueFormatter,boolean isWeight) {
         super(context, R.layout.line_chart_mark_view);
         this.xAxisValueFormatter = xAxisValueFormatter;
         tvValue = (TextView) findViewById(R.id.line_chart_mark_tv);
+        this.isWeight = isWeight;
     }
 
     @SuppressLint("SetTextI18n")
@@ -48,7 +51,11 @@ public class LineChartMarkView extends MarkerView {
                 //获取到曲线的所有在Y轴的数据集合，根据当前X轴的位置 来获取对应的Y轴值
                 float y = dataSet.getValues().get((int) e.getX()).getY();
                 if (i == 0) {
-                    tvValue.setText(df.format(y)+"cm");
+                    if (isWeight){
+                        tvValue.setText(df.format(y)+"kg");
+                    }else {
+                        tvValue.setText(df.format(y)+"cm");
+                    }
                 }
             }
         }

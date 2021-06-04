@@ -20,7 +20,9 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IValueFormatter;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.github.mikephil.charting.utils.ViewPortHandler;
+import com.shyj.jianshen.bean.DaysWeightBean;
 import com.shyj.jianshen.bean.LengthBodyBean;
+import com.shyj.jianshen.key.IntentId;
 import com.shyj.jianshen.utils.DateUtil;
 
 import java.text.DecimalFormat;
@@ -330,7 +332,7 @@ public class LineChartManager {
      * @param name     曲线名称
      * @param color    曲线颜色
      */
-    public void showLineChart(final List<LengthBodyBean> dataList, String name, int color) {
+    public void showLineChart(final List<LengthBodyBean> dataList, String name, int color,int type) {
         List<Entry> entries = new ArrayList<>();
         if (dataList!=null&&dataList.size()>0){
             for (int i = 0; i < dataList.size(); i++) {
@@ -339,7 +341,90 @@ public class LineChartManager {
                  * 在此可查看 Entry构造方法，可发现 可传入数值 Entry(float x, float y)
                  * 也可传入Drawable， Entry(float x, float y, Drawable icon) 可在XY轴交点 设置Drawable图像展示
                  */
-                Entry entry = new Entry(i, (float) data.getLength());
+                Entry entry = null;
+                if (IntentId.TYPE_CHEST == type){
+                    entry = new Entry(i, (float) data.getLengthChest());
+                }else if (IntentId.TYPE_ARM == type){
+                    entry = new Entry(i, (float) data.getLengthArm());
+                }else if (IntentId.TYPE_HIP == type){
+                    entry = new Entry(i, (float) data.getLengthHip());
+                }else if (IntentId.TYPE_WAIST == type){
+                    entry = new Entry(i, (float) data.getLengthWaist());
+                }else if (IntentId.TYPE_THIGH == type){
+                    entry = new Entry(i, (float) data.getLengthThigh());
+                }else{
+                    entry = new Entry(i, (float) data.getLengthCalf());
+                }
+                entries.add(entry);
+            }
+
+            /******根据需求的不同 在此在次设置X Y轴的显示内容******/
+            xAxis.setLabelCount(6, false);
+            //设置是否绘制刻度
+            xAxis.setDrawScale(false);
+            //是否绘制X轴线
+            xAxis.setDrawAxisLine(true);
+
+            xAxis.setValueFormatter(new IAxisValueFormatter() {
+                @Override
+                public String getFormattedValue(float value, AxisBase axis) {
+                    String tradeDate = dataList.get((int) value % dataList.size()).getDate();
+                    return DateUtil.formatDateToMD(tradeDate);
+                }
+            });
+
+            leftYAxis.setLabelCount(8);
+            leftYAxis.setDrawAxisLine(false);
+            leftYAxis.setDrawScale(true);
+            leftYAxis.setDrawZeroLine(false); // draw a zero line
+            leftYAxis.setZeroLineColor(Color.GRAY);
+            leftYAxis.setZeroLineWidth(1f);
+            leftYAxis.setAxisLineWidth(1f);
+            leftYAxis.setStartAtZero(true);
+            leftYAxis.setAxisLineColor(Color.GRAY);
+            leftYAxis.setValueFormatter(new IAxisValueFormatter() {
+                @Override
+                public String getFormattedValue(float value, AxisBase axis) {
+                    Log.e("TAG", "getFormattedValue: "+value );
+                    return (int)value+"";
+                }
+            });
+
+            // 每一个LineDataSet代表一条线
+            LineDataSet lineDataSet = new LineDataSet(entries, name);
+            //LINEAR 折线图  CUBIC_BEZIER 圆滑曲线
+            initLineDataSet(lineDataSet, color, LineDataSet.Mode.CUBIC_BEZIER);
+            //线条自定义内容 放在这里
+            lineDataSet.setValueFormatter(new IValueFormatter() {
+                @Override
+                public String getFormattedValue(float value, Entry entry, int dataSetIndex, ViewPortHandler viewPortHandler) {
+                    DecimalFormat df = new DecimalFormat(".00");
+                    return df.format(value);
+                }
+            });
+
+            LineData lineData = new LineData(lineDataSet);
+            lineChart.setData(lineData);
+        }
+    }
+    /*****************以下方法无法通用，根据自己数据的不同进行相应的处理********************/
+    /**
+     * 展示曲线
+     *
+     * @param dataList 数据集合
+     * @param name     曲线名称
+     * @param color    曲线颜色
+     */
+    public void showLineChartWeight(final List<DaysWeightBean> dataList, String name, int color) {
+        List<Entry> entries = new ArrayList<>();
+        if (dataList!=null&&dataList.size()>0){
+            for (int i = 0; i < dataList.size(); i++) {
+                DaysWeightBean data = dataList.get(i);
+                /**
+                 * 在此可查看 Entry构造方法，可发现 可传入数值 Entry(float x, float y)
+                 * 也可传入Drawable， Entry(float x, float y, Drawable icon) 可在XY轴交点 设置Drawable图像展示
+                 */
+                Entry entry = new Entry(i, (float) data.getWeight());
                 entries.add(entry);
             }
 
@@ -396,7 +481,7 @@ public class LineChartManager {
     /**
      * 重置某条曲线 position 从 0 开始
      */
-    public void resetLine(int position, List<LengthBodyBean> dataList, String name, int color) {
+    public void resetLine(int position, List<LengthBodyBean> dataList, String name, int color,int type) {
         LineData lineData = lineChart.getData();
         List<ILineDataSet> list = lineData.getDataSets();
         if (list.size() <= position) {
@@ -406,7 +491,20 @@ public class LineChartManager {
         List<Entry> entries = new ArrayList<>();
         for (int i = 0; i < dataList.size(); i++) {
             LengthBodyBean data = dataList.get(i);
-            Entry entry = new Entry(i, (float) data.getLength());
+            Entry entry = null;
+            if (IntentId.TYPE_CHEST == type){
+                entry = new Entry(i, (float) data.getLengthChest());
+            }else if (IntentId.TYPE_ARM == type){
+                entry = new Entry(i, (float) data.getLengthArm());
+            }else if (IntentId.TYPE_HIP == type){
+                entry = new Entry(i, (float) data.getLengthHip());
+            }else if (IntentId.TYPE_WAIST == type){
+                entry = new Entry(i, (float) data.getLengthWaist());
+            }else if (IntentId.TYPE_THIGH == type){
+                entry = new Entry(i, (float) data.getLengthThigh());
+            }else{
+                entry = new Entry(i, (float) data.getLengthCalf());
+            }
             entries.add(entry);
         }
 
@@ -420,8 +518,8 @@ public class LineChartManager {
     /**
      * 设置 可以显示X Y 轴自定义值的 MarkerView
      */
-    public void setMarkerView(Context context) {
-        LineChartMarkView mv = new LineChartMarkView(context, xAxis.getValueFormatter());
+    public void setMarkerView(Context context,boolean isWeight) {
+        LineChartMarkView mv = new LineChartMarkView(context, xAxis.getValueFormatter(),isWeight);
         mv.setChartView(lineChart);
         lineChart.setMarker(mv);
         lineChart.invalidate();

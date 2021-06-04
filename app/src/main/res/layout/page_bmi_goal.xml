@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_6">
+
+        <ImageView
+            android:id="@+id/bmi_goal_back_img"
+            android:layout_width="@dimen/dp_27"
+            android:layout_height="@dimen/dp_27"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:src="@mipmap/back_page_grey" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="@dimen/dp_17"
+                android:layout_height="@dimen/dp_4"
+                android:layout_marginRight="@dimen/dp_4"
+                android:background="@drawable/green_radius_2" />
+
+            <View
+                android:layout_width="@dimen/dp_17"
+                android:layout_height="@dimen/dp_4"
+                android:layout_marginRight="@dimen/dp_4"
+                android:background="@drawable/grey_radius_2" />
+
+
+            <View
+                android:layout_width="@dimen/dp_17"
+                android:layout_height="@dimen/dp_4"
+                android:background="@drawable/grey_radius_2" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_32"
+        android:gravity="center"
+        android:text="@string/second_user_page_title"
+        android:textColor="#ff121212"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_32"
+        android:gravity="center"
+        android:text="@string/second_user_page_content"
+        android:textColor="#ff71747b"
+        android:textSize="17sp" />
+
+    <RadioGroup
+        android:id="@+id/bmi_goal_radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_46"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/bmi_goal_radio_btn_1"
+            android:layout_width="@dimen/dp_332"
+            android:layout_height="@dimen/dp_79"
+            android:text="@string/lose_weight"
+            android:textColor="#ff676767"
+            android:drawableLeft="@drawable/select_lose_weight"
+            android:button="@null"
+            android:paddingLeft="@dimen/dp_24"
+            android:background="@drawable/select_checked_15"
+            android:textSize="17sp" />
+        <RadioButton
+            android:id="@+id/bmi_goal_radio_btn_2"
+            android:layout_width="@dimen/dp_332"
+            android:layout_height="@dimen/dp_79"
+            android:text="@string/keep_fit"
+            android:textColor="#ff676767"
+            android:drawableLeft="@drawable/select_keep_fit"
+            android:button="@null"
+            android:paddingLeft="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_24"
+            android:background="@drawable/select_checked_15"
+            android:textSize="17sp" />
+        <RadioButton
+            android:id="@+id/bmi_goal_radio_btn_3"
+            android:layout_width="@dimen/dp_332"
+            android:layout_height="@dimen/dp_79"
+            android:text="@string/build_muscle"
+            android:textColor="#ff676767"
+            android:drawableLeft="@drawable/select_build_muscle"
+            android:button="@null"
+            android:paddingLeft="@dimen/dp_24"
+            android:layout_marginTop="@dimen/dp_24"
+            android:background="@drawable/select_checked_15"
+            android:textSize="17sp" />
+    </RadioGroup>
+
+</LinearLayout>

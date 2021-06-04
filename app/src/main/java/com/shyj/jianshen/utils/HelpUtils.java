@@ -213,6 +213,11 @@ public class HelpUtils {
         return (int) (pxValue / fontScale + 0.5f);
     }
 
+    public static int getPhoneWitch(Context context){
+        int witch = context.getResources().getDisplayMetrics().widthPixels;
+        return witch;
+    }
+
     /**
      * 将sp值转换为px值，保证文字大小不变
      *

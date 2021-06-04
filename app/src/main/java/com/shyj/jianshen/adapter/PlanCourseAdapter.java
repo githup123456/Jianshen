@@ -77,12 +77,16 @@ public class PlanCourseAdapter extends RecyclerView.Adapter<PlanCourseAdapter.Co
         try {
             if (courseBeanList != null && courseBeanList.size() > position) {
                 CourseBean courseBean = courseBeanList.get(position);
+                Log.e(TAG, "onBindViewHolder: "+courseBean.toString() );
                 if (courseBean != null) {
                     if (isPlan) {
                         if (isLock) {
                             holder.imgState.setVisibility(View.VISIBLE);
                             holder.imgState.setImageResource(R.mipmap.course_lock);
+                            holder.itemView.setClickable(false);
+                            holder.itemView.setEnabled(false);
                         } else {
+                            holder.itemView.setClickable(true);
                             if (courseBean.isCompleted()) {
                                 holder.imgState.setVisibility(View.VISIBLE);
                                 holder.imgState.setImageResource(R.mipmap.course_end);

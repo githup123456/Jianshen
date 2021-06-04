@@ -1,5 +1,6 @@
 package com.shyj.jianshen.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
@@ -33,10 +34,12 @@ import com.humrousz.sequence.AnimationImageView;
 import com.shyj.jianshen.R;
 import com.shyj.jianshen.activity.MusicListActivity;
 import com.shyj.jianshen.bean.CourseActionBean;
+import com.shyj.jianshen.dialog.WindowUtils;
 import com.shyj.jianshen.eventbus.ActionPlayEvent;
 import com.shyj.jianshen.eventbus.MusicPlayEvent;
 import com.shyj.jianshen.key.IntentId;
 import com.shyj.jianshen.utils.StringUtil;
+import com.shyj.jianshen.view.SlideLockView;
 import com.timqi.sectorprogressview.ColorfulRingProgressView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -227,14 +230,14 @@ public class ActionPlayFragment extends BaseFragment {
 
                         } else {
                             currentTime = System.currentTimeMillis();
-                            mHandler.postDelayed(this, 1000);
+                            mHandler.postDelayed(this, 10);
                         }
                     }
                 }
             };
         }
         currentTime = System.currentTimeMillis();
-        mHandler.postDelayed(timeDownRunnable, 1000);
+        mHandler.postDelayed(timeDownRunnable, 10);
     }
 
     private void downTime(int downTimeMax) {
@@ -323,20 +326,27 @@ public class ActionPlayFragment extends BaseFragment {
     }
 
     public void showLock(){
-
+        WindowUtils.dismissNODimBack(getActivity());
+        View view = WindowUtils.noDimBackShow(getActivity(),R.layout.window_action_lock,2);
+        SlideLockView slideLockView = view.findViewById(R.id.action_lock_slide);
+        slideLockView.setmLockListener(new SlideLockView.OnLockListener() {
+            @Override
+            public void onOpenLockSuccess() {
+                WindowUtils.dismissNODimBack(getActivity());
+            }
+        });
     }
 
     @Override
     public void onResume() {
         super.onResume();
         if (isSuspend){
+            isSuspend = false;
             if (countDownRunnable!=null){
-                isSuspend = false;
                 currentTime = System.currentTimeMillis();
                 mHandler.postDelayed(countDownRunnable,10);
             }
             if (timeDownRunnable!=null){
-                isSuspend = false;
                 currentTime = System.currentTimeMillis();
                 mHandler.postDelayed(timeDownRunnable,1000);
             }
@@ -356,6 +366,21 @@ public class ActionPlayFragment extends BaseFragment {
         super.onPause();
         isSuspend = true;
 //        Log.e(TAG, "onPause: "+ actionBean.getName());
+    }
+
+    @Override
+    public void onDestroyView() {
+        if (mHandler!=null){
+            if (countDownRunnable!=null){
+                mHandler.removeCallbacks(countDownRunnable);
+                countDownRunnable = null;
+            }
+            if (timeDownRunnable!=null){
+                mHandler.removeCallbacks(timeDownRunnable);
+                timeDownRunnable = null;
+            }
+        }
+        super.onDestroyView();
     }
 }
 

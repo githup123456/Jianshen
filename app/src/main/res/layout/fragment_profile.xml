@@ -333,6 +333,7 @@
             android:background="@color/grey_e5" />
 
         <RelativeLayout
+            android:id="@+id/fragment_profile_rel_rate_us"
             android:layout_width="match_parent"
             android:layout_height="63dp"
             android:layout_marginLeft="@dimen/dp_16"

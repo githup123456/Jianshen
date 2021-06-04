@@ -2,6 +2,7 @@ package com.shyj.jianshen.utils;
 
 import android.os.Build;
 import android.text.TextUtils;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -13,6 +14,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class StringUtil {
@@ -59,5 +62,17 @@ public class StringUtil {
 
     public static String getStringName(String id){
         return Md5Util.md5String(Md5Util.encrypt(AESUtil.INNER_KEY,id));
+    }
+
+
+    //截取数字
+    public static String getNumbers(String content) {
+        Pattern pattern = Pattern.compile("\\d+");
+        Matcher matcher = pattern.matcher(content);
+        while (matcher.find()) {
+            Log.e("TAG", "getNumbers: "+ matcher.regionEnd());
+            return matcher.group(0)+"."+matcher.regionEnd();
+        }
+        return "";
     }
 }

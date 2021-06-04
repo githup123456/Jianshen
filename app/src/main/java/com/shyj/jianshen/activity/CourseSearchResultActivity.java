@@ -1,6 +1,7 @@
 package com.shyj.jianshen.activity;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -26,6 +27,7 @@ import com.shyj.jianshen.key.IntentId;
 import com.shyj.jianshen.network.Api;
 import com.shyj.jianshen.network.IResponseListener;
 import com.shyj.jianshen.network.RetrofitApi;
+import com.shyj.jianshen.utils.StatuBarUtils;
 import com.shyj.jianshen.view.DelEditText;
 import com.shyj.jianshen.view.RefreshFooterView;
 import com.shyj.jianshen.view.RefreshHeadView;
@@ -63,6 +65,7 @@ public class CourseSearchResultActivity extends BaseActivity {
 
     @Override
     public void init() {
+        StatuBarUtils.setWhiteTop(CourseSearchResultActivity.this, Color.WHITE,true);
         keyWord = getIntent().getStringExtra(IntentId.SEARCH_KEYWORD);
         delEditText.setText(keyWord);
         refreshLayout.setHeaderView(new RefreshHeadView(CourseSearchResultActivity.this));

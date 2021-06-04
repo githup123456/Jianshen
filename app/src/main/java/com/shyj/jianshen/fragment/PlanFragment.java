@@ -1,10 +1,14 @@
 package com.shyj.jianshen.fragment;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -21,9 +25,16 @@ import com.shyj.jianshen.adapter.PlanDayAdapter;
 import com.shyj.jianshen.bean.CourseBean;
 import com.shyj.jianshen.bean.DaysCourseBean;
 import com.shyj.jianshen.bean.PlanBean;
+import com.shyj.jianshen.click.NoDoubleClickListener;
+import com.shyj.jianshen.dialog.WindowUtils;
+import com.shyj.jianshen.eventbus.PlanRefreshEvent;
 import com.shyj.jianshen.key.IntentId;
 import com.shyj.jianshen.utils.DateUtil;
+import com.shyj.jianshen.utils.HelpUtils;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.litepal.LitePal;
 
 import java.util.ArrayList;
@@ -62,8 +73,11 @@ public class PlanFragment extends BaseFragment {
         return R.layout.fragment_plan;
     }
 
+
+
     @Override
     public void init() {
+        EventBus.getDefault().register(this);
         daysCourseBeanList = new ArrayList<>();
         initPlan();
         planDayAdapter = new PlanDayAdapter(getActivity(),daysCourseBeanList,nowDay);
@@ -81,11 +95,33 @@ public class PlanFragment extends BaseFragment {
         showViewPager();
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onRefreshPlan(PlanRefreshEvent planRefreshEvent){
+        Log.e(TAG, "onRefreshPlan: " );
+        initPlan();
+        if (planDayAdapter!=null&&planCoursePageAdapter!=null){
+            planDayAdapter.addPlanDayList(daysCourseBeanList);
+            planCoursePageAdapter.setStrings(daysCourseBeanList);
+        }
+
+    }
+
+    @Override
+    public void onDestroy() {
+        EventBus.getDefault().unregister(this);
+        super.onDestroy();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
     private PlanBean planBean;
     private int num;
     private void initPlan(){
         try {
-            planBean = LitePal.findFirst(PlanBean.class,true);
+            planBean = LitePal.findLast(PlanBean.class,true);
             if (planBean!=null&&planBean.getPlanId()!=null){
                 int days = planBean.getDayNum();
                 if (days/7==3){
@@ -94,6 +130,7 @@ public class PlanFragment extends BaseFragment {
                     tvWeekNum.setText(getResources().getString(R.string.four_week));
                 }
                 daysCourseBeanList = LitePal.findAll(DaysCourseBean.class,true);
+                Log.e(TAG, "initPlan: "+LitePal.findAll(CourseBean.class).size() );
                 for (int i=0;i<daysCourseBeanList.size();i++){
                     num = num+daysCourseBeanList.get(i).getCourseList().size();
                     String date = daysCourseBeanList.get(i).getDate();
@@ -115,6 +152,7 @@ public class PlanFragment extends BaseFragment {
                 int progress = courseBeans.size()*100/num;
                 seekBar.setProgress(progress);
                 tvProgress.setText(progress+"%  "+getString(R.string.completed));
+                Log.e(TAG, "initPlan: "+num  );
             }
         }catch (Exception e){
             Log.e(TAG, "initPlan: "+e.getMessage() );

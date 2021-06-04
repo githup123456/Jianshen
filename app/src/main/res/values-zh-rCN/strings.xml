@@ -7,4 +7,9 @@
     <string name="or">或</string>
     <string name="build_muscle">锻炼肌肉</string>
     <string name="whole_body">全身</string>
+    <string name="start_next">开始下一个动作！</string>
+    <string name="finish">终止</string>
+    <string name="clear_download">清除缓存</string>
+    <string name="voice_guide">指导语音</string>
+    <string name="bg_music">背景音乐</string>
 </resources>

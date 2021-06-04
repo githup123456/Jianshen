@@ -8,6 +8,7 @@
         android:id="@+id/item_action_detail_img_bg"
         android:layout_width="82dp"
         android:layout_height="82dp"
+        android:scaleType="fitXY"
         android:layout_marginTop="@dimen/dp_10"
         android:layout_marginLeft="@dimen/dp_16"
         app:layout_constraintTop_toTopOf="parent"

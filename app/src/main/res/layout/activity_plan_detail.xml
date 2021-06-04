@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey_ef"
+    android:orientation="vertical">
+
+    <include layout="@layout/app_green_top_bar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginRight="@dimen/dp_16">
+
+            <ImageView
+                android:id="@+id/plan_detail_img_top_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@drawable/grey_radius_2" />
+
+            <TextView
+                android:id="@+id/plan_detail_tv_week_grand"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="@dimen/dp_16"
+                android:layout_marginBottom="11dp"
+                android:text="4 weeks · Beginner"
+                android:textColor="#ffffffff"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/plan_detail_tv_name"
+                android:layout_width="@dimen/dp_210"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:layout_above="@+id/plan_detail_tv_week_grand"
+                android:layout_marginLeft="@dimen/dp_16"
+                android:layout_marginBottom="@dimen/dp_5"
+                android:text="High Knees"
+                android:textColor="#ffffffff"
+                android:textSize="24sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_15"
+            android:layout_marginRight="@dimen/dp_16"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/dp_18"
+                android:layout_height="@dimen/dp_18"
+                android:src="@mipmap/small_days_grey" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginRight="@dimen/dp_10"
+                android:text="@string/training_days"
+                android:textColor="#ff747474"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/plan_detail_tv_days"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21"
+                android:textColor="#ff747474"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_15"
+            android:layout_marginRight="@dimen/dp_16"
+            android:layout_marginBottom="19dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/dp_18"
+                android:layout_height="@dimen/dp_18"
+                android:src="@mipmap/small_days_grey" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="11dp"
+                android:layout_marginRight="@dimen/dp_10"
+                android:text="@string/minutes_perday"
+                android:textColor="#ff747474"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/plan_detail_tv_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="18 min"
+                android:textColor="#ff747474"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plan_description"
+            android:textColor="#ff323232"
+            android:textSize="18sp"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"/>
+        <TextView
+            android:id="@+id/course_detail_tv_introduction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:text="@string/introduction_detail"
+            android:textColor="#ff747474"
+            android:textSize="15sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginRight="@dimen/dp_16"
+            android:background="#E5E5E5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/workout_preview"
+            android:textColor="#ff323232"
+            android:textSize="18sp"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginLeft="@dimen/dp_16"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/plan_detail_rcl"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginLeft="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_16" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/plan_detail_btn_join_plan"
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:gravity="center"
+        android:background="@color/green_19b55e"
+        android:text="@string/join_plan"
+        android:textColor="#ffffffff"
+        android:textSize="18sp"/>
+</LinearLayout>

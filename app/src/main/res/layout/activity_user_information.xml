@@ -1,26 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/dp_20">
+
     <LinearLayout
         android:id="@+id/user_info_page_one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <include layout="@layout/page_one_select_sex"/>
+
+        <include layout="@layout/page_one_select_sex" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/user_info_page_two"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone">
-        <include layout="@layout/page_two_select_goal"/>
+
+        <include layout="@layout/page_two_select_goal" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/user_info_page_three"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone">
+
         <include layout="@layout/page_three_select_position" />
     </LinearLayout>
 
@@ -29,16 +35,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone">
-        <include layout="@layout/page_four_select_level"/>
+
+        <include layout="@layout/page_four_select_level" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/user_info_page_five"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone">
-        <include layout="@layout/page_five_height_weight"/>
+
+        <include layout="@layout/page_five_height_weight" />
     </LinearLayout>
-    
+
     <Button
         android:id="@+id/user_info_btm_btn"
         android:layout_width="match_parent"
@@ -47,10 +56,10 @@
         android:layout_marginLeft="@dimen/dp_22"
         android:layout_marginRight="@dimen/dp_22"
         android:layout_marginBottom="@dimen/dp_27"
+        android:background="@drawable/green_radius_27"
         android:gravity="center"
-        android:textAllCaps="false"
         android:text="@string/next"
+        android:textAllCaps="false"
         android:textColor="#ffffffff"
-        android:textSize="24sp"
-        android:background="@drawable/green_radius_27"/>
+        android:textSize="24sp" />
 </RelativeLayout>

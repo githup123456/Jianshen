@@ -17,11 +17,12 @@
 
         <TextView
             android:id="@+id/item_plan_course_tv_body"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/dp_210"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/dp_17"
             android:layout_marginTop="@dimen/dp_28"
             android:text="@string/workout"
+            android:singleLine="true"
             android:textColor="#ffffffff"
             android:textSize="18sp"
             android:textStyle="bold" />

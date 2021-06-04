@@ -47,6 +47,7 @@ public class ReCommendWorkFragment extends BaseFragment{
 
     @Override
     public void init() {
+
         initAbs();
         initFat();
         initStretch();
@@ -55,6 +56,7 @@ public class ReCommendWorkFragment extends BaseFragment{
     }
 
     private void initAbs(){
+        showLoading();
         listAbs = new ArrayList<>();
         adapterAbs = new RecommendWorkAdapter(getActivity(),listAbs);
         LinearLayoutManager absLayoutManager = new LinearLayoutManager(getActivity(),RecyclerView.HORIZONTAL,false);
@@ -161,6 +163,7 @@ public class ReCommendWorkFragment extends BaseFragment{
         RetrofitApi.request(getActivity(), RetrofitApi.createApi(Api.class).getRecommendCourseList(stringObjectMap), new IResponseListener() {
             @Override
             public void onSuccess(String data) throws JSONException {
+                hiddenLoadingView();
                 try {
                     List<CourseBean> courseList = new Gson().fromJson(data,new TypeToken<List<CourseBean>>(){}.getType());
                     if (courseList!=null&&courseList.size()>0){
@@ -174,17 +177,17 @@ public class ReCommendWorkFragment extends BaseFragment{
 
             @Override
             public void onNotNetWork() {
-
+                hiddenLoadingView();
             }
 
             @Override
             public void hasMore() {
-
+                hiddenLoadingView();
             }
 
             @Override
             public void onFail(Throwable e) {
-
+                hiddenLoadingView();
             }
         });
     }

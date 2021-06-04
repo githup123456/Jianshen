@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/bmi_recommend_close"
+        android:layout_width="37dp"
+        android:layout_height="@dimen/dp_32"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingTop="@dimen/dp_5"
+        android:src="@mipmap/icon_black_close" />
+
+    <TextView
+        android:id="@+id/bmi_recommend_tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bmi_recommend_close"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_16"
+        android:gravity="center"
+        android:lineSpacingExtra="@dimen/dp_3"
+        android:text=""
+        android:textColor="#ff121212"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/bmi_recommend_tv_bmi_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bmi_recommend_tv_title"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_32"
+        android:text="Your BMI:11.5"
+        android:textColor="#ff71747b"
+        android:textSize="13sp" />
+
+    <LinearLayout
+        android:id="@+id/bmi_recommend_lly_bmi_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bmi_recommend_tv_bmi_num"
+        android:layout_marginLeft="@dimen/dp_16"
+        android:layout_marginRight="@dimen/dp_16"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_24">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_8"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bmi_bg" />
+
+                <View
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bmi_bg_center" />
+
+                <View
+                    android:layout_width="@dimen/dp_0"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/bmi_bg_end" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/bmi_recommend_img_color"
+                android:layout_width="13dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:background="@color/color_5d9ff8" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_5"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/bmi_one"
+                android:textColor="#ff71747b"
+                android:textSize="11sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/bmi_two"
+                android:textColor="#ff71747b"
+                android:textSize="11sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/bmi_three"
+                android:textColor="#ff71747b"
+                android:textSize="11sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/bmi_four"
+                android:textColor="#ff71747b"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <RadioGroup
+        android:id="@+id/bmi_recommend_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bmi_recommend_lly_bmi_view"
+        android:layout_marginLeft="@dimen/dp_22"
+        android:layout_marginRight="@dimen/dp_22"
+        android:layout_marginTop="@dimen/dp_44"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/bmi_recommend_radio_btn_plus"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_79"
+            android:button="@null"
+            android:checked="true"
+            android:background="@drawable/select_checked_15"/>
+
+        <RadioButton
+            android:id="@+id/bmi_recommend_radio_btn_regular"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_79"
+            android:layout_marginTop="@dimen/dp_24"
+            android:button="@null"
+            android:background="@drawable/select_checked_15"/>
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bmi_recommend_lly_bmi_view"
+        android:layout_marginLeft="@dimen/dp_22"
+        android:layout_marginRight="@dimen/dp_22"
+        android:layout_marginTop="@dimen/dp_44"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_79"
+            android:paddingLeft="@dimen/dp_30"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/bmi_recommend_tv_plus_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/plus_size_program"
+                android:textStyle="bold"
+                android:textColor="#ffffffff"
+                android:textSize="17sp" />
+            <TextView
+                android:id="@+id/bmi_recommend_tv_plus_under"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/recommend_28_up"
+                android:textColor="#ffffffff"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_79"
+            android:layout_marginTop="@dimen/dp_24"
+            android:paddingLeft="@dimen/dp_30"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/bmi_recommend_tv_regular_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/regular_program"
+                android:textStyle="bold"
+                android:textColor="@color/grey_67"
+                android:textSize="17sp" />
+            <TextView
+                android:id="@+id/bmi_recommend_tv_regular_under"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/recommend_28_under"
+                android:textColor="@color/grey_67"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

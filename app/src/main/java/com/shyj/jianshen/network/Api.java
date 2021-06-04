@@ -44,7 +44,15 @@ public interface Api {
     Observable<String> getSelectPlanRecommend(@FieldMap Map<String, Object> params);
 
     /**
-     * 固定推荐的计划
+     * grade	整型	是	1初学者 2中级 3进阶
+     * pageNum	整型	是	页面，从1开始
+     * */
+    @FormUrlEncoded
+    @POST("/v1/plan/selectPlansByGrade")
+    Observable<String> getSelectPlanGrade(@FieldMap Map<String, Object> params);
+
+    /**
+     * 智能推荐的计划
      * sex	整型	是	性别，1男 2女
      * grade	整型	是	课程等级，分为1,2,3等级
      * purpose	整型	是	1塑性 2增肌 3减肥

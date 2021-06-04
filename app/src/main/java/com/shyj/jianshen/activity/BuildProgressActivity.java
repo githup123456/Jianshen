@@ -30,6 +30,7 @@ import com.shyj.jianshen.update.DownloadFileDelegate;
 import com.shyj.jianshen.update.DownloadFileTaskSync;
 import com.shyj.jianshen.utils.DateUtil;
 import com.shyj.jianshen.utils.SaveUtils;
+import com.shyj.jianshen.utils.StatuBarUtils;
 import com.shyj.jianshen.utils.StringUtil;
 import com.timqi.sectorprogressview.ColorfulRingProgressView;
 
@@ -74,6 +75,7 @@ public class BuildProgressActivity extends BaseActivity {
 
     @Override
     public void init() {
+        StatuBarUtils.setWhiteTop(BuildProgressActivity.this,R.color.white,true);
         try {
             UsersBean usersBean = LitePal.findFirst(UsersBean.class);
             grand = usersBean.getLevel();
@@ -166,6 +168,7 @@ public class BuildProgressActivity extends BaseActivity {
                     }.getType());
 //                    LitePal.saveAll(planBeanList);
                     if (planBeanList != null && planBeanList.size() > 0) {
+                        LitePal.deleteAll(PlanBean.class);
                         PlanBean planBean = planBeanList.get(0);
                         PlanBean newPlan = new PlanBean();
                         newPlan.setPlanId(planBean.getId());
@@ -176,8 +179,9 @@ public class BuildProgressActivity extends BaseActivity {
                         newPlan.setMark(planBean.getMark());
                         newPlan.setCourses(planBean.getCourses());
                         newPlan.save();
-                        Log.e("TAG", "onSuccess: " + newPlan.getId() + "\n" + newPlan.getIsVip());
                         LitePal.deleteAll(DaysCourseBean.class);
+                        LitePal.deleteAll(CourseBean.class,"days > 0");
+                        Log.e("TAG", "onSuccess: " + newPlan.getPlanId() + "\n" + newPlan.getIsVip());
                         List<DaysCourseBean> daysCourseBeans = planBean.getCourses();
                         List<Integer> integerList = DateUtil.getPlanDayList(daysCourseBeans);
                         for (int i = 0; i < daysCourseBeans.size(); i++) {
@@ -193,6 +197,7 @@ public class BuildProgressActivity extends BaseActivity {
                                 daysBean.setWeekDay(weekDay % 7);
                                 daysBean.setCourseList(daysCourseBean.getCourseList());
                                 daysBean.save();
+                                Log.e(TAG, "onSuccess:co "+daysBean.getId());
                                 List<CourseBean> courseBeanList = daysCourseBean.getCourseList();
                                 if (courseBeanList != null && courseBeanList.size() > 0) {
                                     for (int j = 0; j < courseBeanList.size(); j++) {

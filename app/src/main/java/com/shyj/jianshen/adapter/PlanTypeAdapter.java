@@ -19,6 +19,7 @@ import com.shyj.jianshen.R;
 import com.shyj.jianshen.bean.PlanBean;
 import com.shyj.jianshen.click.NoDoubleClickListener;
 import com.shyj.jianshen.utils.HelpUtils;
+import com.shyj.jianshen.utils.StringUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +38,15 @@ public class PlanTypeAdapter extends RecyclerView.Adapter<PlanTypeAdapter.PlanTy
     public void setPlanBeanList(List<PlanBean> planBeanList) {
         this.planBeanList = planBeanList;
         notifyDataSetChanged();
+    }
+
+    public void addPlanBeanList(List<PlanBean> planBeanList) {
+        this.planBeanList.addAll(planBeanList);
+        notifyDataSetChanged();
+    }
+
+    public List<PlanBean> getPlanBeanList() {
+        return planBeanList;
     }
 
     public interface OnItemClick{
@@ -65,7 +75,7 @@ public class PlanTypeAdapter extends RecyclerView.Adapter<PlanTypeAdapter.PlanTy
                 int week = planBean.getDayNum()/7;
                 holder.tvWeeks.setText(week + " "+context.getString(R.string.weeks));
                 holder.tvName.setText(planBean.getName());
-                Glide.with(context).load(planBean.getMark()).
+                Glide.with(context).load(StringUtil.getPlanBgUrl(planBean.getMark())).
                         apply(HelpUtils.setImgRadius(context,3.0f))
                         .into(holder.imgBg);
                 if (planBean.getIsVip()== 1){
@@ -91,9 +101,9 @@ public class PlanTypeAdapter extends RecyclerView.Adapter<PlanTypeAdapter.PlanTy
     @Override
     public int getItemCount() {
         if (planBeanList!=null&&planBeanList.size()>0){
-            planBeanList.size();
+            return planBeanList.size();
         }
-        return 5;
+        return 0;
     }
 
     class PlanTypeViewHolder extends RecyclerView.ViewHolder{

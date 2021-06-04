@@ -26,6 +26,11 @@ public class PlanCoursePageAdapter extends FragmentStatePagerAdapter {
         this.nowDay = nowDay;
     }
 
+    public void setStrings(List<DaysCourseBean> strings) {
+        this.strings = strings;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public Fragment getItem(int position) {

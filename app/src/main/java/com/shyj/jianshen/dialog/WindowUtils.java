@@ -132,17 +132,41 @@ public class WindowUtils {
         return viewContent;
     }
 
+    public static  PopupWindow centerWindow;
+    public static View centerShow(Activity activity, int view){
+        dismissBrightness(activity);
+        centerWindow = new PopupWindow();
+        LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        LinearLayout linearLayout = new LinearLayout(activity);
+        View viewCenter = inflater.inflate(view, linearLayout);
+        centerWindow.setContentView(viewCenter);
+        centerWindow.setWidth(ViewGroup.LayoutParams.WRAP_CONTENT);
+        centerWindow.setHeight(ViewGroup.LayoutParams.WRAP_CONTENT);
+        centerWindow.setFocusable(true);
+        centerWindow.setOutsideTouchable(false);
+        dimBackground(activity, 1.0f, 0.5f);
+        centerWindow.showAtLocation(activity.getWindow().getDecorView(), Gravity.CENTER, 0, 0);
+        return viewCenter;
+    }
+
+    public static void dismissCenterWindow(Activity activity){
+        if (centerWindow != null && centerWindow.isShowing()) {
+            dimBackground(activity, 0.5f, 1.0f);
+            centerWindow.dismiss();
+            centerWindow = null;
+        }
+    }
+
 
     /**
      * activity
      * view  布局view
      * position popupWindow显示位置 0顶部 1中部 2底部
      */
-    public static void dialogShow(Activity activity, View view, int position) {
+    public static void dialogShow(Activity activity, View view) {
         alertBuilder = new AlertDialog.Builder(activity);
         alertBuilder.setView(view);
-        dimBackground(activity,1.0f,0.3f);
-        alertBuilder.setCancelable(true);
+        alertBuilder.setCancelable(false);
         alertBuilder.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
             public void onCancel(DialogInterface dialog) {

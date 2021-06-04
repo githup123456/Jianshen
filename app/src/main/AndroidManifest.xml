@@ -86,6 +86,12 @@
             android:configChanges="locale|layoutDirection"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|adjustPan"/>
+        <activity android:name=".activity.BmiBuildProgressActivity" />
+        <activity android:name=".activity.BmiInformationActivity" />
+        <activity android:name=".activity.MyFavoriteActivity" />
+        <activity android:name=".activity.PlanDetailActivity" />
+        <activity android:name=".activity.InformationActivity" />
+        <activity android:name=".activity.BMIResultActivity" />
     </application>
 
 </manifest>

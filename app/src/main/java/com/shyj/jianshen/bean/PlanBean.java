@@ -3,10 +3,11 @@ package com.shyj.jianshen.bean;
 import org.litepal.annotation.Column;
 import org.litepal.crud.LitePalSupport;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlanBean extends LitePalSupport {
+public class PlanBean extends LitePalSupport implements Serializable {
 
     /*
     id	字符串	计划唯一标识

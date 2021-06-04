@@ -51,6 +51,14 @@
     <string name="next">Next</string>
     <string name="generate_plan">Generate Plan</string>
 
+    <string name="your_weight">Your Weight</string>
+    <string name="your_chest">Your Chest</string>
+    <string name="your_arm">Your Arm</string>
+    <string name="your_hip">Your Hip</string>
+    <string name="your_waist">Your Waist</string>
+    <string name="your_thigh">Your Thigh</string>
+    <string name="your_calf">Your Calf</string>
+
     <!-- build progress-->
     <string name="build_progress_title">CREATING YOUR \n WORKOUT PLAN </string>
     <string name="build_progress_content_one">Personalize your workout plan \n for </string>
@@ -112,6 +120,7 @@
     <string name="premium_now">You are \nPremium now !</string>
     <string name="premium_expired_on">You Premium will expired on </string>
 
+    <string name="date">Date</string>
     <!-- fragment daily -->
     <string name="chest">Chest</string>
     <string name="butt">Butt</string>
@@ -121,6 +130,7 @@
     <string name="girth">Girth</string>
     <string name="history">History</string>
     <string name="bmi">BMI</string>
+    <string name="edit">Edit</string>
     <string name="calories_burned">Calories burned, estimated (kcal)</string>
 
     <string-array name="week_string_array">
@@ -132,7 +142,8 @@
         <item>F</item>
         <item>S</item>
     </string-array>
-    
+
+
     <string name="kcal">Kcal</string>
     <string name="Duration">Duration</string>
     <string name="completed">Completed</string>
@@ -149,6 +160,7 @@ ack, neck, and thighs when practicing other... </string>
     
     <string name="adjusted_your_plan">Your plan is just adjusted</string>
     <string name="add_favorite">Add to favorite</string>
+    <string name="favorite">Favorite</string>
 
     <string name="downloading">Downloading</string>
     <string name="music_list">Music List</string>
@@ -216,4 +228,39 @@ Have diabets, cardio - and cerebrovascular\n diseases, lung diseases, or other m
     <string name="voice_guide">Voice Guide</string>
     <string name="bg_music">Background Music</string>
     <string name="gender">Gender</string>
+
+    <string name="action_unlock">Swipe right to unlock >></string>
+
+    <!-- BMI -->
+    <string name="your_bmi">Your BMI is </string>
+
+    <string name="we_recommend_program">,We\nrecommend the following\nprogram</string>
+    <string name="bmi_one">Underweight\n&lt;18.5</string>
+    <string name="bmi_two">Healthy\n18.5 -24.9</string>
+    <string name="bmi_three">Overweight\n25 -29.9</string>
+    <string name="bmi_four">Obesity\n&gt;30</string>
+
+    <string name="plus_size_program">Plus size Program</string>
+    <string name="recommend_28_up">Recommended for users with 28+ BMI</string>
+    <string name="regular_program">Regular Program</string>
+    <string name="recommend_28_under">Recommended for user BMI below 28</string>
+    
+    <string name="current">Current</string>
+    <string name="last_30_days">Last 30 days</string>
+    <string name="annual_average">Annual average</string>
+
+    <string name="plan_description">Plan Description</string>
+    <string name="workout_preview">Workout Preview</string>
+    <string name="join_plan">Join Plan</string>
+
+    <!-- BMi progress-->
+    <string name="bmi_progress_one">Generating your workout plan...</string>
+    <string name="bmi_progress_two">According to your BMI, we have \ngenerated a special workout plan\n for you which fits you best.</string>
+    <string name="bmi_result_content">Based on your selections, we recommend\nthis workout plan for you.</string>
+    <string name="bmi_result_title">Plan Review</string>
+
+
+    <string name="function_develop">The function is still under development!</string>
+    <string name="clean_data">Clean Data</string>
+    <string name="clean_success">Clean Success</string>
 </resources>

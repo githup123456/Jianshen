@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:scrollbars="none"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:background="@color/grey_ef"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="298dp"
-            android:padding="@dimen/dp_16"
             android:background="@drawable/white_radius_5"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/dp_16">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -28,53 +31,55 @@
                     android:layout_height="wrap_content"
                     android:text="@string/chest"
                     android:textColor="#ff323232"
-                    android:textSize="17sp"/>
+                    android:textSize="17sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="(cm)"
-                    android:textSize="@dimen/dp_17"
-                    android:textColor="#747474"
                     android:layout_marginLeft="@dimen/dp_10"
-                    android:layout_toRightOf="@+id/tv_chest"/>
+                    android:layout_toRightOf="@+id/tv_chest"
+                    android:text="(cm)"
+                    android:textColor="#747474"
+                    android:textSize="@dimen/dp_17" />
 
                 <Button
                     android:id="@+id/fragment_girth_btn_chest_record"
                     android:layout_width="@dimen/dp_75"
                     android:layout_height="@dimen/dp_30"
-                    android:background="@drawable/green_radius_5"
                     android:layout_alignParentRight="true"
+                    android:background="@drawable/green_radius_5"
                     android:text="@string/record"
                     android:textAllCaps="false"
                     android:textColor="#ffffffff"
-                    android:textSize="13sp"/>
+                    android:textSize="13sp" />
             </RelativeLayout>
+
             <TextView
                 android:id="@+id/fragment_girth_tv_chest_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
                 android:text="2020/04/08-2021/04/01"
                 android:textColor="#ff19b55e"
-                android:textSize="13sp"
-                android:layout_marginTop="21dp"/>
+                android:textSize="13sp" />
 
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/fragment_girth_lineChart_chest"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight = "1"
                 android:layout_gravity="center"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="8dp"
+                android:layout_weight="1" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="298dp"
-            android:padding="@dimen/dp_16"
             android:layout_marginTop="@dimen/dp_16"
             android:background="@drawable/white_radius_5"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/dp_16">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -86,157 +91,285 @@
                     android:layout_height="wrap_content"
                     android:text="@string/arm"
                     android:textColor="#ff323232"
-                    android:textSize="17sp"/>
+                    android:textSize="17sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="(cm)"
-                    android:textSize="@dimen/dp_17"
-                    android:textColor="#747474"
                     android:layout_marginLeft="@dimen/dp_10"
-                    android:layout_toRightOf="@+id/tv_arm"/>
+                    android:layout_toRightOf="@+id/tv_arm"
+                    android:text="(cm)"
+                    android:textColor="#747474"
+                    android:textSize="@dimen/dp_17" />
 
                 <Button
                     android:id="@+id/fragment_girth_btn_arm_record"
                     android:layout_width="@dimen/dp_75"
                     android:layout_height="@dimen/dp_30"
-                    android:background="@drawable/green_radius_5"
                     android:layout_alignParentRight="true"
+                    android:background="@drawable/green_radius_5"
                     android:text="@string/record"
                     android:textAllCaps="false"
                     android:textColor="#ffffffff"
-                    android:textSize="13sp"/>
+                    android:textSize="13sp" />
             </RelativeLayout>
+
             <TextView
                 android:id="@+id/fragment_girth_tv_arm_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
                 android:text="2020/04/08-2021/04/01"
                 android:textColor="#ff19b55e"
-                android:textSize="13sp"
-                android:layout_marginTop="21dp"/>
+                android:textSize="13sp" />
 
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/fragment_girth_lineChart_arm"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight = "1"
                 android:layout_gravity="center"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="8dp"
+                android:layout_weight="1" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="298dp"
-            android:padding="@dimen/dp_16"
             android:layout_marginTop="@dimen/dp_16"
             android:background="@drawable/white_radius_5"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/dp_16">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tv_leg"
+                    android:id="@+id/tv_hip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/leg"
+                    android:text="@string/hip"
                     android:textColor="#ff323232"
-                    android:textSize="17sp"/>
+                    android:textSize="17sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="(cm)"
-                    android:textSize="@dimen/dp_17"
-                    android:textColor="#747474"
                     android:layout_marginLeft="@dimen/dp_10"
-                    android:layout_toRightOf="@+id/tv_leg"/>
+                    android:layout_toRightOf="@+id/tv_hip"
+                    android:text="(cm)"
+                    android:textColor="#747474"
+                    android:textSize="@dimen/dp_17" />
 
                 <Button
-                    android:id="@+id/fragment_girth_btn_leg_record"
+                    android:id="@+id/fragment_girth_btn_hip_record"
                     android:layout_width="@dimen/dp_75"
                     android:layout_height="@dimen/dp_30"
-                    android:background="@drawable/green_radius_5"
                     android:layout_alignParentRight="true"
+                    android:background="@drawable/green_radius_5"
                     android:text="@string/record"
                     android:textAllCaps="false"
                     android:textColor="#ffffffff"
-                    android:textSize="13sp"/>
+                    android:textSize="13sp" />
             </RelativeLayout>
+
             <TextView
-                android:id="@+id/fragment_girth_tv_leg_date"
+                android:id="@+id/fragment_girth_tv_hip_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
                 android:text="2020/04/08-2021/04/01"
                 android:textColor="#ff19b55e"
-                android:textSize="13sp"
-                android:layout_marginTop="21dp"/>
+                android:textSize="13sp" />
 
             <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/fragment_girth_lineChart_leg"
+                android:id="@+id/fragment_girth_lineChart_hip"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight = "1"
                 android:layout_gravity="center"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="8dp"
+                android:layout_weight="1" />
 
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="298dp"
-            android:padding="@dimen/dp_16"
             android:layout_marginTop="@dimen/dp_16"
             android:background="@drawable/white_radius_5"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/dp_16">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/tv_butt"
+                    android:id="@+id/tv_waist"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/butt"
+                    android:text="@string/waist"
                     android:textColor="#ff323232"
-                    android:textSize="17sp"/>
+                    android:textSize="17sp" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="(cm)"
-                    android:textSize="@dimen/dp_17"
-                    android:textColor="#747474"
                     android:layout_marginLeft="@dimen/dp_10"
-                    android:layout_toRightOf="@+id/tv_butt"/>
+                    android:layout_toRightOf="@+id/tv_waist"
+                    android:text="(cm)"
+                    android:textColor="#747474"
+                    android:textSize="@dimen/dp_17" />
 
                 <Button
-                    android:id="@+id/fragment_girth_btn_butt_record"
+                    android:id="@+id/fragment_girth_btn_waist_record"
                     android:layout_width="@dimen/dp_75"
                     android:layout_height="@dimen/dp_30"
-                    android:background="@drawable/green_radius_5"
                     android:layout_alignParentRight="true"
+                    android:background="@drawable/green_radius_5"
                     android:text="@string/record"
                     android:textAllCaps="false"
                     android:textColor="#ffffffff"
-                    android:textSize="13sp"/>
+                    android:textSize="13sp" />
             </RelativeLayout>
+
             <TextView
-                android:id="@+id/fragment_girth_tv_butt_date"
+                android:id="@+id/fragment_girth_tv_waist_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
                 android:text="2020/04/08-2021/04/01"
                 android:textColor="#ff19b55e"
-                android:textSize="13sp"
-                android:layout_marginTop="21dp"/>
+                android:textSize="13sp" />
 
             <com.github.mikephil.charting.charts.LineChart
-                android:id="@+id/fragment_girth_lineChart_butt"
+                android:id="@+id/fragment_girth_lineChart_waist"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight = "1"
                 android:layout_gravity="center"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="8dp"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="298dp"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/white_radius_5"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_16">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_thigh"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/thigh"
+                    android:textColor="#ff323232"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_toRightOf="@+id/tv_thigh"
+                    android:text="(cm)"
+                    android:textColor="#747474"
+                    android:textSize="@dimen/dp_17" />
+
+                <Button
+                    android:id="@+id/fragment_girth_btn_thigh_record"
+                    android:layout_width="@dimen/dp_75"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/green_radius_5"
+                    android:text="@string/record"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffffff"
+                    android:textSize="13sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/fragment_girth_tv_thigh_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:text="2020/04/08-2021/04/01"
+                android:textColor="#ff19b55e"
+                android:textSize="13sp" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/fragment_girth_lineChart_thigh"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="298dp"
+            android:layout_marginTop="@dimen/dp_16"
+            android:background="@drawable/white_radius_5"
+            android:orientation="vertical"
+            android:padding="@dimen/dp_16">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_calf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/calf"
+                    android:textColor="#ff323232"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dp_10"
+                    android:layout_toRightOf="@+id/tv_calf"
+                    android:text="(cm)"
+                    android:textColor="#747474"
+                    android:textSize="@dimen/dp_17" />
+
+                <Button
+                    android:id="@+id/fragment_girth_btn_calf_record"
+                    android:layout_width="@dimen/dp_75"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/green_radius_5"
+                    android:text="@string/record"
+                    android:textAllCaps="false"
+                    android:textColor="#ffffffff"
+                    android:textSize="13sp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/fragment_girth_tv_calf_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="21dp"
+                android:text="2020/04/08-2021/04/01"
+                android:textColor="#ff19b55e"
+                android:textSize="13sp" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/fragment_girth_lineChart_calf"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:layout_weight="1" />
 
         </LinearLayout>
 

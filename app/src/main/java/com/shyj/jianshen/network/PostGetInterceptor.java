@@ -30,10 +30,9 @@ public class PostGetInterceptor implements Interceptor {
         //请求体定制：统一添加参数
         FormBody oidFormBody = (FormBody) original.body();
         FormBody.Builder bodyBuilder = new FormBody.Builder();
-        Log.e("TAG", "intercept: " + oidFormBody.size());
         for (int i = 0; i < oidFormBody.size(); i++) {
             bodyBuilder.addEncoded(oidFormBody.encodedName(i), oidFormBody.encodedValue(i));
-            Log.e("TAG", "intercept: " + oidFormBody.name(i));
+            Log.e("TAG", "intercept: " + oidFormBody.name(i)+ "\n"+"value: "+oidFormBody.encodedValue(i));
         }
 
         MyApplication myApplication = MyApplication.getContext();

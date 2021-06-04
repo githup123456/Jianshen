@@ -55,6 +55,7 @@ public class PlanPageFragment extends BaseFragment{
     private List<CourseBean> courseBeanList = new ArrayList<>();
     private String day;
     private int nowDay;
+    private boolean isFirst = true;
 
     @Override
     public int layoutId() {
@@ -90,6 +91,20 @@ public class PlanPageFragment extends BaseFragment{
            lly_off.setVisibility(View.VISIBLE);
            lly_work.setVisibility(View.GONE);
        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (isFirst){
+            isFirst = false;
+        }else {
+            initList();
+            if (planCourseAdapter!=null&&courseBeanList.size()>0){
+                planCourseAdapter.addCourseBeanList(courseBeanList);
+                Log.e(TAG, "onResume:planPage " );
+            }
+        }
 
     }
 
@@ -101,10 +116,12 @@ public class PlanPageFragment extends BaseFragment{
 
     private void initList(){
         try {
-            DaysCourseBean daysCourseBean = LitePal.find(DaysCourseBean.class,Integer.valueOf(day),true);
-            List<CourseBean> courseBeans = daysCourseBean.getCourseList(); //LitePal.where("dayscoursebean = ?", nowDay+"").find(CourseBean.class);
-            Log.e(TAG, "initList: "+courseBeans.size() );
-            courseBeanList = courseBeans;
+            DaysCourseBean daysCourseBean = LitePal.where("day = ?",day).findFirst(DaysCourseBean.class,true);
+            if (daysCourseBean!=null){
+                List<CourseBean> courseBeans = daysCourseBean.getCourseList(); //LitePal.where("dayscoursebean = ?", nowDay+"").find(CourseBean.class);
+                Log.e(TAG, "initList: "+courseBeans.size() );
+                courseBeanList = courseBeans;
+            }
         }catch (Exception e){
             Log.e(TAG, "initList: "+e.getMessage());
         }

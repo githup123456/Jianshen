@@ -1,5 +1,6 @@
 package com.shyj.jianshen.activity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.text.Html;
 import android.util.Log;
@@ -10,17 +11,23 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.shyj.jianshen.R;
+import com.shyj.jianshen.bean.CourseBean;
+import com.shyj.jianshen.bean.PlanBean;
 import com.shyj.jianshen.bean.UsersBean;
 import com.shyj.jianshen.click.NoDoubleClickListener;
 import com.shyj.jianshen.dialog.WindowUtils;
+import com.shyj.jianshen.utils.HelpUtils;
 import com.shyj.jianshen.utils.StatuBarUtils;
+import com.shyj.jianshen.utils.StringUtil;
 
 import org.litepal.LitePal;
 
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class AdjustPlanActivity extends BaseActivity {
     @BindView(R.id.top_bar_green_img_left)
@@ -46,6 +53,9 @@ public class AdjustPlanActivity extends BaseActivity {
     RadioGroup groupBody;
     @BindView(R.id.adjust_plan_group_difficulty)
     RadioGroup groupDifficulty;
+
+    @BindView(R.id.adjust_plan_img_top_bg)
+    ImageView imgTopBg;
 
     @BindView(R.id.adjust_plan_r_btn_goal)
     RadioButton btnGoal;
@@ -87,12 +97,54 @@ public class AdjustPlanActivity extends BaseActivity {
         String str=getString(R.string.third_user_page_lose_weight)+" "+"<font color='#19B55E'>"+getString(R.string.keep_fit)+"</font>"+" "+getString(R.string.or)+" "+"<font color='#19B55E'>"+getString(R.string.build_muscle)+"</font>"+" "+getString(R.string.third_user_page_lose_weight_end);
         tvLoseWeight.setText(Html.fromHtml(str.replaceAll("\n", "<br>")));
         tvTopRight.setText(getResources().getString(R.string.done));
+        initPlan();
         initUser();
         initGroup();
         initGoalGroup();
         initBodyGroup();
         initDifficultyGroup();
     }
+
+    private PlanBean planBean;
+    private void initPlan(){
+        try {
+            planBean = LitePal.findFirst(PlanBean.class,true);
+            if (planBean!=null&&planBean.getPlanId()!=null){
+                tvName.setText(planBean.getName());
+                int days = planBean.getDayNum();
+                if (days/7==3){
+                    tvDays.setText("21");
+                    if (planBean.getGrade()==1){
+                        tvWeekGrand.setText(getResources().getString(R.string.three_week)+" · "+getString(R.string.beginner));
+                    }else if(planBean.getGrade()==2){
+                        tvWeekGrand.setText(getResources().getString(R.string.three_week)+" · "+getString(R.string.intermediate));
+                    }else {
+                        tvWeekGrand.setText(getResources().getString(R.string.three_week)+" · "+getString(R.string.advanced));
+                    }
+                }else {
+                    tvDays.setText("28");
+                    if (planBean.getGrade()==1){
+                        tvWeekGrand.setText(getResources().getString(R.string.four_week)+" · "+getString(R.string.beginner));
+                    }else if(planBean.getGrade()==2){
+                        tvWeekGrand.setText(getResources().getString(R.string.four_week)+" · "+getString(R.string.intermediate));
+                    }else {
+                        tvWeekGrand.setText(getResources().getString(R.string.four_week)+" · "+getString(R.string.advanced));
+                    }
+                }
+                String url = StringUtil.getPlanBgUrl(planBean.getMark());
+                Glide.with(AdjustPlanActivity.this).load(url).apply(HelpUtils.getGreyError()).into(imgTopBg);
+                CourseBean courseBean = LitePal.findFirst(CourseBean.class);
+                if (courseBean!=null){
+                    int minute = (int)courseBean.getDuration()/10/60;
+                    tvMinute .setText((float)minute/100 +" min");
+                }
+            }
+        }catch (Exception e){
+            Log.e(TAG, "initPlan: "+e.getMessage() );
+        }
+    }
+
+
 
     private int grand = 1;
     private int bodyParts = 1;
@@ -122,6 +174,7 @@ public class AdjustPlanActivity extends BaseActivity {
                         btnDifficulty.setTextColor(getResources().getColor(R.color.grey_67));
                         groupGoal.setVisibility(View.VISIBLE);
                         groupBody.setVisibility(View.GONE);
+                        tvLoseWeight.setVisibility(View.GONE);
                         groupDifficulty.setVisibility(View.GONE);
                         break;
                     case R.id.adjust_plan_r_btn_body:
@@ -147,6 +200,7 @@ public class AdjustPlanActivity extends BaseActivity {
                         btnGoal.setTextColor(getResources().getColor(R.color.grey_67));
                         groupGoal.setVisibility(View.GONE);
                         groupBody.setVisibility(View.GONE);
+                        tvLoseWeight.setVisibility(View.GONE);
                         groupDifficulty.setVisibility(View.VISIBLE);
                         break;
                 }
@@ -363,30 +417,73 @@ public class AdjustPlanActivity extends BaseActivity {
         });
     }
 
+    @OnClick({R.id.adjust_plan_btn_adjust_end,R.id.top_bar_green_tv_right,R.id.top_bar_green_img_left})
+    public void onClick(View v){
+        switch (v.getId()){
+            case R.id.adjust_plan_btn_adjust_end:
+                showEndDialog();
+                break;
+            case R.id.top_bar_green_img_left:
+                finish();
+                break;
+            case R.id.top_bar_green_tv_right:
+                showDonePlan();
+                break;
+
+        }
+    }
+
     private void showEndDialog(){
-        View endView = LayoutInflater.from(AdjustPlanActivity.this).inflate(R.layout.dialog_center_confirm,null);
+        WindowUtils.dismissCenterWindow(AdjustPlanActivity.this);
+        View endView = WindowUtils.centerShow(AdjustPlanActivity.this,R.layout.dialog_center_confirm);
         TextView tvContent = endView.findViewById(R.id.dialog_center_tv_content);
-        tvContent.setText(getResources().getString(R.string.end_current_program));
+        tvContent.setText(getResources().getString(R.string.sure_end_program));
         TextView tvCancel = endView.findViewById(R.id.dialog_center_tv_cancel);
         tvCancel.setText(getResources().getString(R.string.window_cancel));
         tvCancel.setOnClickListener(new NoDoubleClickListener() {
             @Override
             public void onNoDoubleClick(View v) {
-                WindowUtils.dismissDialog();
+                WindowUtils.dismissCenterWindow(AdjustPlanActivity.this);
             }
         });
         TextView tvConfirm = endView.findViewById(R.id.dialog_center_tv_confirm);
         tvConfirm.setOnClickListener(new NoDoubleClickListener() {
             @Override
             public void onNoDoubleClick(View v) {
-                WindowUtils.dismissDialog();
+                WindowUtils.dismissCenterWindow(AdjustPlanActivity.this);
                 finish();
             }
         });
     }
 
     private void showDonePlan(){
-
+        WindowUtils.dismissCenterWindow(AdjustPlanActivity.this);
+        View endView = WindowUtils.centerShow(AdjustPlanActivity.this,R.layout.dialog_center_confirm);
+        TextView tvTitle = endView.findViewById(R.id.dialog_center_tv_title);
+        tvTitle.setVisibility(View.VISIBLE);
+        tvTitle.setText(getString(R.string.adjust_plan));
+        TextView tvContent = endView.findViewById(R.id.dialog_center_tv_content);
+        tvContent.setText(getResources().getString(R.string.your_plan_adjust));
+        TextView tvCancel = endView.findViewById(R.id.dialog_center_tv_cancel);
+        tvCancel.setText(getResources().getString(R.string.no));
+        tvCancel.setOnClickListener(new NoDoubleClickListener() {
+            @Override
+            public void onNoDoubleClick(View v) {
+                WindowUtils.dismissCenterWindow(AdjustPlanActivity.this);
+            }
+        });
+        TextView tvConfirm = endView.findViewById(R.id.dialog_center_tv_confirm);
+        tvConfirm.setText(getString(R.string.yes));
+        tvConfirm.setOnClickListener(new NoDoubleClickListener() {
+            @Override
+            public void onNoDoubleClick(View v) {
+                WindowUtils.dismissCenterWindow(AdjustPlanActivity.this);
+                Intent intent = new Intent();
+                intent.setClass(AdjustPlanActivity.this,BuildProgressActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
 }

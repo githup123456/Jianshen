@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.shyj.jianshen.R;
 import com.shyj.jianshen.bean.PlanBean;
 import com.shyj.jianshen.key.IntentId;
+import com.shyj.jianshen.key.PreferencesName;
 import com.shyj.jianshen.utils.StatuBarUtils;
 
 import org.litepal.LitePal;
@@ -70,20 +71,18 @@ public class SwitchFragment {
         FragmentTransaction transaction = manager.beginTransaction();
         switch (type) {
             case FRAGMENT_TYPE.APP_PLAN:
-                boolean isVip = activity.getSharedPreferences("Vip", Context.MODE_PRIVATE).getBoolean(IntentId.IS_VIP,false);
+                boolean isVip = activity.getSharedPreferences(PreferencesName.VIP, Context.MODE_PRIVATE).getBoolean(PreferencesName.IS_VIP,false);
                 boolean isHavePlan =false;
                 try {
-                    SQLiteDatabase sqLiteDatabase = LitePal.getDatabase();
                     PlanBean planBean = LitePal.findFirst(PlanBean.class);
-                    if (planBean!=null&& planBean.getId()!=null){
+                    if (planBean!=null){
                         isHavePlan =true;
                     }
                 }catch (Exception r){
                     isHavePlan=false;
                 }
 
-                isVip = true;
-                isHavePlan = true;
+//                isVip = true;
                 if (isVip&&isHavePlan){
                     if (mPlanFragment == null) {
                         mPlanFragment = new PlanFragment();

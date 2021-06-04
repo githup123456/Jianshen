@@ -9,8 +9,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.shyj.jianshen.R;
+import com.shyj.jianshen.bean.LengthBodyBean;
 import com.shyj.jianshen.bean.UsersBean;
 import com.shyj.jianshen.key.PreferencesName;
+import com.shyj.jianshen.utils.StatuBarUtils;
 
 import org.litepal.LitePal;
 
@@ -52,10 +54,33 @@ public class InformationActivity extends BaseActivity{
     
     private boolean isMale;
     private UsersBean usersBean;
+    private LengthBodyBean lengthBodyBean;
     
     @Override
     public void init() {
+        tvTitle.setText(getString(R.string.information));
         activity = InformationActivity.this;
+        StatuBarUtils.setTranslucentStatus(activity);
+        try {
+            lengthBodyBean  = LitePal.findLast(LengthBodyBean.class);
+            if (lengthBodyBean!=null){
+                tvChest.setText(lengthBodyBean.getLengthChest()+" cm");
+                tvArm.setText(lengthBodyBean.getLengthArm()+" cm");
+                tvWaist.setText(lengthBodyBean.getLengthWaist()+" cm");
+                tvHip.setText(lengthBodyBean.getLengthHip()+" cm");
+                tvThigh.setText(lengthBodyBean.getLengthThigh()+" cm");
+                tvCalf.setText(lengthBodyBean.getLengthCalf()+" cm");
+            }else {
+                tvChest.setText("0 cm");
+                tvArm.setText("0 cm");
+                tvWaist.setText("0 cm");
+                tvHip.setText(0+" cm");
+                tvThigh.setText(0+" cm");
+                tvCalf.setText(0+" cm");
+            }
+        }catch (Exception r){
+            r.printStackTrace();
+        }
         try {
             usersBean = LitePal.findFirst(UsersBean.class);
             if (usersBean!=null){
@@ -64,8 +89,8 @@ public class InformationActivity extends BaseActivity{
                 }else {
                     isMale = false;
                 }
-                tvHeight.setText(usersBean.getHeight()+" cm");
-                tvWeight.setText(usersBean.getWeight()+" cm");
+                tvHeight.setText(usersBean.getHeight());
+                tvWeight.setText(usersBean.getWeight());
             }
         }catch (Exception e){
             Log.e(TAG, "init: "+e.getMessage());

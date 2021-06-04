@@ -12,6 +12,7 @@
         <mapping class="com.shyj.jianshen.bean.CalorieMouthBean"/>
         <mapping class="com.shyj.jianshen.bean.MusicItemBean"/>
         <mapping class="com.shyj.jianshen.bean.DailyWorkBean"/>
+        <mapping class="com.shyj.jianshen.bean.DaysWeightBean"/>
 
     </list>
 </litepal>

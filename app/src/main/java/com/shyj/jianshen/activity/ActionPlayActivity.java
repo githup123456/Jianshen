@@ -372,7 +372,9 @@ public class ActionPlayActivity extends AppCompatActivity {
 
     public void intentCompleted() {
         courseBean.setCompleted(true);
-        courseBean.saveOrUpdate("courseId = ? and days = ?", courseBean.getCourseID(), courseBean.getDays() + "");
+        if (courseBean.getCourseID()!=null&& courseBean.getDays()>0){
+            courseBean.saveOrUpdate("courseId = ? and days = ?", courseBean.getCourseID(), courseBean.getDays() + "");
+        }
         try {
             DailyWorkBean dailyWorkBean = LitePal.where("date = ? ", DateUtil.getNowStringDate()).findFirst(DailyWorkBean.class);
             if (dailyWorkBean != null) {

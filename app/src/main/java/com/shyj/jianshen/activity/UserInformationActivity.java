@@ -16,10 +16,13 @@ import android.widget.Toast;
 
 import com.aigestudio.wheelpicker.WheelPicker;
 import com.shyj.jianshen.R;
+import com.shyj.jianshen.bean.DaysWeightBean;
 import com.shyj.jianshen.bean.UsersBean;
 import com.shyj.jianshen.dialog.WindowUtils;
 import com.shyj.jianshen.key.PreferencesName;
+import com.shyj.jianshen.utils.DateUtil;
 import com.shyj.jianshen.utils.StatuBarUtils;
+import com.shyj.jianshen.utils.StringUtil;
 
 import org.litepal.LitePal;
 
@@ -404,8 +407,13 @@ public class UserInformationActivity extends BaseActivity {
             showToast("请输入您的体重");
         }else {
             usersBean.setWeight(weightTv.getText().toString());
-            usersBean.setHeight(heightTv.toString());
+            usersBean.setHeight(heightTv.getText().toString());
             usersBean.save();
+            DaysWeightBean daysWeightBean = new DaysWeightBean();
+            daysWeightBean.setDate(DateUtil.getNowStringDate());
+            String weight = StringUtil.getNumbers(weightTv.getText().toString());
+            daysWeightBean.setWeight(Float.valueOf(weight));
+            daysWeightBean.save();
             Intent intent = new Intent(UserInformationActivity.this, BuildProgressActivity.class);
             isIntent = true;
             startActivity(intent);

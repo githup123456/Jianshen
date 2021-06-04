@@ -13,6 +13,8 @@ import com.shyj.jianshen.utils.DateUtil;
 
 import org.litepal.LitePal;
 
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
@@ -62,11 +64,16 @@ public class DailyCalendarFragment extends BaseFragment{
         try {
             String date = DateUtil.getStringDate(calendar.getYear(),calendar.getMonth(),calendar.getDay());
             Log.e(TAG, "onCalendarSelect: "+date );
-            dailyWorkBean = LitePal.where("date=?",date).find(DailyWorkBean.class).get(0);
-            if (dailyWorkBean == null){
-                isCompleted = false;
+            List<DailyWorkBean> dailyWorkBeanList = LitePal.where("date=?",date).find(DailyWorkBean.class);
+            if (dailyWorkBeanList!=null && dailyWorkBeanList.size()>0){
+                dailyWorkBean = dailyWorkBeanList.get(0);
+                if (dailyWorkBean == null){
+                    isCompleted = false;
+                }else {
+                    isCompleted = true;
+                }
             }else {
-                isCompleted = true;
+                isCompleted = false;
             }
         }catch (Exception e){
             Log.e(TAG, "Calendar_catch: "+e.getMessage() );

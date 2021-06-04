@@ -31,11 +31,12 @@
 
         <TextView
             android:id="@+id/item_plan_type_tv_name"
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="Firm abs \n project"
             android:textColor="#ff323232"
             android:textSize="17sp"
+            android:maxLines="2"
             android:layout_marginLeft="@dimen/dp_16"/>
         <TextView
             android:id="@+id/item_plan_type_tv_weeks"

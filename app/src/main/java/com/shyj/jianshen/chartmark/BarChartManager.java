@@ -86,12 +86,8 @@ public class BarChartManager {
 
         xAxis.setAxisMinimum(0f);
         //保证Y轴从0开始，不然会上移一点
-  /*      leftAxis.setAxisMinimum(0f);
-        rightAxis.setAxisMinimum(0f);*/
-        leftAxis.setStartAtZero(true);
-        rightAxis.setStartAtZero(true);
-        rightAxis.setAxisMinValue(0);
-        leftAxis.setAxisMinValue(0);
+        leftAxis.setAxisMinimum(0.0f);
+        rightAxis.setAxisMinimum(0f);
         leftAxis.setValueFormatter(new IAxisValueFormatter() {
             @Override
             public String getFormattedValue(float value, AxisBase axis) {

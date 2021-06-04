@@ -147,6 +147,8 @@ public class DateUtil {
         return dayList;
     }
 
+    public static int getNowDay = getNowDate()[2];
+
     /** 获取 计划对应的日期*/
     public static String getPlanDate(int day){
         int[] date = getNowDate();

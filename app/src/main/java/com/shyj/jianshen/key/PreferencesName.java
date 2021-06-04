@@ -12,4 +12,9 @@ public class PreferencesName{
     public static String KG_LB = "KG_LB";
     public static String KG_LB_IS_KG = "isKg";
 
+
+
+    public static String VIP = "vip";
+    public static String IS_VIP = "is_vip";
+
 }
